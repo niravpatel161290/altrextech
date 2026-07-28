@@ -91,7 +91,7 @@ const Footer = () => {
             alt="Altrex Logo"
             className="h-5 w-auto object-contain mb-4"
           />
-          <p className="text-sm text-muted-foreground max-w-sm font-medium leading-relaxed">
+          <p className="text-sm text-muted-foreground max-w-xl font-medium leading-relaxed">
             Accelerate industrial digital transformation with a unified platform for 
             IIoT connectivity, SCADA, Digital Twins, AI analytics, reporting, and enterprise integration.
           </p>
