@@ -1,6 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { motion, type Variants } from "framer-motion";
-import { useState, useEffect, useRef } from "react";
+import { useState} from "react";
 import { 
   ArrowRight, Activity, Zap, Database, LayoutDashboard, 
   Settings, Network, Factory, Flame, Droplet, Truck, 

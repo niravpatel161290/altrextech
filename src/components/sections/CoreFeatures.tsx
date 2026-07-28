@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 import { AnimatePresence, motion, type Variants } from "framer-motion";
 
-import { Badge } from "../ui/badge";
+//import { Badge } from "../ui/badge";
 import { SectionBadge } from "../ui/section-badge";
 
 const features = [

@@ -1,5 +1,5 @@
 import { motion, type Variants } from "framer-motion";
-import { FileText, Fuel, Compass, Truck, ArrowRight } from "lucide-react";
+import { Fuel, Compass, Truck, ArrowRight } from "lucide-react";
 
 import { Button } from "../ui/button";
 import { SectionBadge } from "../ui/section-badge";

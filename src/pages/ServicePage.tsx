@@ -4,7 +4,7 @@ import { useParams, Link } from "react-router-dom";
 import { motion, type Variants } from "framer-motion";
 import {
   ArrowRight,
-  ChevronRight,
+  // ChevronRight,
   Eye,
   Brain,
   AlertTriangle,
@@ -15,22 +15,22 @@ import {
   CheckCircle2,
   AlertCircle,
   Cpu,
-  Layers,
-  Monitor,
-  MapPin,
+  // Layers,
+  // Monitor,
+  // MapPin,
   Truck,
-  Activity,
+  // Activity,
   Zap,
   Cloud,
-  Settings,
-  Sliders,
-  Briefcase,
-  Wrench,
+  // Settings,
+  // Sliders,
+  // Briefcase,
+  // Wrench,
   GraduationCap,
   Flame,
   Droplet,
   Factory,
-  Building,
+  // Building,
   HeartPulse,
   Fuel,
   Building2
@@ -38,7 +38,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { servicesRegistry } from "@/data/servicesRegistry";
 import type { ServiceData } from "@/types/service";
-import { Badge } from "@/components/ui/badge";
+// import { Badge } from "@/components/ui/badge";
 import { SectionBadge } from "@/components/ui/section-badge";
 import CTASection from "@/components/CTASection";
 

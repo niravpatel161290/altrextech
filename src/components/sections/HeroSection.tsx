@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 import { motion, type Variants } from "framer-motion";
 import { gsap } from "gsap";
-import useMagneticButton from "@/hooks/useMagneticButton";
+//import useMagneticButton from "@/hooks/useMagneticButton";
 import { Button } from "../ui/button";
 import CharReveal from "@/components/CharReveal";
 import { SectionBadge } from "@/components/ui/section-badge";

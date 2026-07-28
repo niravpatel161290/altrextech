@@ -31,7 +31,7 @@ import ThemeToggle from "@/components/ThemeToggle";
 import { useTheme } from "@/hooks/useTheme";
 import lightlogo from "@/assets/AltrexLogoTr1.png";
 import darklogo from "@/assets/AltrexLogoTr2.png";
-import { getIndustryBySlug } from "@/data/industriesRegistry";
+//import { getIndustryBySlug } from "@/data/industriesRegistry";
 
 const Header = () => {
   const [mobileMenu, setMobileMenu] = useState(false);

@@ -51,22 +51,22 @@ function SectionHeading({ children }: { children: React.ReactNode }) {
 
 // ─── Radar custom tick ────────────────────────────────────────────────────────
 
-const RadarTick = ({ x, y, payload }: { x?: number; y?: number; payload?: { value: string } }) => {
-  if (!payload) return null;
-  const label = payload.value.length > 14 ? payload.value.slice(0, 13) + "…" : payload.value;
-  return (
-    <text
-      x={x}
-      y={y}
-      textAnchor="middle"
-      dominantBaseline="central"
-      fontSize={11}
-      fill="var(--muted-foreground)"
-    >
-      {label}
-    </text>
-  );
-};
+// const RadarTick = ({ x, y, payload }: { x?: number; y?: number; payload?: { value: string } }) => {
+//   if (!payload) return null;
+//   const label = payload.value.length > 14 ? payload.value.slice(0, 13) + "…" : payload.value;
+//   return (
+//     <text
+//       x={x}
+//       y={y}
+//       textAnchor="middle"
+//       dominantBaseline="central"
+//       fontSize={11}
+//       fill="var(--muted-foreground)"
+//     >
+//       {label}
+//     </text>
+//   );
+// };
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
@@ -75,7 +75,7 @@ const IndustryPage = () => {
   const industry = getIndustryBySlug(slug ?? "");
 
   // Section-local state (lifted to page to avoid re-mount issues)
-  const [activeChallenge, setActiveChallenge] = useState<number | null>(null);
+  //const [activeChallenge, setActiveChallenge] = useState<number | null>(null);
   const [selectedModule, setSelectedModule] = useState<number>(0);
 
   // ── 404 ──
@@ -107,11 +107,11 @@ const IndustryPage = () => {
   };
 
   // Radar data
-  const radarData = industry.challenges.map((c, idx) => ({
-    subject: c.title.length > 20 ? c.title.slice(0, 19) + "…" : c.title,
-    score: 75 + (idx * 7) % 25,
-    fullTitle: c.title,
-  }));
+  // const radarData = industry.challenges.map((c, idx) => ({
+  //   subject: c.title.length > 20 ? c.title.slice(0, 19) + "…" : c.title,
+  //   score: 75 + (idx * 7) % 25,
+  //   fullTitle: c.title,
+  // }));
 
   const activeModule = industry.modules[selectedModule];
 

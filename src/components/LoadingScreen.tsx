@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 // import DecryptedText from "./DecryptedText";
-import { useTheme } from "@/hooks/useTheme";
+//import { useTheme } from "@/hooks/useTheme";
 // import darklogo from "@/assets/altrex-logo-bg-black-removebg-blackbg.png";
 // import lightlogo from "@/assets/altrex-logo-bg-white-removebg-whitebg.png";
 import logo from "@/assets/W!_icon_round.png";
