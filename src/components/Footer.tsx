@@ -92,8 +92,8 @@ const Footer = () => {
             className="h-5 w-auto object-contain mb-4"
           />
           <p className="text-sm text-muted-foreground max-w-sm font-medium leading-relaxed">
-            Build scalable realtime applications with modern messaging, IoT
-            connectivity, and distributed cloud infrastructure.
+            Accelerate industrial digital transformation with a unified platform for 
+            IIoT connectivity, SCADA, Digital Twins, AI analytics, reporting, and enterprise integration.
           </p>
         </div>
 
