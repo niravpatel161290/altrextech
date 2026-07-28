@@ -4,5 +4,12 @@
       "source": "/:path*",
       "destination": "/index.html"
     }
+  ],
+  "redirects": [
+    {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "permanent": true
+    }
   ]
 }
