@@ -172,28 +172,28 @@ const stats = [
 // ];
 const team = [
   {
-    initials: "RD",
-    name: "Ravi Dondeti",
-    role: "Founder / CEO",
-    bio: "Leading Altrex's vision for industrial intelligence platforms.",
+    pfp: "https://media.licdn.com/dms/image/v2/D5603AQF9ZrluFL7wsw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1718306857557?e=1787184000&v=beta&t=C51BCvUJ9JgY-qLoShT7vFuQmLeUWckMDTGjhotjMAQ",
+    initials: "AK",
+    name: "Amolkumar Kapure",
+    role: "Director / CEO",
+    bio: "Driving Altrex's vision for industrial intelligence and digital transformation across global markets.",
+    linkedin: "https://www.linkedin.com/in/amolkumar-kapure-8406041aa",
   },
   {
-    initials: "DK",
-    name: "Daniel Kim",
-    role: "CTO",
-    bio: "Architecting scalable realtime industrial infrastructure.",
+    pfp: "https://media.licdn.com/dms/image/v2/D4D03AQGmU-KRUDlyVA/profile-displayphoto-crop_800_800/B4DZ.npgW4IwAI-/0/1785224106314?e=1787184000&v=beta&t=rGL4dF_03C8ljqkyDfzWvj3DQD5D25XIgPYp38eHVG4",
+    initials: "MP",
+    name: "Mit Patel",
+    role: "Director / BD",
+    bio: "Building strategic partnerships and expanding Altrex's industrial IoT solutions to new industries and geographies.",
+    linkedin: "https://www.linkedin.com/in/mit-patel-053034ab/",
   },
   {
-    initials: "EC",
-    name: "Emily Carter",
-    role: "Head of Product",
-    bio: "Designing powerful industrial workflows and experiences.",
-  },
-  {
-    initials: "SP",
-    name: "Sarah Patel",
-    role: "Head of Customer Success",
-    bio: "Helping industries modernise operations with confidence.",
+    pfp: "https://media.licdn.com/dms/image/v2/C5103AQEZ5MJvEfl5tw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1537507665967?e=1787184000&v=beta&t=B55QMxaZzsLa6GtUF34B4NYYmMNAQDh_fRFqi13N-N0",
+    initials: "NP",
+    name: "Nirav Patel",
+    role: "Director / CTO",
+    bio: "Architecting scalable real-time industrial infrastructure and leading the engineering team behind Altrex's core platform.",
+    linkedin: "https://www.linkedin.com/in/nirav-patel-47b6842b/",
   },
 ];
 
@@ -647,7 +647,7 @@ function HeroSection() {
             </motion.div>
 
           </motion.div>
-          
+
           <CompanyJourneyPanel inView={inView} />
         </div>
 
@@ -887,43 +887,63 @@ function TeamSection() {
           variants={containerVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4"
+          className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3"
         >
           {team.map((member, i) => (
-            <motion.div
-              key={i}
-              variants={cardVariants}
-              onMouseMove={tilt.onMouseMove}
-              onMouseLeave={tilt.onMouseLeave}
-              whileHover={{ y: -4 }}
-              transition={{ duration: 0.25 }}
-              style={{ transformStyle: "preserve-3d" }}
-              className="rounded-3xl border border-border bg-card p-8"
-            >
-              {/* Gradient avatar with initials */}
-              <div className="flex h-20 w-20 items-center justify-center rounded-full bg-primary text-2xl font-bold text-white shadow-lg">
-                {member.initials}
-              </div>
-
-              <h3 className="mt-6 text-xl font-semibold text-foreground">
-                {member.name}
-              </h3>
-              <p className="mt-1 text-sm font-medium text-accent">
-                {member.role}
-              </p>
-              <p className="mt-4 font-medium leading-7 text-sm text-muted-foreground">
-                {member.bio}
-              </p>
-
-              <Button
-                size="icon"
-                variant="outline"
-                aria-label={`LinkedIn ${member.name}`}
-                className="mt-4"
+              <motion.div
+                key={i}
+                variants={cardVariants}
+                onMouseMove={tilt.onMouseMove}
+                onMouseLeave={tilt.onMouseLeave}
+                whileHover={{ y: -6 }}
+                transition={{ duration: 0.3 }}
+                style={{ transformStyle: "preserve-3d" }}
+                className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-border bg-card p-3 shadow-sm transition-colors hover:border-accent/30"
               >
-                <FaLinkedinIn className="h-4 w-4" />
-              </Button>
-            </motion.div>
+                {/* F1 style large watermark role (top right) */}
+                <div className="absolute right-0 top-0 pointer-events-none select-none overflow-hidden rounded-tr-3xl">
+                  <div className="translate-x-[10%] -translate-y-[15%]">
+                    <span className="text-[100px] font-black leading-none tracking-tighter text-foreground/[0.1] transition-colors duration-300 group-hover:text-accent/[0.4]">
+                      {member.role.split(' / ').pop()}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex flex-col relative z-10 h-full">
+                  {/* Avatar box top left (styled like the icon boxes but larger for photos) */}
+                  <div className="mb-6 flex h-24 w-24 shrink-0 items-center justify-center overflow-hidden rounded-[1.25rem] border border-accent/20 bg-accent/5 shadow-sm transition-all duration-300 group-hover:border-accent/40 group-hover:shadow-[0_0_20px_-5px_var(--accent)]">
+                    <img src={member.pfp} alt={member.name} className="h-full w-full object-cover" />
+                  </div>
+                  
+                  {/* Name (Title) */}
+                  <div className="mb-2">
+                    <h3 className="text-2xl font-bold tracking-tight text-foreground transition-colors duration-300 group-hover:text-accent">
+                      {member.name}
+                    </h3>
+                  </div>
+                  
+                  {/* Bio (Description) */}
+                  <div className="mb-8 flex-1">
+                    <p className="font-medium leading-relaxed text-[15px] text-muted-foreground">
+                      {member.bio}
+                    </p>
+                  </div>
+                  
+                  {/* LinkedIn tag (Styled like the feature tags in the reference) */}
+                  <div className="mt-auto flex flex-wrap gap-2">
+                    <a 
+                      href={member.linkedin} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-transparent px-3 py-1.5 font-medium text-muted-foreground transition-all hover:border-accent/40 hover:text-foreground hover:bg-accent/5"
+                    >
+                      <FaLinkedinIn className="h-4 w-4" />
+                      Connect on LinkedIn
+                    </a>
+                  </div>
+                </div>
+              </motion.div>
+
           ))}
         </motion.div>
       </div>
@@ -1007,11 +1027,11 @@ const About = () => {
       <TeamSection />
       <ValuesSection />
       <CTASection
-            title="Ready to transform your operations"
-            description="Build smarter industrial systems with realtime intelligence, AI-driven analytics, and scalable infrastructure."
-            primaryButton={{ label: "Explore Solutions", href: "/solutions" }}
-            secondaryButton={{ label: "Schedule a Demo", href: "/contact" }}
-          />
+        title="Ready to transform your operations"
+        description="Build smarter industrial systems with realtime intelligence, AI-driven analytics, and scalable infrastructure."
+        primaryButton={{ label: "Explore Solutions", href: "/solutions" }}
+        secondaryButton={{ label: "Schedule a Demo", href: "/contact" }}
+      />
     </div>
   );
 };

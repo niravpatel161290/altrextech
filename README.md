@@ -254,12 +254,11 @@ Bespoke KPI dashboards, executive reporting, automated scheduled reports, and bu
 
 ## 🧑‍💼 Leadership Team
 
-| Name | Role |
-|------|------|
-| **Ravi Dondeti** | Founder & CEO — Leading Altrex's vision for industrial intelligence |
-| **Daniel Kim** | CTO — Architecting scalable real-time industrial infrastructure |
-| **Emily Carter** | Head of Product — Designing powerful industrial workflows and experiences |
-| **Sarah Patel** | Head of Customer Success — Helping industries modernize with confidence |
+| Name | Role | LinkedIn |
+|------|------|---------|
+| **Amolkumar Kapure** | Director / CEO — Driving Altrex's vision for industrial intelligence and digital transformation | [Connect](https://www.linkedin.com/in/amolkumar-kapure-8406041aa) |
+| **Mit Patel** | Director / BD — Building strategic partnerships and expanding Altrex's industrial IoT reach | [Connect](https://www.linkedin.com/in/mit-patel-053034ab/) |
+| **Nirav Patel** | Director / CTO — Architecting scalable real-time industrial infrastructure and leading engineering | [Connect](https://www.linkedin.com/in/nirav-patel-47b6842b/) |
 
 ---
 
