@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { motion, AnimatePresence, useInView, type Variants } from "framer-motion";
 import {
   Search,
@@ -61,12 +61,6 @@ const NODE_COORDS = [
   { x: 1000, y: 70 },
 ];
 
-const WAVE_PATH =
-  "M100,70 C212,70 212,230 325,230 " +
-  "C438,230 438,70 550,70 " +
-  "C662,70 662,230 775,230 " +
-  "C888,230 888,70 1000,70";
-
 const VB_W = 1200;
 const VB_H = 300;
 
@@ -91,8 +85,53 @@ const fadeUpVariants: Variants = {
 function WaveFlow() {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [pathD, setPathD] = useState("");
+  const [dims, setDims] = useState({ width: VB_W, height: VB_H });
+
   const wrapRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const nodeRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const isInView = useInView(wrapRef, { once: true, amount: 0.3 });
+
+  // Build an S-curve path through the *actual rendered* centers of each node.
+  const recomputePath = useCallback(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const containerRect = container.getBoundingClientRect();
+    const points = nodeRefs.current.map((node) => {
+      if (!node) return { x: 0, y: 0 };
+      const rect = node.getBoundingClientRect();
+      return {
+        x: rect.left + rect.width / 2 - containerRect.left,
+        y: rect.top + rect.height / 2 - containerRect.top,
+      };
+    });
+
+    if (points.some((p) => p.x === 0 && p.y === 0)) return;
+
+    let d = `M${points[0].x},${points[0].y} `;
+    for (let i = 0; i < points.length - 1; i++) {
+      const p1 = points[i];
+      const p2 = points[i + 1];
+      const midX = p1.x + (p2.x - p1.x) / 2;
+      d += `C${midX},${p1.y} ${midX},${p2.y} ${p2.x},${p2.y} `;
+    }
+
+    setDims({ width: containerRect.width, height: containerRect.height });
+    setPathD(d.trim());
+  }, []);
+
+  useLayoutEffect(() => {
+    recomputePath();
+    const ro = new ResizeObserver(recomputePath);
+    if (containerRef.current) ro.observe(containerRef.current);
+    window.addEventListener("resize", recomputePath);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", recomputePath);
+    };
+  }, [recomputePath]);
 
   // Auto-advance
   useEffect(() => {
@@ -107,30 +146,32 @@ function WaveFlow() {
 
   return (
     <div ref={wrapRef} className="mt-16">
-      {/* Wave path + nodes */}
       <div
+        ref={containerRef}
         className="relative w-full"
         style={{ aspectRatio: `${VB_W} / ${VB_H}` }}
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
       >
         <svg
-          viewBox={`0 0 ${VB_W} ${VB_H}`}
+          viewBox={`0 0 ${dims.width} ${dims.height}`}
           className="absolute inset-0 h-full w-full overflow-visible"
           fill="none"
         >
-          {/* base track */}
-          <path d={WAVE_PATH} stroke="var(--border-border)" strokeWidth="2" />
-          {/* animated draw-in */}
-          <motion.path
-            d={WAVE_PATH}
-            stroke={activeStep.accent}
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            initial={{ pathLength: 0, opacity: 0 }}
-            animate={isInView ? { pathLength: 1, opacity: 1 } : {}}
-            transition={{ duration: 1.6, ease: "easeInOut" }}
-          />
+          {pathD && (
+            <>
+              <path d={pathD} stroke="var(--border-border)" strokeWidth="2" />
+              <motion.path
+                d={pathD}
+                stroke={activeStep.accent}
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                initial={{ pathLength: 0, opacity: 0 }}
+                animate={isInView ? { pathLength: 1, opacity: 1 } : {}}
+                transition={{ duration: 1.6, ease: "easeInOut" }}
+              />
+            </>
+          )}
         </svg>
 
         {steps.map((step, i) => {
@@ -143,6 +184,9 @@ function WaveFlow() {
           return (
             <motion.button
               key={step.title}
+              ref={(el) => {
+                nodeRefs.current[i] = el;
+              }}
               type="button"
               initial={{ opacity: 0, scale: 0.6 }}
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
@@ -203,8 +247,6 @@ function WaveFlow() {
           );
         })}
       </div>
-
-      {/* Detail panel — glassmorphism, swaps with active step */}
       <div className="relative mt-6 flex justify-center px-4">
         <AnimatePresence mode="wait">
           <motion.div
@@ -254,6 +296,8 @@ function WaveFlow() {
     </div>
   );
 }
+
+
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Mobile fallback — connected vertical card stack

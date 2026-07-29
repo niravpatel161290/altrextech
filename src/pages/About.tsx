@@ -111,65 +111,6 @@ const stats = [
   { value: 15, suffix: "ms", label: "Avg Latency" },
 ];
 
-// const timeline = [
-//   {
-//     level: "Level 1",
-//     timeLabel: "μs / ms to generate",
-//     title: "Data Source",
-//     description:
-//       "Field devices — PLCs, Sensors, RTUs, Flow Computers, Rectifiers, Panels, VFDs, and Smart Meters — generate raw operational data at microsecond to millisecond resolution.",
-//     tags: ["PLCs", "Sensors", "RTUs", "Flow Computers", "VFDs", "Smart Meters"],
-//     status: "completed",
-//   },
-//   {
-//     level: "Level 2",
-//     timeLabel: "Seconds to acquire",
-//     title: "Data Acquisition",
-//     description:
-//       "Industrial acquisition layer — SCADA, DCS, HMI, GPRS/GSM, Gateways, Historian, Data Logger, and W! Controller — captures and consolidates field data within seconds.",
-//     tags: ["SCADA", "DCS", "HMI", "Gateways", "Historian", "Data Logger"],
-//     status: "completed",
-//   },
-//   {
-//     level: "Level 3",
-//     timeLabel: "Minutes to process",
-//     title: "IoT Platform",
-//     description:
-//       "Cloud-connected IoT backbone handling OT-IT Integration, Connectivity, Web-Server, Database, Cloud (Azure / GCP / AWS), Cyber-Security, DMZ, and Authentication.",
-//     tags: [
-//       "OT-IT Integration",
-//       "Cloud",
-//       "Cyber-Security",
-//       "DMZ",
-//       "Authentication",
-//     ],
-//     status: "completed",
-//   },
-//   {
-//     level: "Level 4",
-//     timeLabel: "Days / Months to analyze",
-//     title: "Enterprise Application",
-//     description:
-//       "Full enterprise layer delivering Dashboards, Authentication Levels, Assets Mapping / GIS, Insights & Analytics, Notifications & Alerts, Customized Reports, ERP & SAP Connectivity, and Billing Center.",
-//     tags: ["Dashboards", "GIS", "Analytics", "ERP / SAP", "Billing Center"],
-//     status: "current", // ← we are here
-//   },
-//   {
-//     level: "Level 5",
-//     timeLabel: "Quarters / Years to learn",
-//     title: "AI / ML Intelligence",
-//     description:
-//       "The final frontier — Predictive Analytics, Predictive Insights, Digital Twins, Artificial Intelligence, Machine Learning, and Deep Learning transforming industrial operations.",
-//     tags: [
-//       "Predictive Analytics",
-//       "Digital Twins",
-//       "AI",
-//       "ML",
-//       "Deep Learning",
-//     ],
-//     status: "upcoming",
-//   },
-// ];
 const team = [
   {
     initials: "RD",
