@@ -14,7 +14,6 @@ import {
   Layers,
   ChevronDown,
 } from "lucide-react";
-//import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import CharReveal from "@/components/CharReveal";
@@ -112,7 +111,7 @@ const Contact = () => {
     <div className="relative min-h-screen overflow-hidden bg-background text-foreground">
       {/* ---------------- Hero ---------------- */}
       <section>
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-28 pb-20">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-40">
           <motion.div
             initial="hidden"
             animate="visible"
@@ -154,24 +153,6 @@ const Contact = () => {
               manufacturing, energy, and logistics teams modernize operations
               with secure IoT, analytics, and automation.
             </motion.p>
-
-            <motion.div
-              variants={fadeUpVariants}
-              initial="hidden"
-              animate="visible"
-              transition={{ delay: 1.4 }}
-              className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
-            >
-              <Button className="bg-primary text-primary-foreground px-8 py-6 text-base hover:bg-accent cursor-pointer">
-                Schedule a Demo
-              </Button>
-              <Button
-                variant="outline"
-                className="px-8 py-6 text-base cursor-pointer"
-              >
-                Contact Sales
-              </Button>
-            </motion.div>
 
             <motion.div
               variants={fadeUpVariants}
@@ -455,121 +436,6 @@ const Contact = () => {
             </div>
           </motion.aside>
         </motion.div>
-
-        {/* ---------------- Location / map ---------------- */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          variants={staggerContainer}
-          className="mt-16"
-        >
-          <motion.div
-            variants={fadeUpVariants}
-            className="relative overflow-hidden rounded-2xl border border-border shadow-[0_30px_80px_-40px_rgba(15,23,42,0.16)]"
-          >
-            <div className="relative h-[380px] w-full bg-gradient-to-br from-slate-100 via-slate-50 to-slate-100 dark:from-slate-900 dark:via-slate-950 dark:to-slate-900">
-              <div
-                className="absolute inset-0 opacity-[0.06]"
-                style={{
-                  backgroundImage:
-                    "linear-gradient(to right, currentColor 1px, transparent 1px), linear-gradient(to bottom, currentColor 1px, transparent 1px)",
-                  backgroundSize: "40px 40px",
-                }}
-              />
-              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-                <span className="relative flex h-12 w-12 items-center justify-center">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-orange-500/40" />
-                  <span className="relative flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-orange-500 to-fuchsia-500 shadow-lg">
-                    <MapPin className="h-5 w-5 text-white" />
-                  </span>
-                </span>
-              </div>
-            </div>
-
-            <div className="absolute bottom-6 left-6 right-6 sm:left-8 sm:right-auto sm:max-w-sm">
-              <div className="rounded-xl border border-border bg-card/95 p-6 backdrop-blur-md shadow-[0_30px_80px_-30px_rgba(15,23,42,0.3)]">
-                <p className="text-sm font-semibold uppercase tracking-[0.1em] text-muted-foreground">
-                  Visit our office
-                </p>
-                <h3 className="mt-2 text-lg font-semibold text-foreground">
-                  Altrex Headquarters
-                </h3>
-                <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                  Ahmedabad, Gujarat, India
-                </p>
-                <a
-                  href="https://maps.google.com/?q=Ahmedabad,India"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-foreground transition-opacity hover:opacity-70"
-                >
-                  Get directions
-                  <ArrowRight className="h-3.5 w-3.5" />
-                </a>
-              </div>
-            </div>
-          </motion.div>
-        </motion.div>
-
-        {/* ---------------- Why choose Altrex ---------------- */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          variants={staggerContainer}
-          className="my-16"
-        >
-          <motion.div variants={fadeUpVariants} className="mb-10 text-center">
-            {/* Badge */}
-            <motion.div
-              variants={fadeUpVariants}
-              initial="hidden"
-              animate="visible"
-            >
-              <SectionBadge
-                title="our story"
-                dot={true}
-                dotColor="bg-emerald-500"
-                className="mb-8"
-              />
-            </motion.div>
-            <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
-              Built for industrial teams that can't afford downtime.
-            </h2>
-          </motion.div>
-
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {WHY_CHOOSE.map((item) => {
-              const Icon = item.icon;
-              return (
-                <motion.div
-                  key={item.title}
-                  variants={fadeUpVariants}
-                  className="rounded-2xl border border-border bg-card p-7"
-                >
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-border text-accent">
-                    <Icon className="h-5 w-5" />
-                  </div>
-                  <h3 className="mt-5 text-base font-semibold text-foreground">
-                    {item.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-6 text-muted-foreground font-medium">
-                    {item.text}
-                  </p>
-                </motion.div>
-              );
-            })}
-          </div>
-        </motion.div>
-
-        {/* ---------------- CTA ---------------- */}
-        <CTASection
-            title="Ready to Modernize Your Operations?"
-            description="Talk to our team about a pilot program tailored to your site, fleet, or facility."
-            primaryButton={{ label: "Explore Solutions", href: "/solutions" }}
-            secondaryButton={{ label: "Schedule a Demo", href: "/contact" }}
-          />
       </div>
     </div>
   );

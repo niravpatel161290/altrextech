@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { motion, type Variants } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Button } from "./ui/button";
+import { Card } from "./ui/card";
 
 interface CTAData {
   title: string;
@@ -30,12 +31,8 @@ const CTASection = ({
 }: CTAData) => {
   return (
     <section className="my-20">
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-        variants={stagger}
-        className="mx-auto max-w-7xl px-6 lg:px-8 py-16 text-center border border-border rounded-4xl"
+      <Card
+        className="mx-auto max-w-7xl px-6 lg:px-8 py-16 text-center border border-border rounded-3xl"
       >
         <motion.p
           variants={fadeUp}
@@ -77,7 +74,7 @@ const CTASection = ({
             </Button>
           </Link>
         </motion.div>
-      </motion.div>
+      </Card>
     </section>
   );
 };
