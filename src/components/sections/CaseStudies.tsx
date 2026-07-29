@@ -4,6 +4,7 @@ import { Fuel, Compass, Truck, ArrowRight } from "lucide-react";
 import { Button } from "../ui/button";
 import { SectionBadge } from "../ui/section-badge";
 import CharReveal from "../CharReveal";
+import { Link } from "react-router-dom";
 
 const caseStudies = [
   {
@@ -244,13 +245,16 @@ const CaseStudies = () => {
           variants={fadeUpVariants}
           className="mt-14 flex justify-center"
         >
-          <Button
-            className="gap-2 bg-accent px-8 py-6 text-base text-primary-foreground"
-          >
-            View All Projects
-            <ArrowRight />
-          </Button>
+          <Link to="/solutions">
+            <Button
+              className="gap-2 bg-accent px-8 py-6 text-base text-primary-foreground"
+            >
+              View All Projects
+              <ArrowRight />
+            </Button>
+          </Link>
         </motion.div>
+
       </motion.div>
     </section>
   );

@@ -1009,8 +1009,8 @@ const About = () => {
       <CTASection
             title="Ready to transform your operations"
             description="Build smarter industrial systems with realtime intelligence, AI-driven analytics, and scalable infrastructure."
-            primaryButton={{ label: "Explore Solutions", href: "#" }}
-            secondaryButton={{ label: "Schedule a Demo", href: "#" }}
+            primaryButton={{ label: "Explore Solutions", href: "/solutions" }}
+            secondaryButton={{ label: "Schedule a Demo", href: "/contact" }}
           />
     </div>
   );

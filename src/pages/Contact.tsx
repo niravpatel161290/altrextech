@@ -17,6 +17,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import CharReveal from "@/components/CharReveal";
 import { SectionBadge } from "@/components/ui/section-badge";
+
 const fadeUpVariants: Variants = {
   hidden: { opacity: 0, y: 40 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
