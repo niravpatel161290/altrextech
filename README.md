@@ -94,14 +94,6 @@ Altrex provides a comprehensive suite of industrial digitalization services — 
 
 Deploy powerful industrial monitoring, asset management, analytics, and operational intelligence without the burden of managing your own infrastructure. Our cloud-hosted SaaS platform provides **secure, scalable, and always-available** access to your operational data.
 
-**Key Benefits:**
-- ✅ Rapid Deployment — Go live in weeks, not months
-- ✅ Subscription-Based Pricing — No capital expenditure on servers or hardware
-- ✅ Automatic Updates & Upgrades — Always on the latest platform version
-- ✅ Enterprise-Grade Security — Multi-level RBAC, encrypted transmission, audit trails
-- ✅ Multi-Location Accessibility — Monitor operations from anywhere in the world
-- ✅ High Availability Architecture — Built for mission-critical uptime
-
 **Platform Capabilities:**
 
 | Module | What It Does |
