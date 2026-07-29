@@ -5,7 +5,6 @@ import {
   MapPin,
   Phone,
   Clock,
-  ArrowRight,
   Loader2,
   CheckCircle2,
   ShieldCheck,
@@ -18,7 +17,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import CharReveal from "@/components/CharReveal";
 import { SectionBadge } from "@/components/ui/section-badge";
-import CTASection from "@/components/CTASection";
 
 const fadeUpVariants: Variants = {
   hidden: { opacity: 0, y: 40 },
@@ -68,29 +66,6 @@ const SIDE_PANEL_STATS = [
   { icon: Activity, label: "Platform availability", value: "99.9%" },
   { icon: Layers, label: "Connected assets monitored", value: "1,000+" },
   { icon: Headset, label: "Monitoring coverage", value: "24/7" },
-];
-
-const WHY_CHOOSE = [
-  {
-    icon: ShieldCheck,
-    title: "Industry expertise",
-    text: "Years of experience deploying IoT and automation across manufacturing, energy, and logistics.",
-  },
-  {
-    icon: Layers,
-    title: "Scalable platform",
-    text: "From a single facility to distributed assets across regions, built to grow with you.",
-  },
-  {
-    icon: Activity,
-    title: "Real-time monitoring",
-    text: "Live dashboards and anomaly detection that surface issues before they become downtime.",
-  },
-  {
-    icon: Headset,
-    title: "End-to-end support",
-    text: "From pilot to production, a dedicated team stays with your project at every stage.",
-  },
 ];
 
 type FormStatus = "idle" | "submitting" | "success";
