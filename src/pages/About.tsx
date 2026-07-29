@@ -16,7 +16,6 @@ import { FaLinkedinIn } from "react-icons/fa6";
 
 import { motion, useInView, type Variants } from "framer-motion";
 
-import { Button } from "@/components/ui/button";
 import { SectionBadge } from "@/components/ui/section-badge";
 import CharReveal from "@/components/CharReveal";
 //import DecryptedText from "@/components/DecryptedText";
