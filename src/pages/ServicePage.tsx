@@ -4,7 +4,6 @@ import { useParams, Link } from "react-router-dom";
 import { motion, type Variants } from "framer-motion";
 import {
   ArrowRight,
-  // ChevronRight,
   Eye,
   Brain,
   AlertTriangle,
@@ -15,22 +14,13 @@ import {
   CheckCircle2,
   AlertCircle,
   Cpu,
-  // Layers,
-  // Monitor,
-  // MapPin,
   Truck,
-  // Activity,
   Zap,
   Cloud,
-  // Settings,
-  // Sliders,
-  // Briefcase,
-  // Wrench,
   GraduationCap,
   Flame,
   Droplet,
   Factory,
-  // Building,
   HeartPulse,
   Fuel,
   Building2
@@ -38,7 +28,6 @@ import {
 import { Button } from "@/components/ui/button";
 import { servicesRegistry } from "@/data/servicesRegistry";
 import type { ServiceData } from "@/types/service";
-// import { Badge } from "@/components/ui/badge";
 import { SectionBadge } from "@/components/ui/section-badge";
 import CTASection from "@/components/CTASection";
 
@@ -59,7 +48,7 @@ const cardVariant: Variants = {
 
 function SectionLabel({ children }: { children: ReactNode }) {
   return (
-    <span className="font-mono text-xs tracking-[0.2em] uppercase text-muted-foreground">
+    <span className="font-bold text-xs tracking-[0.2em] uppercase text-muted-foreground">
       {children}
     </span>
   );
@@ -201,9 +190,9 @@ export const ServicePage: React.FC = () => {
                 className="mb-8"
               />
             </motion.div>
-            <motion.p variants={fadeUp} className="font-mono text-sm tracking-[0.2em] uppercase text-[var(--accent-violet)] mb-4">{service.hero.subtitle}</motion.p>
+            <motion.p variants={fadeUp} className="text-sm font-semibold tracking-[0.1em] uppercase text-[var(--accent-violet)] mb-4">{service.hero.subtitle}</motion.p>
             <motion.h1 variants={fadeUp} className="text-4xl font-bold tracking-[-0.03em] text-foreground sm:text-5xl lg:text-6xl leading-[1.1] uppercase">{service.title}</motion.h1>
-            <motion.p variants={fadeUp} transition={{ delay: 0.8 }} className="mt-8 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">{service.hero.description}</motion.p>
+            <motion.p variants={fadeUp} transition={{ delay: 0.8 }} className="mt-8 max-w-2xl text-base font-semibold leading-7 text-muted-foreground sm:text-lg">{service.hero.description}</motion.p>
             {service.hero.badge && <motion.div variants={fadeUp} transition={{ delay: 0.95 }} className="mt-8 max-w-2xl rounded-2xl border border-orange-400/20 bg-orange-50/50 p-5 text-sm text-foreground">{service.hero.badge}</motion.div>}
             <motion.div variants={fadeUp} transition={{ delay: 1 }} className="mt-10 flex flex-wrap gap-4">
               {service.hero.ctas.slice(0, 2).map((cta, idx) => (

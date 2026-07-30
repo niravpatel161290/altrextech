@@ -44,7 +44,7 @@ const cardVariant: Variants = {
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <span className="font-mono text-xs tracking-[0.2em] uppercase text-muted-foreground">
+    <span className="text-sm font-bold tracking-[0.2em] uppercase text-muted-foreground">
       {children}
     </span>
   );
@@ -52,7 +52,7 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 
 function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+    <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
       {children}
     </h2>
   );
@@ -126,7 +126,7 @@ function PlatformCapabilities({ capabilities }: { capabilities: Capability[] }) 
           <motion.div variants={fadeUp} className="mb-16 space-y-3 text-center">
             <SectionLabel>Core Engine</SectionLabel>
             <SectionHeading>Platform Capabilities</SectionHeading>
-            <p className="text-muted-foreground max-w-2xl mx-auto mt-4 text-sm">
+            <p className="text-muted-foreground font-semibold max-w-2xl mx-auto mt-4 text-lg">
               Built for scale and resilience. Explore the core technological modules driving our infrastructure.
             </p>
           </motion.div>
@@ -206,7 +206,7 @@ function PlatformCapabilities({ capabilities }: { capabilities: Capability[] }) 
 
                     <p
                       className={`text-muted-foreground ${
-                        isHero ? "text-sm max-w-md mb-6" : "text-xs mb-4 line-clamp-2"
+                        isHero ? "text-sm font-semibold max-w-md mb-6" : "text-xs font-semibold mb-4 line-clamp-2"
                       }`}
                     >
                       {cap.description}
@@ -230,7 +230,7 @@ function PlatformCapabilities({ capabilities }: { capabilities: Capability[] }) 
                             visible: { opacity: 1, scale: 1, transition: { type: "spring" } },
                           }}
                           className={`inline-flex items-center rounded-md bg-muted/50 border border-border text-muted-foreground ${
-                            isHero ? "px-2.5 py-1 text-[10px]" : "px-2 py-0.5 text-[9px]"
+                            isHero ? "px-2.5 py-1 text-[10px] font-medium" : "px-2 py-0.5 text-[9px] font-medium"
                           }`}
                         >
                           {item}
@@ -314,7 +314,7 @@ const SolutionPage = () => {
 
             <motion.p
               variants={fadeUp}
-              className="mt-6 text-lg leading-8 text-muted-foreground"
+              className="mt-6 text-lg font-semibold leading-8 text-muted-foreground"
             >
               {solution.hero.description}
             </motion.p>
@@ -367,7 +367,7 @@ const SolutionPage = () => {
                   finalText={metric.value}
                 />
               </div>
-              <div className="mt-2 text-[11px] text-muted-foreground font-mono uppercase tracking-[0.1em]">
+              <div className="mt-2 text-[11px] font-semibold text-muted-foreground font-mono uppercase tracking-[0.1em]">
                 {metric.label}
               </div>
             </motion.div>
@@ -395,7 +395,7 @@ const SolutionPage = () => {
             <motion.div variants={fadeUp} className="mb-12 space-y-3 text-center">
               <SectionLabel>Ecosystem</SectionLabel>
               <SectionHeading>Industries & Applications</SectionHeading>
-              <p className="text-muted-foreground text-sm max-w-2xl mx-auto mt-4">
+              <p className="text-muted-foreground font-semibold text-lg max-w-2xl mx-auto mt-4">
                 Tailored infrastructure built for mission-critical deployments across key operational domains.
               </p>
             </motion.div>
@@ -453,7 +453,7 @@ const SolutionPage = () => {
             <motion.div variants={fadeUp} className="mb-16 space-y-3 text-center">
               <SectionLabel>Value Proposition</SectionLabel>
               <SectionHeading>Business Value</SectionHeading>
-              <p className="text-muted-foreground text-sm max-w-2xl mx-auto mt-4">
+              <p className="text-muted-foreground text-lg font-semibold max-w-2xl mx-auto mt-4">
                 Quantifiable impact and strategic advantages delivered by the Altrex infrastructure.
               </p>
             </motion.div>
@@ -544,7 +544,7 @@ const SolutionPage = () => {
               <motion.div variants={fadeUp} className="mb-12 space-y-3 text-center">
                 <SectionLabel>Architecture</SectionLabel>
                 <SectionHeading>Platform Architecture</SectionHeading>
-                <p className="text-sm text-muted-foreground max-w-2xl mx-auto mt-4">
+                <p className="text-lg font-semibold text-muted-foreground max-w-2xl mx-auto mt-4">
                   End-to-end data flow from field devices to enterprise systems — secured and orchestrated in real time.
                 </p>
               </motion.div>

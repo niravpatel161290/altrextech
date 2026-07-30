@@ -35,7 +35,7 @@ const cardVariant: Variants = {
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <span className="font-mono text-xs tracking-[0.2em] uppercase text-muted-foreground">
+    <span className="font-bold text-xs tracking-[0.2em] uppercase text-muted-foreground">
       {children}
     </span>
   );
@@ -48,25 +48,6 @@ function SectionHeading({ children }: { children: React.ReactNode }) {
     </h2>
   );
 }
-
-// ─── Radar custom tick ────────────────────────────────────────────────────────
-
-// const RadarTick = ({ x, y, payload }: { x?: number; y?: number; payload?: { value: string } }) => {
-//   if (!payload) return null;
-//   const label = payload.value.length > 14 ? payload.value.slice(0, 13) + "…" : payload.value;
-//   return (
-//     <text
-//       x={x}
-//       y={y}
-//       textAnchor="middle"
-//       dominantBaseline="central"
-//       fontSize={11}
-//       fill="var(--muted-foreground)"
-//     >
-//       {label}
-//     </text>
-//   );
-// };
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
@@ -105,13 +86,6 @@ const IndustryPage = () => {
     const raw = (num / max) * 100;
     return Math.min(95, Math.max(10, raw));
   };
-
-  // Radar data
-  // const radarData = industry.challenges.map((c, idx) => ({
-  //   subject: c.title.length > 20 ? c.title.slice(0, 19) + "…" : c.title,
-  //   score: 75 + (idx * 7) % 25,
-  //   fullTitle: c.title,
-  // }));
 
   const activeModule = industry.modules[selectedModule];
 
@@ -174,7 +148,7 @@ const IndustryPage = () => {
             {/* Tagline */}
             <motion.p
               variants={fadeUp}
-              className="font-mono text-sm tracking-[0.2em] uppercase text-[var(--accent-violet)] mb-4"
+              className="font-semibold text-sm tracking-[0.2em] uppercase text-[var(--accent-violet)] mb-4"
               style={industry.image ? { color: "rgba(251,146,60,1)" } : undefined}
             >
               {industry.hero.tagline}
@@ -193,7 +167,7 @@ const IndustryPage = () => {
             <motion.p
               variants={fadeUp}
               transition={{ delay: 0.8 }}
-              className="mt-8 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg"
+              className="mt-8 max-w-2xl text-base leading-7 text-muted-foreground font-semibold sm:text-lg"
               style={industry.image ? { color: "rgba(255,255,255,0.82)" } : undefined}
             >
               {industry.hero.description}
@@ -245,7 +219,7 @@ const IndustryPage = () => {
                 className="flex items-center gap-4"
               >
                 {/* Label */}
-                <span className="font-mono text-xs uppercase tracking-wider text-muted-foreground w-36 shrink-0">
+                <span className="font-semibold text-xs uppercase tracking-wider text-muted-foreground w-40 shrink-0">
                   {metric.label}
                 </span>
 
@@ -293,7 +267,7 @@ const IndustryPage = () => {
           </motion.div>
           <motion.p
             variants={fadeUp}
-            className="text-base leading-8 text-muted-foreground lg:text-lg"
+            className="text-base font-semibold leading-8 text-muted-foreground lg:text-lg"
           >
             {industry.overview}
           </motion.p>
@@ -377,21 +351,21 @@ const IndustryPage = () => {
                   <h3 className="text-xl font-bold text-foreground mb-2">
                     {activeModule.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground leading-6 mb-6">
+                  <p className="text-sm font-semibold text-muted-foreground leading-6 mb-6">
                     {activeModule.description}
                   </p>
 
                   <div className="space-y-5">
                     {activeModule.monitors && activeModule.monitors.length > 0 && (
                       <div>
-                        <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-2">
+                        <p className="font-bold text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-2">
                           Monitor
                         </p>
                         <div className="flex flex-wrap gap-1.5">
                           {activeModule.monitors.map((m) => (
                             <span
                               key={m}
-                              className="rounded-full border border-border bg-background px-2.5 py-0.5 text-[11px] text-muted-foreground"
+                              className="rounded-full border border-border font-semibold bg-background px-2.5 py-0.5 text-[11px] text-muted-foreground"
                             >
                               {m}
                             </span>
@@ -402,12 +376,12 @@ const IndustryPage = () => {
 
                     {activeModule.features && activeModule.features.length > 0 && (
                       <div>
-                        <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-2">
+                        <p className="font-bold text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-2">
                           Features
                         </p>
                         <ul className="space-y-1.5">
                           {activeModule.features.map((f) => (
-                            <li key={f} className="flex items-center gap-2 text-xs text-muted-foreground">
+                            <li key={f} className="flex font-semibold items-center gap-2 text-xs text-muted-foreground">
                               <CheckCircle2 className="h-3 w-3 text-orange-400 shrink-0" />
                               {f}
                             </li>
@@ -418,7 +392,7 @@ const IndustryPage = () => {
 
                     {activeModule.benefits && activeModule.benefits.length > 0 && (
                       <div className="pt-2 border-t border-border">
-                        <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-2">
+                        <p className="font-bold text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-2">
                           Benefits
                         </p>
                         <div className="flex flex-wrap gap-1.5">
