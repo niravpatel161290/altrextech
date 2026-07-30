@@ -15,7 +15,6 @@ import { Badge } from "../ui/badge";
 import {
   ComposedChart,
   Bar,
-  Line,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -134,8 +133,6 @@ const data: DayData[] = [
   { day: "Sun", revenue: 105130, sessions: 450 },
 ];
 
-const SESSIONS_COLOR = "#F59E0B";
-
 // ── Helpers ───────────────────────────────────────────────────────────────
 
 function formatRupees(value: number) {
@@ -148,10 +145,23 @@ function formatLakhs(value: number) {
 
 // ── Custom tooltip ────────────────────────────────────────────────────────
 
-function ChartTooltip({ active, payload, label }: TooltipProps<number, string>) {
+interface ChartTooltipPayloadItem {
+  dataKey?: string;
+  value?: number | string;
+}
+
+function ChartTooltip({
+  active,
+  payload,
+  label,
+}: TooltipProps<number, string> & {
+  payload?: ChartTooltipPayloadItem[];
+  label?: string | number;
+}) {
   if (!active || !payload || payload.length === 0) return null;
 
   const revenue = payload.find((p) => p.dataKey === "revenue")?.value ?? 0;
+  const revenueValue = typeof revenue === "number" ? revenue : Number(revenue) || 0;
 
   return (
     <div className="rounded-xl border border-border bg-popover/90 backdrop-blur-xl p-3 shadow-2xl min-w-[170px]">
@@ -163,7 +173,7 @@ function ChartTooltip({ active, payload, label }: TooltipProps<number, string>) 
         />
         <span className="text-sm text-muted-foreground">Revenue:</span>
         <span className="text-sm font-semibold text-foreground ml-auto">
-          {formatRupees(revenue as number)}
+          {formatRupees(revenueValue)}
         </span>
       </div>
     </div>
