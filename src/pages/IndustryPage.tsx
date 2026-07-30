@@ -234,10 +234,10 @@ const IndustryPage = () => {
                     />
                   </svg>
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="font-mono text-lg font-bold text-orange-400">{metric.value}</span>
+                    <span className="text-lg font-bold text-orange-400">{metric.value}</span>
                   </div>
                 </div>
-                <span className="font-mono text-xs uppercase tracking-wider text-muted-foreground mt-4 text-center">
+                <span className="font-semibold text-xs uppercase tracking-wider text-muted-foreground mt-4 text-center">
                   {metric.label}
                 </span>
               </motion.div>
@@ -627,7 +627,7 @@ const IndustryPage = () => {
               <motion.div variants={fadeUp} className="mb-12 space-y-3">
                 <SectionLabel>Architecture</SectionLabel>
                 <SectionHeading>Typical Deployment Architecture</SectionHeading>
-                <p className="text-sm text-muted-foreground max-w-2xl">
+                <p className="text-lg font-semibold text-muted-foreground max-w-2xl">
                   End-to-end data flow from field devices to operations teams —
                   every layer connected, secured, and orchestrated in real time.
                 </p>
