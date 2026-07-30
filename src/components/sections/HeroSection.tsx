@@ -495,7 +495,7 @@ const HeroSection = () => {
                 title="altrex digital platform"
                 dot={true}
                 dotColor="bg-emerald-500"
-                className="mb-8"
+                className="mb-6 lg:mb-8"
               />
             </motion.div>
 
@@ -527,7 +527,7 @@ const HeroSection = () => {
               variants={fadeUp}
               initial="hidden"
               animate="visible"
-              className="mt-7 max-w-lg text-base font-semibold leading-7 text-muted-foreground sm:text-lg text-left"
+              className="mt-5 lg:mt-7 max-w-lg text-base font-semibold leading-7 text-muted-foreground sm:text-lg text-left"
             >
               Transform field data into real-time intelligence with Industrial IoT, SCADA, GIS, Asset Management, Fleet Tracking, and Analytics.
             </motion.p>
@@ -538,22 +538,22 @@ const HeroSection = () => {
               variants={fadeUp}
               initial="hidden"
               animate="visible"
-              className="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center"
+              className="mt-8 lg:mt-10 flex flex-row items-center flex-wrap gap-2 sm:gap-4"
             >
               <Link to="/contact">
                 <Button
                   size="lg"
-                  className="gap-2 bg-primary px-8 py-6 text-base text-primary-foreground hover:bg-accent  shadow-primary/20"
+                  className="gap-1.5 sm:gap-2 bg-primary px-4 sm:px-8 py-5 sm:py-6 text-sm sm:text-base text-primary-foreground hover:bg-accent  shadow-primary/20"
                 >
                   Request Demo
-                  <ArrowRight />
+                  <ArrowRight size={16} className="sm:h-5 sm:w-5" />
                 </Button>
               </Link>
               <Button
                 asChild
                 variant="outline"
                 size="lg"
-                className="gap-2 px-8 py-6 text-base"
+                className="gap-1.5 sm:gap-2 px-4 sm:px-8 py-5 sm:py-6 text-sm sm:text-base"
               >
                 <Link to="/solutions">
                   <Play className="h-4 w-4" />
@@ -597,7 +597,7 @@ const HeroSection = () => {
           </div>
 
           {/* ── RIGHT: dashboard preview ── */}
-          <div className="flex justify-center lg:justify-end w-full">
+          <div className="hidden md:flex justify-center lg:justify-end w-full">
             <DashboardPreview />
           </div>
         </div>

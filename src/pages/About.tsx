@@ -248,16 +248,15 @@ function MilestoneCard({
       {/* Text */}
       <div className="flex-1 min-w-0">
         <p
-          className="font-bold leading-none tracking-tight text-[var(--text-primary)] transition-colors duration-200"
+          className="text-base font-bold leading-tight tracking-tight text-[var(--text-primary)] transition-colors duration-200"
           style={{
-            fontSize: 14,
             color: isActive ? milestone.color : undefined,
           }}
         >
           {milestone.title}
         </p>
         <p
-          className="mt-1 leading-snug text-muted-foreground font-medium text-xs"
+          className="mt-1 leading-snug text-muted-foreground font-medium text-sm"
         >
           {milestone.body}
         </p>

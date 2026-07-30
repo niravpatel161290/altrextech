@@ -128,7 +128,7 @@ const IndustryPage = () => {
       ══════════════════════════════════════════════════════════ */}
       <section className="relative isolate overflow-hidden min-h-[92vh] flex items-center pt-28 pb-20">
         {industry.image && (
-          <div className="absolute inset-0 -z-10">
+          <div className="absolute inset-0 -z-10 opacity-30 lg:opacity-50">
             <img
               src={industry.image}
               alt={industry.name}
@@ -183,7 +183,7 @@ const IndustryPage = () => {
             {/* Main heading */}
             <motion.h1
               variants={fadeUp}
-              className="text-4xl font-bold tracking-[-0.03em] text-foreground sm:text-5xl lg:text-6xl leading-[1.1] uppercase break-normal"
+              className="text-3xl font-bold tracking-[-0.03em] text-foreground sm:text-4xl lg:text-6xl leading-[1.1] uppercase break-words hyphens-auto"
               style={industry.image ? { color: "white" } : undefined}
             >
               {industry.hero.heading}
@@ -233,7 +233,7 @@ const IndustryPage = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
           variants={stagger}
-          className="mx-auto max-w-7xl px-6 lg:px-8 flex flex-col gap-6 py-10"
+          className="mx-auto max-w-7xl px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-6 py-10"
         >
           {industry.metrics.map((metric, idx) => {
             const targetPct = getBarWidth(metric.value, idx);
@@ -242,33 +242,29 @@ const IndustryPage = () => {
                 key={metric.label}
                 variants={fadeUp}
                 transition={{ delay: idx * 0.15 }}
-                className="flex items-center gap-4"
+                className="flex flex-col items-center justify-center p-6 rounded-2xl border border-border bg-card/40"
               >
-                {/* Label */}
-                <span className="font-mono text-xs uppercase tracking-wider text-muted-foreground w-36 shrink-0">
-                  {metric.label}
-                </span>
-
-                {/* Bar track */}
-                <div className="relative flex-1 h-[2px] bg-muted/30 rounded-full overflow-visible">
-                  <motion.div
-                    className="absolute left-0 top-0 h-full bg-orange-500 rounded-full"
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${targetPct}%` }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1.2, ease: "easeOut", delay: idx * 0.15 }}
-                  >
-                    {/* Glowing tip */}
-                    <span
-                      className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 h-[6px] w-[6px] rounded-full bg-orange-400"
-                      style={{ boxShadow: "0 0 8px 4px rgba(249,115,22,0.6)" }}
+                <div className="relative w-24 h-24 flex items-center justify-center">
+                  <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="40" stroke="currentColor" strokeWidth="8" fill="transparent" className="text-muted/30" />
+                    <motion.circle
+                      cx="50" cy="50" r="40" stroke="currentColor" strokeWidth="8" fill="transparent"
+                      strokeDasharray="251.2"
+                      strokeDashoffset="251.2"
+                      initial={{ strokeDashoffset: 251.2 }}
+                      whileInView={{ strokeDashoffset: 251.2 - (251.2 * targetPct) / 100 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 1.5, ease: "easeOut", delay: idx * 0.15 }}
+                      strokeLinecap="round"
+                      className="text-orange-500 drop-shadow-[0_0_8px_rgba(249,115,22,0.6)]"
                     />
-                  </motion.div>
+                  </svg>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span className="font-mono text-lg font-bold text-orange-400">{metric.value}</span>
+                  </div>
                 </div>
-
-                {/* Value */}
-                <span className="font-mono text-sm font-bold text-orange-400 w-20 text-right shrink-0">
-                  {metric.value}
+                <span className="font-mono text-xs uppercase tracking-wider text-muted-foreground mt-4 text-center">
+                  {metric.label}
                 </span>
               </motion.div>
             );
@@ -300,10 +296,6 @@ const IndustryPage = () => {
         </motion.div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════════
-          INDUSTRY CHALLENGES — Radar chart + collapsible pills
-      ══════════════════════════════════════════════════════════ */}
-      <ChallengesOrbit challenges={industry.challenges} />
       {/* ══════════════════════════════════════════════════════════
           PLATFORM MODULES — Left-rail navigator
       ══════════════════════════════════════════════════════════ */}

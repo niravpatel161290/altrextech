@@ -15,6 +15,7 @@ import {
   Settings,
   MapPin,
   GraduationCap,
+  ArrowRight,
 } from "lucide-react";
 
 import { SectionBadge } from "../ui/section-badge";
@@ -186,7 +187,13 @@ const UseCases = () => {
       </motion.div>
 
       {/* Horizontal track */}
-      <div className="use-cases-scroll relative mt-14 overflow-x-auto pb-12 pt-2 scrollbar-hide">
+      <div className="relative mt-14">
+        <div className="absolute right-0 top-0 bottom-12 w-24 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none flex items-center justify-end pr-4 lg:hidden">
+          <div className="h-10 w-10 rounded-full bg-card/80 border border-border flex items-center justify-center text-foreground shadow-lg backdrop-blur-sm">
+            <ArrowRight size={20} className="animate-pulse" />
+          </div>
+        </div>
+        <div className="use-cases-scroll relative overflow-x-auto pb-12 pt-2 scrollbar-hide">
         <div
           ref={trackRef}
           className="flex w-max gap-7 px-6 lg:px-16 will-change-transform"
@@ -238,11 +245,11 @@ const UseCases = () => {
             );
           })}
 
-          {/* Tail spacer so the last card fully clears the viewport */}
           <div
             className="w-[40vw] flex-shrink-0 md:w-[30vw] lg:w-[20vw]"
             aria-hidden="true"
           />
+        </div>
         </div>
       </div>
     </section>
