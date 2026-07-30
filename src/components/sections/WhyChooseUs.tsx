@@ -144,7 +144,7 @@ function Slide1({ mobile }: { mobile: boolean }) {
   ];
   return (
     <div className={`relative flex flex-col items-center justify-center text-center px-8 overflow-hidden ${mobile
-        ? "min-h-[70vh] py-16 border-b border-border"
+        ? "py-10 border-b border-border"
         : "w-[100vw] h-full flex-shrink-0"
       }`}>
       <div className="absolute inset-0 flex items-center justify-center select-none pointer-events-none overflow-hidden">
@@ -206,7 +206,7 @@ function Slide1({ mobile }: { mobile: boolean }) {
 function Slide2({ mobile }: { mobile: boolean }) {
   const chips = ["IEC-62443 Aligned", "Multi-Factor Auth", "Role-Based Access"];
   return (
-    <div className={`relative flex flex-col items-center justify-center px-8 overflow-hidden bg-gradient-to-r from-background to-blue-950/10 ${mobile ? "min-h-[70vh] py-16 border-b border-border" : "w-[100vw] h-full flex-shrink-0"
+    <div className={`relative flex flex-col items-center justify-center px-8 overflow-hidden bg-gradient-to-r from-background to-blue-950/10 ${mobile ? "py-10 border-b border-border" : "w-[100vw] h-full flex-shrink-0"
       }`}>
       <div className="pointer-events-none absolute -top-24 right-1/4 h-72 w-72 rounded-full bg-blue-500/10 blur-3xl" />
 
@@ -267,7 +267,7 @@ function Slide3({ mobile }: { mobile: boolean }) {
   const [hoveredBar, setHoveredBar] = useState<number | null>(null);
 
   return (
-    <div className={`relative flex flex-col items-center justify-center px-8 overflow-hidden bg-gradient-to-r from-background to-accent/10 ${mobile ? "min-h-[70vh] py-16 border-b border-border" : "w-[100vw] h-full flex-shrink-0"
+    <div className={`relative flex flex-col items-center justify-center px-8 overflow-hidden bg-gradient-to-r from-background to-accent/10 ${mobile ? "py-10 border-b border-border" : "w-[100vw] h-full flex-shrink-0"
       }`}>
       <div className="pointer-events-none absolute -bottom-24 left-1/4 h-72 w-72 rounded-full bg-accent/10 blur-3xl" />
 
@@ -372,7 +372,7 @@ function Slide4Hybrid({ mobile }: { mobile: boolean }) {
   ];
 
   return (
-    <div className={`relative flex flex-col items-center justify-center px-8 overflow-hidden bg-gradient-to-br from-background via-purple-950/10 to-background ${mobile ? "min-h-[70vh] py-16 border-b border-border" : "w-[100vw] h-full flex-shrink-0"
+    <div className={`relative flex flex-col items-center justify-center px-8 overflow-hidden bg-gradient-to-br from-background via-purple-950/10 to-background ${mobile ? "py-10 border-b border-border" : "w-[100vw] h-full flex-shrink-0"
       }`}>
       {/* light purple ambient wash, unique to this slide */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(55%_45%_at_30%_25%,rgba(168,85,247,0.10)_0%,transparent_70%)]" />
@@ -447,7 +447,7 @@ function Slide5Reliability({ mobile }: { mobile: boolean }) {
   return (
     <div
       ref={reliabilityRef}
-      className={`relative flex flex-col items-center justify-center px-8 overflow-hidden bg-gradient-to-br from-background via-emerald-950/10 to-background ${mobile ? "min-h-[70vh] py-16 border-b border-border" : "w-[100vw] h-full flex-shrink-0"
+      className={`relative flex flex-col items-center justify-center px-8 overflow-hidden bg-gradient-to-br from-background via-emerald-950/10 to-background ${mobile ? "py-10 border-b border-border" : "w-[100vw] h-full flex-shrink-0"
         }`}
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(55%_45%_at_70%_25%,rgba(52,211,153,0.08)_0%,transparent_70%)]" />
@@ -508,7 +508,7 @@ function Slide6({ mobile }: { mobile: boolean }) {
   ];
 
   return (
-    <div className={`relative flex flex-col items-center justify-center px-8 overflow-hidden ${mobile ? "min-h-[70vh] py-16" : "w-[100vw] h-full flex-shrink-0"
+    <div className={`relative flex flex-col items-center justify-center px-8 overflow-hidden ${mobile ? "py-10" : "w-[100vw] h-full flex-shrink-0"
       }`}>
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_50%_at_50%_30%,rgba(249,115,22,0.05)_0%,transparent_70%)]" />
 

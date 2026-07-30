@@ -27,27 +27,27 @@ const CTASection = ({
   badge = "[ READY TO START ]",
 }: CTAData) => {
   return (
-    <section className="my-20">
+    <section className="my-10 lg:my-20 px-4 sm:px-6 lg:px-8">
       <Card
-        className="mx-auto max-w-7xl px-6 lg:px-8 py-16 text-center border border-border rounded-3xl"
+        className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 lg:py-16 text-center border border-border rounded-3xl"
       >
         <motion.p
           variants={fadeUp}
-          className="font-mono font-semibold text-xs text-muted-foreground tracking-[0.25em] uppercase mb-6"
+          className="font-mono font-semibold text-[10px] lg:text-xs text-muted-foreground tracking-[0.25em] uppercase mb-4 lg:mb-6"
         >
           {badge}
         </motion.p>
 
         <motion.h2
           variants={fadeUp}
-          className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl max-w-3xl mx-auto"
+          className="text-3xl lg:text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl max-w-3xl mx-auto"
         >
           {title}
         </motion.h2>
 
         <motion.p
           variants={fadeUp}
-          className="mt-6 max-w-2xl mx-auto text-base text-muted-foreground font-medium leading-7"
+          className="mt-4 lg:mt-6 max-w-2xl mx-auto text-sm lg:text-base text-muted-foreground font-medium leading-6 lg:leading-7"
         >
           {description}
         </motion.p>
