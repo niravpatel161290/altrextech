@@ -70,10 +70,9 @@ const Footer = () => {
 
   return (
     <footer
-      className="bg-white dark:bg-black z-10 mt-20"
+      className="bg-white dark:bg-black z-10 mt-20 border-t border-border"
       style={{
         backgroundColor: isDark ? "#000" : "#fff",
-        borderTop: `1px solid ${isDark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.08)"}`,
       }}
     >
       {/* ── Brand row ── */}
@@ -81,10 +80,7 @@ const Footer = () => {
         className="mx-auto max-w-7xl px-6 lg:px-8"
       >
         <div
-          className="py-10"
-          style={{
-            borderBottom: `1px solid ${isDark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.08)"}`,
-          }}
+          className="py-10 border-b border-border"
         >
           <img
             src={isDark ? darklogo : lightlogo}
@@ -102,10 +98,7 @@ const Footer = () => {
 
           {/* Solutions */}
           <div
-            className="py-10 lg:pr-10"
-            style={{
-              borderRight: `1px solid ${isDark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.08)"}`,
-            }}
+            className="py-10 lg:pr-10 lg:border-r border-border"
           >
             <h3 className="mb-5 text-[10px] font-bold tracking-[0.2em] uppercase text-orange-500">
               Solutions
@@ -115,10 +108,7 @@ const Footer = () => {
 
           {/* Services */}
           <div
-            className="py-10 lg:px-10"
-            style={{
-              borderRight: `1px solid ${isDark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.08)"}`
-            }}
+            className="py-10 lg:px-10 lg:border-r border-border"
           >
             <h3 className="mb-5 text-[10px] font-bold tracking-[0.2em] uppercase text-orange-500">
               Services
@@ -139,10 +129,7 @@ const Footer = () => {
 
         {/* ── Bottom bar ── */}
         <div
-          className="flex flex-col items-start justify-between gap-6 py-8 md:flex-row md:items-center"
-          style={{
-            borderTop: `1px solid ${isDark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.08)"}`,
-          }}
+          className="flex flex-col items-start justify-between gap-6 py-8 md:flex-row md:items-center border-t border-border"
         >
           <p className="text-sm text-muted-foreground">
             © 2026 Altrex. All rights reserved.
