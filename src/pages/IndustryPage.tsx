@@ -11,7 +11,6 @@ import { Button } from "@/components/ui/button";
 import { getIndustryBySlug } from "@/data/industriesRegistry";
 import DynamicArchitecture from "@/components/sections/DynamicArchitecture";
 import { SectionBadge } from "@/components/ui/section-badge";
-import ChallengesOrbit from "@/components/sections/ChallengesOrbit";
 import CTASection from "@/components/CTASection";
 
 // ─── Animation Variants ───────────────────────────────────────────────────────
