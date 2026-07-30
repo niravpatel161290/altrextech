@@ -13,6 +13,7 @@ import DynamicArchitecture from "@/components/sections/DynamicArchitecture";
 import { SectionBadge } from "@/components/ui/section-badge";
 import CTASection from "@/components/CTASection";
 
+
 // ─── Animation Variants ───────────────────────────────────────────────────────
 
 const fadeUp: Variants = {
