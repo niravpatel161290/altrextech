@@ -1,4 +1,4 @@
-import { motion, type Variants, AnimatePresence } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import {
   Zap,
   Activity,
@@ -12,6 +12,17 @@ import React, { useState } from "react";
 import ScrambleCounter from "../ScrambleCounter";
 import { SectionBadge } from "../ui/section-badge";
 import { Badge } from "../ui/badge";
+import {
+  ComposedChart,
+  Bar,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+  type TooltipProps,
+} from "recharts";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -70,24 +81,6 @@ const ringStats: RingStat[] = [
   },
 ];
 
-const throughputData = [
-  0.6, 0.8, 1.0, 0.75, 1.2, 0.9, 1.4, 1.1, 1.7, 1.3, 1.9, 1.5,
-];
-const months = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
-];
-const CHART_MAX = 2.1;
 
 // ── Stat Card ─────────────────────────────────────────────────────────────────
 
@@ -120,199 +113,182 @@ function StatCard({ stat }: { stat: RingStat }) {
   );
 }
 
-// ── Throughput bar chart ──────────────────────────────────────────────────────
+// ── Types ─────────────────────────────────────────────────────────────────
 
-function ThroughputChart() {
-  const [hoverIndex, setHoverIndex] = useState<number | null>(null);
-  const chartWidth = 1000;
-  const chartHeight = 350;
-  const paddingLeft = 60;
-  const paddingRight = 40;
-  const paddingBottom = 60;
-  const paddingTop = 40;
-  
-  const innerW = chartWidth - paddingLeft - paddingRight;
-  const innerH = chartHeight - paddingBottom - paddingTop;
+interface DayData {
+  day: string;
+  revenue: number;
+  sessions: number;
+}
 
-  const barWidth = innerW / months.length;
-  const barGap = barWidth * 0.25;
-  const actualBarWidth = barWidth - barGap;
+// ── Mock data — replace with your API response ──────────────────────────
+// Shape stays the same: { day, revenue, sessions }[]
 
-  const yPos = (val: number) => paddingTop + innerH - (val / CHART_MAX) * innerH;
+const data: DayData[] = [
+  { day: "Mon", revenue: 85000, sessions: 260 },
+  { day: "Tue", revenue: 91870, sessions: 341 },
+  { day: "Wed", revenue: 68000, sessions: 300 },
+  { day: "Thu", revenue: 98000, sessions: 430 },
+  { day: "Fri", revenue: 132000, sessions: 470 },
+  { day: "Sat", revenue: 158000, sessions: 580 },
+  { day: "Sun", revenue: 105130, sessions: 450 },
+];
+
+const SESSIONS_COLOR = "#F59E0B";
+
+// ── Helpers ───────────────────────────────────────────────────────────────
+
+function formatRupees(value: number) {
+  return `₹${value.toLocaleString("en-IN")}`;
+}
+
+function formatLakhs(value: number) {
+  return `₹${(value / 100000).toFixed(2)}L`;
+}
+
+// ── Custom tooltip ────────────────────────────────────────────────────────
+
+function ChartTooltip({ active, payload, label }: TooltipProps<number, string>) {
+  if (!active || !payload || payload.length === 0) return null;
+
+  const revenue = payload.find((p) => p.dataKey === "revenue")?.value ?? 0;
 
   return (
-    <div className="relative w-full overflow-visible" onMouseLeave={() => setHoverIndex(null)}>
-      <svg
-        viewBox={`0 0 ${chartWidth} ${chartHeight}`}
-        width="100%"
-        className="overflow-visible"
-      >
-        <defs>
-          <linearGradient id="barGradient" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="var(--primary)" />
-            <stop offset="100%" stopColor="var(--primary)" stopOpacity={0.7} />
-          </linearGradient>
-          
-          <linearGradient id="barHoverGradient" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="var(--primary)" stopOpacity={0.8} />
-            <stop offset="100%" stopColor="var(--primary)" />
-          </linearGradient>
+    <div className="rounded-xl border border-border bg-popover/90 backdrop-blur-xl p-3 shadow-2xl min-w-[170px]">
+      <p className="text-sm font-semibold text-foreground mb-2">{label}</p>
+      <div className="flex items-center gap-2">
+        <span
+          className="h-2.5 w-2.5 rounded-full shrink-0"
+          style={{ backgroundColor: "var(--primary)" }}
+        />
+        <span className="text-sm text-muted-foreground">Revenue:</span>
+        <span className="text-sm font-semibold text-foreground ml-auto">
+          {formatRupees(revenue as number)}
+        </span>
+      </div>
+    </div>
+  );
+}
 
-          <filter id="barGlow" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="4" result="blur" />
-            <feComposite in="SourceGraphic" in2="blur" operator="over" />
-          </filter>
-        </defs>
+// ── Custom x-axis tick — bolds + colors the label under the active point ──
 
-        {/* Y Axis Grid */}
-        {[0, 0.5, 1.0, 1.5, 2.0].map((t) => {
-          const y = yPos(t);
-          return (
-            <g key={t}>
-              <line
-                x1={paddingLeft}
-                y1={y}
-                x2={chartWidth - paddingRight}
-                y2={y}
-                stroke="currentColor"
-                className="text-border/30"
-                strokeWidth={1}
-              />
-              <text
-                x={paddingLeft - 15}
-                y={y + 4}
-                textAnchor="end"
-                fontSize={12}
-                fill="currentColor"
-                className="text-accent font-mono"
-              >
-                {t.toFixed(1)}
-              </text>
-            </g>
-          );
-        })}
+function XAxisTick({
+  x,
+  y,
+  payload,
+  activeDay,
+}: {
+  x?: number;
+  y?: number;
+  payload?: { value: string };
+  activeDay: string | null;
+}) {
+  const isActive = payload?.value === activeDay;
+  return (
+    <text
+      x={x}
+      y={(y ?? 0) + 16}
+      textAnchor="middle"
+      fontSize={12}
+      fontWeight={isActive ? 600 : 400}
+      fill={isActive ? "var(--primary)" : "var(--muted-foreground)"}
+    >
+      {payload?.value}
+    </text>
+  );
+}
 
-        {/* Bars */}
-        {throughputData.map((val, i) => {
-          const x = paddingLeft + i * barWidth + barGap / 2;
-          const barH = (val / CHART_MAX) * innerH;
-          const y = paddingTop + innerH - barH;
-          const isHovered = hoverIndex === i;
+// ── Legend ────────────────────────────────────────────────────────────────
 
-          return (
-            <g 
-              key={i} 
-              onMouseEnter={() => setHoverIndex(i)}
-              className="cursor-pointer"
-            >
-              {/* Invisible touch/hover area */}
-              <rect
-                x={x - barGap / 2}
-                y={paddingTop}
-                width={barWidth}
-                height={innerH}
-                fill="transparent"
-              />
-              
-              {/* Hover Highlight Background */}
-              <motion.rect
-                initial={{ opacity: 0 }}
-                animate={{ opacity: isHovered ? 0.05 : 0 }}
-                x={x - barGap / 4}
-                y={paddingTop - 10}
-                width={actualBarWidth + barGap / 2}
-                height={innerH + 20}
-                rx={12}
-                fill="currentColor"
-                className="text-foreground"
-              />
+function ChartLegend() {
+  return (
+    <div className="flex items-center justify-center gap-6 mt-3">
+      <div className="flex items-center gap-1.5">
+        <span
+          className="h-2.5 w-2.5 rounded-sm"
+          style={{ backgroundColor: "var(--primary)" }}
+        />
+        <span className="text-sm text-muted-foreground">Revenue</span>
+      </div>
+    </div>
+  );
+}
 
-              {/* Actual Bar */}
-              <motion.rect
-                initial={{ height: 0, y: paddingTop + innerH }}
-                whileInView={{ height: barH, y: y }}
-                viewport={{ once: true }}
-                transition={{ 
-                  duration: 1, 
-                  delay: i * 0.05, 
-                  ease: [0.33, 1, 0.68, 1] 
-                }}
-                x={x}
-                width={actualBarWidth}
-                fill={isHovered ? "url(#barHoverGradient)" : "url(#barGradient)"}
-                rx={6}
-                filter={isHovered ? "url(#barGlow)" : "none"}
-                className="transition-colors duration-300"
-              />
+// ── Main component ───────────────────────────────────────────────────────
 
-              {/* Glass Top Highlight */}
-              <motion.rect
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 0.3 }}
-                viewport={{ once: true }}
-                transition={{ delay: 1 + i * 0.05 }}
-                x={x + 2}
-                y={y + 2}
-                width={actualBarWidth - 4}
-                height={4}
-                rx={2}
-                fill="currentColor"
-                className="text-background"
-              />
+function RevenueSessionsChart() {
+  const [activeDay, setActiveDay] = useState<string | null>(null);
 
-              {/* Month Label */}
-              <text
-                x={x + actualBarWidth / 2}
-                y={chartHeight - 15}
-                textAnchor="middle"
-                fontSize={12}
-                fill="currentColor"
-                className={`font-mono transition-colors duration-300 ${
-                  isHovered ? "text-foreground font-bold" : "text-muted-foreground/60"
-                }`}
-              >
-                {months[i]}
-              </text>
-            </g>
-          );
-        })}
-      </svg>
+  const totalRevenue = data.reduce((sum, d) => sum + d.revenue, 0);
 
-      {/* Premium Tooltip */}
-      <AnimatePresence>
-        {hoverIndex !== null && (
-          <motion.div
-            initial={{ opacity: 0, y: 10, scale: 0.95 }}
-            animate={{ 
-              opacity: 1, 
-              y: 0, 
-              scale: 1,
-              left: paddingLeft + hoverIndex * (innerW / months.length) + (innerW / months.length) / 2,
-              top: yPos(throughputData[hoverIndex]) - 80
+  return (
+    <div className="w-full">
+      {/* Header */}
+      <div className="flex items-start justify-between mb-4">
+        <div>
+          <h4 className="text-sm font-semibold text-foreground">
+            Revenue — Last 7 Days
+          </h4>
+          <p className="text-xs text-muted-foreground mt-0.5">
+            All stations combined
+          </p>
+        </div>
+        <div className="text-right">
+          <p className="text-base font-bold text-foreground">
+            {formatLakhs(totalRevenue)}
+          </p>
+          <p className="text-xs mt-0.5" style={{ color: "var(--primary)" }}>
+            7-day total
+          </p>
+        </div>
+      </div>
+
+      {/* Chart */}
+      <div className="h-64">
+        <ResponsiveContainer width="100%" height="100%">
+          <ComposedChart
+            data={data}
+            margin={{ top: 10, right: 10, left: 0, bottom: 0 }}
+            onMouseMove={(state) => {
+              if (state.isTooltipActive && typeof state.activeLabel === "string") {
+                setActiveDay(state.activeLabel);
+              }
             }}
-            exit={{ opacity: 0, y: 10, scale: 0.95 }}
-            className="absolute pointer-events-none -translate-x-1/2 z-50"
+            onMouseLeave={() => setActiveDay(null)}
           >
-            <div className="bg-popover/90 backdrop-blur-xl border border-border rounded-xl p-3 shadow-2xl min-w-[120px]">
-              <div className="text-[10px] text-muted-foreground uppercase tracking-widest font-mono mb-1">
-                {months[hoverIndex]} 2024
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="h-2 w-2 rounded-full bg-primary shadow-[0_0_8px_var(--primary)]" />
-                <div className="text-xl font-bold text-accent tracking-tight">
-                  {throughputData[hoverIndex].toFixed(2)}
-                  <span className="text-sm font-medium text-accent ml-1">M</span>
-                </div>
-              </div>
-              <div className="text-[9px] text-muted-foreground mt-1">
-                Events per second
-              </div>
-            </div>
-            {/* Arrow */}
-            <div className="w-3 h-3 bg-popover/90 border-r border-b border-border rotate-45 absolute -bottom-1.5 left-1/2 -translate-x-1/2" />
-          </motion.div>
-        )}
-      </AnimatePresence>
+            <CartesianGrid vertical={false} stroke="var(--border)" />
+
+            <XAxis
+              dataKey="day"
+              axisLine={false}
+              tickLine={false}
+              tick={<XAxisTick activeDay={activeDay} />}
+            />
+
+            <YAxis
+              axisLine={false}
+              tickLine={false}
+              tickFormatter={(v) => `₹${v / 1000}K`}
+              tick={{ fontSize: 11, fill: "var(--muted-foreground)" }}
+              width={45}
+            />
+
+            <Tooltip
+              content={<ChartTooltip />}
+              cursor={{ fill: "rgba(255,255,255,0.04)" }}
+            />
+
+            <Bar
+              dataKey="revenue"
+              fill="var(--primary)"
+              radius={[6, 6, 0, 0]}
+              barSize={56}
+            />
+          </ComposedChart>
+        </ResponsiveContainer>
+      </div>
+
+      <ChartLegend />
     </div>
   );
 }
@@ -439,7 +415,8 @@ const StatisticsSection = () => {
             </Badge>
           </div>
 
-          <ThroughputChart />
+          {/* <ThroughputChart /> */}
+          <RevenueSessionsChart />
         </motion.div>
       </motion.div>
     </section>

@@ -17,8 +17,6 @@ import {
   useMotionValueEvent
 } from "framer-motion";
 
-import { Button } from "../ui/button";
-
 // ─── Scramble Uptime ──────────────────────────────────────────────────────────
 
 function ScrambleUptime({ inView }: { inView: boolean }) {
@@ -368,22 +366,22 @@ function Slide3({ mobile }: { mobile: boolean }) {
 
 function Slide4Hybrid({ mobile }: { mobile: boolean }) {
   const features = [
-    { icon: Layers3, label: "On-Premise", blurb: "Full control within your own facility footprint.", color: "teal-400" },
-    { icon: Globe, label: "Cloud", blurb: "Elastic infrastructure managed and scaled for you.", color: "teal-400" },
-    { icon: Zap, label: "Edge-Ready", blurb: "Local processing where latency matters most.", color: "teal-400" },
+    { icon: Layers3, label: "On-Premise", blurb: "Full control within your own facility footprint.", color: "purple-400" },
+    { icon: Globe, label: "Cloud", blurb: "Elastic infrastructure managed and scaled for you.", color: "purple-400" },
+    { icon: Zap, label: "Edge-Ready", blurb: "Local processing where latency matters most.", color: "purple-400" },
   ];
 
   return (
-    <div className={`relative flex flex-col items-center justify-center px-8 overflow-hidden bg-gradient-to-br from-background via-teal-950/10 to-background ${mobile ? "min-h-[70vh] py-16 border-b border-border" : "w-[100vw] h-full flex-shrink-0"
+    <div className={`relative flex flex-col items-center justify-center px-8 overflow-hidden bg-gradient-to-br from-background via-purple-950/10 to-background ${mobile ? "min-h-[70vh] py-16 border-b border-border" : "w-[100vw] h-full flex-shrink-0"
       }`}>
-      {/* light-tinted ambient wash, unique to this slide */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(55%_45%_at_30%_25%,rgba(45,212,191,0.08)_0%,transparent_70%)]" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(45%_40%_at_80%_75%,rgba(45,212,191,0.05)_0%,transparent_70%)]" />
+      {/* light purple ambient wash, unique to this slide */}
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(55%_45%_at_30%_25%,rgba(168,85,247,0.10)_0%,transparent_70%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(45%_40%_at_80%_75%,rgba(168,85,247,0.06)_0%,transparent_70%)]" />
 
       <div className="relative max-w-2xl text-center">
         <div className="flex justify-center mb-8">
-          <IconBadge color="teal-400">
-            <svg viewBox="0 0 24 24" className="h-11 w-11 text-teal-400" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <IconBadge color="purple-400">
+            <svg viewBox="0 0 24 24" className="h-11 w-11 text-purple-400" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
               <motion.circle cx="12" cy="12" r="10"
                 initial={{ pathLength: 0, opacity: 0 }} whileInView={{ pathLength: 1, opacity: 1 }}
                 viewport={{ once: false }} transition={{ duration: 1.0, ease: "easeOut" }} />
@@ -399,7 +397,7 @@ function Slide4Hybrid({ mobile }: { mobile: boolean }) {
 
         <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: false }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="font-mono text-xs tracking-[0.2em] uppercase text-teal-400/70 mb-3">
+          className="font-mono text-xs tracking-[0.2em] uppercase text-purple-400/70 mb-3">
           03 / Deploy
         </motion.p>
         <motion.h3 initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false }}
@@ -506,7 +504,7 @@ function Slide6({ mobile }: { mobile: boolean }) {
     { label: "Connected Devices", value: "2K+", color: "orange-400", bar: "bg-orange-500", pct: "72%" },
     { label: "Events / Day", value: "10M+", color: "violet-400", bar: "bg-violet-500", pct: "99%" },
     { label: "Availability", value: "99.9%", color: "cyan-400", bar: "bg-cyan-500", pct: "95%" },
-    { label: "Facilities", value: "10+", color: "teal-400", bar: "bg-teal-500", pct: "40%" },
+    { label: "Facilities", value: "10+", color: "purple-400", bar: "bg-purple-500", pct: "40%" },
   ];
 
   return (
@@ -562,18 +560,6 @@ function Slide6({ mobile }: { mobile: boolean }) {
             </motion.div>
           ))}
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }} transition={{ duration: 0.6, delay: 1.2 }}
-          className="mt-8 flex flex-col gap-4 sm:flex-row justify-center">
-          <Button className="gap-2 bg-accent text-white border-none transition-transform duration-200 hover:scale-[1.03] hover:shadow-[0_8px_24px_-8px] hover:shadow-accent/50">
-            Request Demo
-          </Button>
-          <Button variant="outline" className="gap-2 transition-all duration-200 hover:scale-[1.03] hover:border-foreground/30">
-            Contact Sales
-          </Button>
-        </motion.div>
       </div>
     </div>
   );

@@ -25,7 +25,8 @@ const useCases = [
   {
     icon: Cloud,
     title: "SaaS Platform Services",
-    description: "Subscription-based access to enterprise-grade platform capabilities.",
+    description:
+      "Subscription-based access to enterprise-grade platform capabilities.",
     metric: "99.9% platform uptime",
     bullets: [
       "Multi-tenant architecture with role-based access",
@@ -69,7 +70,8 @@ const useCases = [
   {
     icon: Cpu,
     title: "Industrial IoT & Edge Integration",
-    description: "Bring field devices and edge hardware onto a connected network.",
+    description:
+      "Bring field devices and edge hardware onto a connected network.",
     metric: "15K+ devices connected",
     bullets: [
       "Sensor and PLC connectivity at the edge",
@@ -91,7 +93,8 @@ const useCases = [
   {
     icon: Settings,
     title: "Cloud & Infrastructure Services",
-    description: "Design and manage resilient cloud and on-prem infrastructure.",
+    description:
+      "Design and manage resilient cloud and on-prem infrastructure.",
     metric: "99.95% infrastructure availability",
     bullets: [
       "Cloud architecture design and migration",
@@ -113,7 +116,8 @@ const useCases = [
   {
     icon: GraduationCap,
     title: "Training & Consulting",
-    description: "Build internal capability through guided training and advisory.",
+    description:
+      "Build internal capability through guided training and advisory.",
     metric: "500+ professionals trained",
     bullets: [
       "Platform onboarding and hands-on training",
@@ -175,8 +179,8 @@ const UseCases = () => {
             variants={fadeUpVariants}
             className="mt-6 text-lg leading-8 text-muted-foreground font-semibold"
           >
-            A horizontal journey through the highest-impact realtime use
-            cases — from industrial telemetry to global infrastructure.
+            A horizontal journey through the highest-impact realtime use cases —
+            from industrial telemetry to global infrastructure.
           </motion.p>
         </div>
       </motion.div>
@@ -190,29 +194,30 @@ const UseCases = () => {
           {useCases.map((item) => {
             const Icon = item.icon;
             return (
-              <Card
-                className="group relative flex h-[460px] w-[340px] flex-shrink-0 flex-col overflow-hidden md:w-[420px]"
-              >
-
+              <Card className="group relative flex h-[460px] w-[340px] flex-shrink-0 flex-col overflow-hidden md:w-[420px]">
                 {/* Content zone */}
-                <div className="relative flex flex-1 flex-col p-9">
-                  {/* Icon */}
-                  <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-primary text-white">
-                    <Icon className="h-6.5 w-6.5" strokeWidth={2} />
+                <div className="relative flex flex-1 flex-col justify-between p-9">
+                  <div>
+                    {/* Icon */}
+                    <div className="flex h-14 w-14 items-center justify-center rounded-xl text-primary border border-border">
+                      <Icon className="h-6.5 w-6.5" strokeWidth={2} />
+                    </div>
+
+                    <div className="mt-7">
+                      {/* Eyebrow + title */}
+                      <span className="text-xs font-bold uppercase tracking-[0.1em] text-accent">
+                        Use case
+                      </span>
+                      <h3 className="mt-2 text-xl font-bold uppercase leading-tight tracking-tight text-foreground">
+                        {item.title}
+                      </h3>
+                      <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">
+                        {item.description}
+                      </p>
+                    </div>
                   </div>
 
-                  {/* Eyebrow + title */}
-                  <span className="mt-7 text-xs font-bold uppercase tracking-[0.1em] text-accent">
-                    Use case
-                  </span>
-                  <h3 className="mt-2 text-xl font-bold uppercase leading-tight tracking-tight text-foreground">
-                    {item.title}
-                  </h3>
-                  <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">
-                    {item.description}
-                  </p>
-
-                  <div className="mt-6 h-px w-full bg-gradient-to-r from-white/[0.08] via-white/[0.04] to-transparent" />
+                  {/* <div className="mt-6 h-px w-full bg-gradient-to-r from-white/[0.08] via-white/[0.04] to-transparent" /> */}
 
                   {/* Bullets */}
                   <ul className="mt-6 space-y-3.5">
