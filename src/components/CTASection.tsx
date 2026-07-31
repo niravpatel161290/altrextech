@@ -27,7 +27,7 @@ const CTASection = ({
   return (
     <section className="my-6 sm:my-10 lg:my-20 px-6 sm:px-8 lg:px-8">
       <Card
-        className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-8 py-8 sm:py-12 lg:py-16 text-center border border-border rounded-3xl"
+        className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-8 py-8 sm:py-12 lg:py-16 text-center rounded-3xl"
       >
         <motion.p
           variants={fadeUp}

@@ -45,7 +45,7 @@ const industryLinks = [
 ];
 
 const linkClass =
-  "text-sm text-muted-foreground hover:text-orange-500 transition-colors duration-150 leading-snug block py-0.5";
+  "text-sm text-muted-foreground font-medium hover:text-orange-500 transition-colors duration-150 leading-snug block py-0.5";
 
 const SectionLinks = ({ links }: { links: { name: string; href: string }[] }) => (
   <ul
@@ -87,7 +87,7 @@ const Footer = () => {
             alt="Altrex Logo"
             className="h-5 w-auto object-contain mb-4"
           />
-          <p className="text-sm text-muted-foreground max-w-xl font-medium leading-relaxed">
+          <p className="text-sm text-muted-foreground max-w-xl font-medium leading-6">
             Accelerate industrial digital transformation with a unified platform for 
             IIoT connectivity, SCADA, Digital Twins, AI analytics, reporting, and enterprise integration.
           </p>
