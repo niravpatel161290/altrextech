@@ -131,7 +131,7 @@ const Footer = () => {
         <div
           className="flex flex-col items-start justify-between gap-6 py-8 md:flex-row md:items-center border-t border-border"
         >
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm text-muted-foreground font-medium">
             © 2026 Altrex. All rights reserved.
           </p>
 
