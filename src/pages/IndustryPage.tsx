@@ -102,7 +102,7 @@ const IndustryPage = () => {
       ══════════════════════════════════════════════════════════ */}
       <section className="relative isolate overflow-hidden min-h-[92vh] flex items-center pt-28 pb-20">
         {industry.image && (
-          <div className="absolute inset-0 -z-10 opacity-30 lg:opacity-50">
+          <div className="absolute inset-0 -z-10 opacity-90">
             <img
               src={industry.image}
               alt={industry.name}
