@@ -1,37 +1,17 @@
 import { useEffect, useState, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { 
-  Menu, 
-  X, 
-  ChevronDown, 
-  Cpu, 
-  Layers, 
-  Monitor, 
-  MapPin, 
-  Truck, 
-  Activity, 
-  Zap, 
-  Bell, 
-  BarChart3, 
-  ShieldCheck, 
-  Video,
-  Cloud,
-  Settings,
-  Sliders,
-  Briefcase,
-  Wrench,
-  GraduationCap,
-  Flame,
-  Droplet,
-  Factory,
-  Building
+import {
+  Menu, X, ChevronDown, Cpu, Layers, Monitor, MapPin, Truck, Activity, Zap,
+  Bell, BarChart3, ShieldCheck, Video, Cloud, Settings, Sliders, Briefcase,
+  Wrench, GraduationCap, Flame, Droplet, Factory, Building, Gauge,
 } from "lucide-react";
 import { Button } from "./ui/button";
 import ThemeToggle from "@/components/ThemeToggle";
 import { useTheme } from "@/hooks/useTheme";
+import MegaMenu, { type MegaMenuCategory, type MegaMenuFeatured } from "@/components/MegaMenu";
+import MobileMegaAccordion from "@/components/MobileMegaAccordion";
 import lightlogo from "@/assets/AltrexLogoTr1.png";
 import darklogo from "@/assets/AltrexLogoTr2.png";
-//import { getIndustryBySlug } from "@/data/industriesRegistry";
 
 const Header = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
@@ -42,18 +22,28 @@ const Header = () => {
   const [mobileSolutionsOpen, setMobileSolutionsOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [mobileIndustriesOpen, setMobileIndustriesOpen] = useState(false);
-  const location = useLocation(); 
-  
+  const location = useLocation();
+
   const solutionsTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const servicesTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const industriesTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Close any open menu on Escape, from anywhere in the header.
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      setSolutionsOpen(false);
+      setServicesOpen(false);
+      setIndustriesOpen(false);
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
   const navLinks = [
@@ -64,129 +54,177 @@ const Header = () => {
     { name: "Contact Us", href: "/contact" },
   ];
 
-  // Solutions Data Setup
-  const solutionCategories = [
+  // --- Solutions ---------------------------------------------------------
+  const solutionCategories: MegaMenuCategory[] = [
     {
       title: "Core Infrastructure",
+      icon: Cpu,
+      viewAllHref: "/solutions#core-infrastructure",
       items: [
-        { name: "Connectivity & Data Acquisition", href: "/solutions/connectivity", icon: Cpu },
-        { name: "Industrial IoT Platform", href: "/solutions/iiot-platform", icon: Layers },
-        { name: "Web SCADA & Real-Time Monitoring", href: "/solutions/web-scada", icon: Monitor },
-        { name: "GIS & Asset Management", href: "/solutions/gis-asset-management", icon: MapPin },
-      ]
+        { name: "Connectivity & Data Acquisition", href: "/solutions/connectivity", icon: Cpu, description: "Unify PLCs, RTUs, sensors, and SCADA into one data layer." },
+        { name: "Industrial IoT Platform", href: "/solutions/iiot-platform", icon: Layers, description: "A single real-time platform connecting every industrial asset." },
+        { name: "Web SCADA & Real-Time Monitoring", href: "/solutions/web-scada", icon: Monitor, description: "Monitor and control operations from any browser, live." },
+        { name: "GIS & Asset Management", href: "/solutions/gis-asset-management", icon: MapPin, description: "Map, track, and manage physical assets on a live spatial layer." },
+      ],
     },
     {
       title: "Operations & Efficiency",
+      icon: Gauge,
+      viewAllHref: "/solutions#operations-efficiency",
       items: [
-        { name: "Fleet Management & VTS", href: "/solutions/fleet-management", icon: Truck },
-        { name: "Automatic Meter Reading (AMR)", href: "/solutions/amr", icon: Activity },
-        { name: "Energy Management", href: "/solutions/energy-management", icon: Zap },
-        { name: "Alarm & Event Management", href: "/solutions/alarm-management", icon: Bell },
-      ]
+        { name: "Fleet Management & VTS", href: "/solutions/fleet-management", icon: Truck, description: "Track vehicles and optimize routes with live telemetry." },
+        { name: "Automatic Meter Reading (AMR)", href: "/solutions/amr", icon: Activity, description: "Remote meter reads with zero manual site visits." },
+        { name: "Energy Management", href: "/solutions/energy-management", icon: Zap, description: "Monitor consumption and cut energy costs across sites." },
+        { name: "Alarm & Event Management", href: "/solutions/alarm-management", icon: Bell, description: "Catch critical events before they become incidents." },
+      ],
     },
     {
       title: "Intelligence & Security",
+      icon: ShieldCheck,
+      viewAllHref: "/solutions#intelligence-security",
       items: [
-        { name: "Analytics & Reporting", href: "/solutions/analytics-reporting", icon: BarChart3 },
-        { name: "Cybersecurity & Access Control", href: "/solutions/cybersecurity", icon: ShieldCheck },
-        { name: "CCTV & Video Surveillance Management", href: "/solutions/cctv-surveillance", icon: Video },
-      ]
-    }
+        { name: "Analytics & Reporting", href: "/solutions/analytics-reporting", icon: BarChart3, description: "Turn operational data into decisions with live dashboards." },
+        { name: "Cybersecurity & Access Control", href: "/solutions/cybersecurity", icon: ShieldCheck, description: "Protect OT networks and control who accesses what." },
+        { name: "CCTV & Video Surveillance Management", href: "/solutions/cctv-surveillance", icon: Video, description: "Centralize video feeds with intelligent monitoring." },
+      ],
+    },
   ];
 
-  // Services Data Setup
-  const serviceCategories = [
+  const solutionsFeatured: MegaMenuFeatured = {
+    icon: Layers,
+    title: "Industrial IoT Platform",
+    description: "Connect PLCs, RTUs, sensors, DCS, SCADA, and enterprise applications into one unified real-time platform.",
+    ctaLabel: "Explore Platform",
+    ctaHref: "/solutions/iiot-platform",
+    exploreAllLabel: "Explore All Solutions",
+    exploreAllHref: "/solutions",
+  };
+
+  // --- Services ------------------------------------------------------------
+  const serviceCategories: MegaMenuCategory[] = [
     {
       title: "Core Deployments",
+      icon: Briefcase,
+      viewAllHref: "/services#core-deployments",
       items: [
-        { name: "SaaS Platform Services", href: "/services/saas-platform", icon: Cloud },
-        { name: "Turnkey Project Implementation", href: "/services/turnkey-implementation", icon: Briefcase },
-        { name: "Managed Services & AMC", href: "/services/managed-services-amc", icon: Wrench },
-      ]
+        { name: "SaaS Platform Services", href: "/services/saas-platform", icon: Cloud, description: "Fully managed platform access, hosted and maintained by us." },
+        { name: "Turnkey Project Implementation", href: "/services/turnkey-implementation", icon: Briefcase, description: "End-to-end deployment from design to commissioning." },
+        { name: "Managed Services & AMC", href: "/services/managed-services-amc", icon: Wrench, description: "Ongoing support and maintenance for continuous uptime." },
+      ],
     },
     {
       title: "Integration Services",
+      icon: Sliders,
+      viewAllHref: "/services#integration-services",
       items: [
-        { name: "System Integration Services", href: "/services/system-integration", icon: Sliders },
-        { name: "Industrial IoT & Edge Integration", href: "/services/industrial-iot-edge", icon: Cpu },
-        { name: "CCTV & Video Analytics Services", href: "/services/cctv-video-analytics", icon: Video },
-      ]
+        { name: "System Integration Services", href: "/services/system-integration", icon: Sliders, description: "Connect existing systems into one unified architecture." },
+        { name: "Industrial IoT & Edge Integration", href: "/services/industrial-iot-edge", icon: Cpu, description: "Bridge OT and IT with edge-ready IoT integration." },
+        { name: "CCTV & Video Analytics Services", href: "/services/cctv-video-analytics", icon: Video, description: "Deploy and integrate intelligent video systems." },
+      ],
     },
     {
       title: "Infrastructure & Advisory",
+      icon: Settings,
+      viewAllHref: "/services#infrastructure-advisory",
       items: [
-        { name: "Cloud & Infrastructure Services", href: "/services/cloud-infrastructure", icon: Settings },
-        { name: "GIS & Asset Digitization", href: "/services/gis-asset-digitization", icon: MapPin },
-        { name: "Training & Consulting", href: "/services/training-consulting", icon: GraduationCap },
-      ]
-    }
+        { name: "Cloud & Infrastructure Services", href: "/services/cloud-infrastructure", icon: Settings, description: "Scalable cloud infrastructure built for industrial data." },
+        { name: "GIS & Asset Digitization", href: "/services/gis-asset-digitization", icon: MapPin, description: "Digitize field assets into a searchable spatial record." },
+        { name: "Training & Consulting", href: "/services/training-consulting", icon: GraduationCap, description: "Upskill teams and plan your digital transformation roadmap." },
+      ],
+    },
   ];
 
-  // Industry Data Setup
-  const industryCategories = [
+  const servicesFeatured: MegaMenuFeatured = {
+    icon: Briefcase,
+    title: "Turnkey Project Implementation",
+    description: "From design to commissioning — we deliver end-to-end deployments backed by our engineering team.",
+    ctaLabel: "Explore Services",
+    ctaHref: "/services/turnkey-implementation",
+    exploreAllLabel: "Explore All Services",
+    exploreAllHref: "/services",
+  };
+
+  // --- Industries ------------------------------------------------------------
+  const industryCategories: MegaMenuCategory[] = [
     {
       title: "Energy & Resources",
+      icon: Flame,
+      viewAllHref: "/industries#energy-resources",
       items: [
-        { name: "City Gas Distribution (CGD)", href: "/industries/cgd", icon: Flame },
-        { name: "Oil & Gas", href: "/industries/oil-gas", icon: Settings },
-        { name: "Power & Utilities", href: "/industries/power-utilities", icon: Zap },
-      ]
+        { name: "City Gas Distribution (CGD)", href: "/industries/cgd", icon: Flame, description: "Purpose-built monitoring for CGD networks end-to-end." },
+        { name: "Oil & Gas", href: "/industries/oil-gas", icon: Settings, description: "Real-time visibility across upstream to downstream operations." },
+        { name: "Power & Utilities", href: "/industries/power-utilities", icon: Zap, description: "Grid monitoring and control for reliable power delivery." },
+      ],
     },
     {
       title: "Infrastructure & Automation",
+      icon: Factory,
+      viewAllHref: "/industries#infrastructure-automation",
       items: [
-        { name: "Water & Wastewater", href: "/industries/water-wastewater", icon: Droplet },
-        { name: "Renewable Energy", href: "/industries/renewable-energy", icon: Activity },
-        { name: "Manufacturing & Industrial Automation", href: "/industries/manufacturing-automation", icon: Factory },
-      ]
+        { name: "Water & Wastewater", href: "/industries/water-wastewater", icon: Droplet, description: "Monitor treatment and distribution networks in real time." },
+        { name: "Renewable Energy", href: "/industries/renewable-energy", icon: Activity, description: "Track generation and performance across renewable assets." },
+        { name: "Manufacturing & Industrial Automation", href: "/industries/manufacturing-automation", icon: Factory, description: "Connect plant floor systems into one control layer." },
+      ],
     },
     {
       title: "Smart Ecosystems",
+      icon: Building,
+      viewAllHref: "/industries#smart-ecosystems",
       items: [
-        { name: "Logistics & Transportation", href: "/industries/logistics-transportation", icon: Truck },
-        { name: "Smart Cities", href: "/industries/smart-cities", icon: Building },
-        { name: "Infrastructure & Utilities", href: "/industries/infrastructure-utilities", icon: Layers },
-      ]
-    }
+        { name: "Logistics & Transportation", href: "/industries/logistics-transportation", icon: Truck, description: "Live fleet and cargo visibility across your network." },
+        { name: "Smart Cities", href: "/industries/smart-cities", icon: Building, description: "Unify city infrastructure into one operational view." },
+        { name: "Infrastructure & Utilities", href: "/industries/infrastructure-utilities", icon: Layers, description: "Manage critical infrastructure at city scale." },
+      ],
+    },
   ];
+
+  const industriesFeatured: MegaMenuFeatured = {
+    icon: Flame,
+    title: "City Gas Distribution",
+    description: "Purpose-built monitoring and automation for CGD networks, from city gate to customer meter.",
+    ctaLabel: "Explore Industries",
+    ctaHref: "/industries/cgd",
+    exploreAllLabel: "Explore All Industries",
+    exploreAllHref: "/industries",
+  };
 
   const { theme } = useTheme();
   const effectiveTheme = theme;
 
-  // Solutions Hover Event Handlers
   const handleSolutionsEnter = () => {
     if (solutionsTimeoutRef.current) clearTimeout(solutionsTimeoutRef.current);
     setSolutionsOpen(true);
   };
-
   const handleSolutionsLeave = () => {
-    solutionsTimeoutRef.current = setTimeout(() => {
-      setSolutionsOpen(false);
-    }, 150);
+    solutionsTimeoutRef.current = setTimeout(() => setSolutionsOpen(false), 150);
+  };
+  const toggleSolutions = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setSolutionsOpen((prev) => !prev);
   };
 
-  // Services Hover Event Handlers
   const handleServicesEnter = () => {
     if (servicesTimeoutRef.current) clearTimeout(servicesTimeoutRef.current);
     setServicesOpen(true);
   };
-
   const handleServicesLeave = () => {
-    servicesTimeoutRef.current = setTimeout(() => {
-      setServicesOpen(false);
-    }, 150);
+    servicesTimeoutRef.current = setTimeout(() => setServicesOpen(false), 150);
+  };
+  const toggleServices = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setServicesOpen((prev) => !prev);
   };
 
-  // Industries Hover Event Handlers
   const handleIndustriesEnter = () => {
     if (industriesTimeoutRef.current) clearTimeout(industriesTimeoutRef.current);
     setIndustriesOpen(true);
   };
-
   const handleIndustriesLeave = () => {
-    industriesTimeoutRef.current = setTimeout(() => {
-      setIndustriesOpen(false);
-    }, 150);
+    industriesTimeoutRef.current = setTimeout(() => setIndustriesOpen(false), 150);
+  };
+  const toggleIndustries = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setIndustriesOpen((prev) => !prev);
   };
 
   useEffect(() => {
@@ -199,19 +237,14 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${isScrolled
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
+        isScrolled
           ? "border-b bg-card/80 shadow-[0_4px_20px_rgba(0,0,0,0.06)] backdrop-blur-md"
           : "bg-background"
-        } text-foreground ${effectiveTheme === "dark" ? "dark" : ""}`}
+      } text-foreground ${effectiveTheme === "dark" ? "dark" : ""}`}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 lg:px-8">
-        {/* Logo */}
-        <Link
-          to="/"
-          aria-label="Go to home"
-          onClick={() => setMobileMenu(false)}
-          className="flex items-center"
-        >
+        <Link to="/" aria-label="Go to home" onClick={() => setMobileMenu(false)} className="flex items-center">
           <img
             src={effectiveTheme === "dark" ? darklogo : lightlogo}
             alt="Altrex Logo"
@@ -219,184 +252,85 @@ const Header = () => {
           />
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden items-center gap-8 lg:flex">
+        {/* Desktop nav — visible from md (768px) up, per tablet spec */}
+        <nav className="hidden items-center gap-8 md:flex">
           {navLinks.map((item) => {
             const isActive = location.pathname.startsWith(item.href);
 
-            // Solutions Dynamic Menu Render
             if (item.name === "Solutions") {
               return (
-                <div
-                  key={item.name}
-                  className="relative h-16 flex items-center"
-                  onMouseEnter={handleSolutionsEnter}
-                  onMouseLeave={handleSolutionsLeave}
-                >
+                <div key={item.name} className="relative h-16 flex items-center" onMouseEnter={handleSolutionsEnter} onMouseLeave={handleSolutionsLeave}>
                   <Link
                     to={item.href}
-                    className={`text-sm font-medium transition-colors flex items-center gap-1 relative z-50 ${
+                    onClick={toggleSolutions}
+                    aria-haspopup="menu"
+                    aria-expanded={solutionsOpen}
+                    className={`text-sm font-medium transition-colors flex items-center gap-1 relative z-50 outline-none focus-visible:ring-2 focus-visible:ring-orange-500/40 rounded-sm ${
                       isActive || solutionsOpen ? "text-orange-500" : "text-foreground hover:text-orange-500"
                     }`}
                   >
                     {item.name}
                     <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${solutionsOpen ? "rotate-180 text-orange-500" : ""}`} />
                   </Link>
-
-                  {solutionsOpen && (
-                    <div className="fixed inset-x-0 top-16 w-screen h-auto border-b border-border bg-card/95 backdrop-blur-md shadow-xl animate-in fade-in slide-in-from-top-2 duration-200">
-                      <div className="mx-auto max-w-7xl px-6 lg:px-8 py-8 h-full">
-                        <div className="grid grid-cols-3 gap-8">
-                          {solutionCategories.map((category) => (
-                          <div key={category.title} className="flex flex-col gap-3">
-                            <h4 className="text-[10px] font-bold uppercase tracking-[0.15em] text-muted-foreground border-b border-border pb-2">
-                              {category.title}
-                            </h4>
-                            <ul className="flex flex-col gap-1">
-                              {category.items.map((subItem) => {
-                                const Icon = subItem.icon;
-                                return (
-                                  <li key={subItem.name}>
-                                    <Link
-                                      to={subItem.href}
-                                      onClick={() => setSolutionsOpen(false)}
-                                      className="group flex items-center gap-2.5 rounded-lg p-2 transition-all duration-150 hover:bg-orange-500/5"
-                                    >
-                                      <div className="rounded-md bg-muted border border-border p-1.5 text-muted-foreground group-hover:border-orange-500/30 group-hover:text-orange-500 transition-colors shadow-sm">
-                                        <Icon className="h-3.5 w-3.5" />
-                                      </div>
-                                      <span className="text-xs font-medium text-foreground group-hover:text-orange-500 transition-colors leading-snug">
-                                        {subItem.name}
-                                      </span>
-                                    </Link>
-                                  </li>
-                                );
-                              })}
-                            </ul>
-                          </div>
-                        ))}
-                        </div>
-                      </div>
-                    </div>
-                  )}
+                  <MegaMenu
+                    isOpen={solutionsOpen}
+                    label="Solutions"
+                    categories={solutionCategories}
+                    featured={solutionsFeatured}
+                    onLinkClick={() => setSolutionsOpen(false)}
+                  />
                 </div>
               );
             }
 
-            // Services Dynamic Menu Render
             if (item.name === "Services") {
               return (
-                <div
-                  key={item.name}
-                  className="relative h-16 flex items-center"
-                  onMouseEnter={handleServicesEnter}
-                  onMouseLeave={handleServicesLeave}
-                >
+                <div key={item.name} className="relative h-16 flex items-center" onMouseEnter={handleServicesEnter} onMouseLeave={handleServicesLeave}>
                   <Link
                     to={item.href}
-                    className={`text-sm font-medium transition-colors flex items-center gap-1 relative z-50 ${
+                    onClick={toggleServices}
+                    aria-haspopup="menu"
+                    aria-expanded={servicesOpen}
+                    className={`text-sm font-medium transition-colors flex items-center gap-1 relative z-50 outline-none focus-visible:ring-2 focus-visible:ring-orange-500/40 rounded-sm ${
                       isActive || servicesOpen ? "text-orange-500" : "text-foreground hover:text-orange-500"
                     }`}
                   >
                     {item.name}
                     <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${servicesOpen ? "rotate-180 text-orange-500" : ""}`} />
                   </Link>
-
-                  {servicesOpen && (
-                    <div className="fixed inset-x-0 top-16 w-screen h-auto border-b border-border bg-card/95 backdrop-blur-md shadow-xl animate-in fade-in slide-in-from-top-2 duration-200">
-                      <div className="mx-auto max-w-7xl px-6 lg:px-8 py-8 h-full">
-                        <div className="grid grid-cols-3 gap-8">
-                          {serviceCategories.map((category) => (
-                          <div key={category.title} className="flex flex-col gap-3">
-                            <h4 className="text-[10px] font-bold uppercase tracking-[0.15em] text-muted-foreground border-b border-border pb-2">
-                              {category.title}
-                            </h4>
-                            <ul className="flex flex-col gap-1">
-                              {category.items.map((subItem) => {
-                                const Icon = subItem.icon;
-                                return (
-                                  <li key={subItem.name}>
-                                    <Link
-                                      to={subItem.href}
-                                      onClick={() => setServicesOpen(false)}
-                                      className="group flex items-center gap-2.5 rounded-lg p-2 transition-all duration-150 hover:bg-orange-500/5"
-                                    >
-                                      <div className="rounded-md bg-muted border border-border p-1.5 text-muted-foreground group-hover:border-orange-500/30 group-hover:text-orange-500 transition-colors shadow-sm">
-                                        <Icon className="h-3.5 w-3.5" />
-                                      </div>
-                                      <span className="text-xs font-medium text-foreground group-hover:text-orange-500 transition-colors leading-snug">
-                                        {subItem.name}
-                                      </span>
-                                    </Link>
-                                  </li>
-                                );
-                              })}
-                            </ul>
-                          </div>
-                        ))}
-                        </div>
-                      </div>
-                    </div>
-                  )}
+                  <MegaMenu
+                    isOpen={servicesOpen}
+                    label="Services"
+                    categories={serviceCategories}
+                    featured={servicesFeatured}
+                    onLinkClick={() => setServicesOpen(false)}
+                  />
                 </div>
               );
             }
 
-            // Industries Dynamic Menu Render
             if (item.name === "Industries") {
               return (
-                <div
-                  key={item.name}
-                  className="relative h-16 flex items-center"
-                  onMouseEnter={handleIndustriesEnter}
-                  onMouseLeave={handleIndustriesLeave}
-                >
+                <div key={item.name} className="relative h-16 flex items-center" onMouseEnter={handleIndustriesEnter} onMouseLeave={handleIndustriesLeave}>
                   <Link
                     to={item.href}
-                    className={`text-sm font-medium transition-colors flex items-center gap-1 relative z-50 ${
+                    onClick={toggleIndustries}
+                    aria-haspopup="menu"
+                    aria-expanded={industriesOpen}
+                    className={`text-sm font-medium transition-colors flex items-center gap-1 relative z-50 outline-none focus-visible:ring-2 focus-visible:ring-orange-500/40 rounded-sm ${
                       isActive || industriesOpen ? "text-orange-500" : "text-foreground hover:text-orange-500"
                     }`}
                   >
                     {item.name}
                     <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${industriesOpen ? "rotate-180 text-orange-500" : ""}`} />
                   </Link>
-
-                  {industriesOpen && (
-                    <div className="fixed inset-x-0 top-16 w-screen h-auto border-b border-border bg-card/95 backdrop-blur-md shadow-xl animate-in fade-in slide-in-from-top-2 duration-200">
-                      <div className="mx-auto max-w-7xl px-6 lg:px-8 py-8 h-full">
-                        <div className="grid grid-cols-3 gap-8">
-                          {industryCategories.map((category) => (
-                          <div key={category.title} className="flex flex-col gap-3">
-                            <h4 className="text-[10px] font-bold uppercase tracking-[0.15em] text-muted-foreground border-b border-border pb-2">
-                              {category.title}
-                            </h4>
-                            <ul className="flex flex-col gap-1">
-                              {category.items.map((subItem) => {
-                                const Icon = subItem.icon;
-                                return (
-                                  <li key={subItem.name}>
-                                    <Link
-                                      to={subItem.href}
-                                      onClick={() => setIndustriesOpen(false)}
-                                      className="group flex items-center gap-2.5 rounded-lg p-2 transition-all duration-150 hover:bg-orange-500/5"
-                                    >
-                                      <div className="rounded-md bg-muted border border-border p-1.5 text-muted-foreground group-hover:border-orange-500/30 group-hover:text-orange-500 transition-colors shadow-sm">
-                                        <Icon className="h-3.5 w-3.5" />
-                                      </div>
-                                      <span className="text-xs font-medium text-foreground group-hover:text-orange-500 transition-colors leading-snug">
-                                        {subItem.name}
-                                      </span>
-                                    </Link>
-                                  </li>
-                                );
-                              })}
-                            </ul>
-                          </div>
-                        ))}
-                        </div>
-                      </div>
-                    </div>
-                  )}
+                  <MegaMenu
+                    isOpen={industriesOpen}
+                    label="Industries"
+                    categories={industryCategories}
+                    featured={industriesFeatured}
+                    onLinkClick={() => setIndustriesOpen(false)}
+                  />
                 </div>
               );
             }
@@ -405,7 +339,7 @@ const Header = () => {
               <Link
                 key={item.name}
                 to={item.href}
-                className={`text-sm font-medium transition-colors ${
+                className={`text-sm font-medium transition-colors outline-none focus-visible:ring-2 focus-visible:ring-orange-500/40 rounded-sm ${
                   isActive ? "text-orange-500" : "text-foreground hover:text-orange-500"
                 }`}
               >
@@ -415,193 +349,86 @@ const Header = () => {
           })}
         </nav>
 
-        <div className="hidden items-center gap-4 lg:flex">
+        <div className="hidden items-center gap-4 md:flex">
           <ThemeToggle />
         </div>
 
-        {/* Mobile Button */}
+        {/* Mobile Button — visible below md */}
         <Button
           size="icon"
           variant="outline"
           onClick={() => setMobileMenu(!mobileMenu)}
-          className="flex items-center justify-center lg:hidden"
+          aria-expanded={mobileMenu}
+          aria-controls="mobile-nav-panel"
+          aria-label={mobileMenu ? "Close menu" : "Open menu"}
+          className="flex items-center justify-center md:hidden"
         >
-          {mobileMenu ? (
-            <X className="h-6 w-6" />
-          ) : (
-            <Menu className="h-6 w-6" />
-          )}
+          {mobileMenu ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </Button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu — accordion, below md */}
       {mobileMenu && (
-        <div className="border-t border-border bg-card lg:hidden max-h-[calc(100vh-4rem)] overflow-y-auto">
+        <div id="mobile-nav-panel" className="border-t border-border bg-card md:hidden max-h-[calc(100vh-4rem)] overflow-y-auto">
           <div className="space-y-1 px-4 py-4">
-            {/* Theme Toggle */}
             <div className="flex items-center justify-between px-2 py-3 border-b border-border mb-2">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-                Theme
-              </p>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">Theme</p>
               <ThemeToggle />
             </div>
 
             {navLinks.map((item) => {
               const isActive = location.pathname.startsWith(item.href);
 
-              // Mobile Solutions Accordion
               if (item.name === "Solutions") {
                 return (
-                  <div key={item.name}>
-                    <button
-                      onClick={() => setMobileSolutionsOpen(!mobileSolutionsOpen)}
-                      className={`w-full flex items-center justify-between px-2 py-3 text-sm font-medium transition-colors rounded-lg ${
-                        mobileSolutionsOpen ? "text-orange-500 bg-orange-500/5" : "hover:text-orange-500 hover:bg-orange-500/5"
-                      }`}
-                    >
-                      <span>{item.name}</span>
-                      <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${mobileSolutionsOpen ? "rotate-180 text-orange-500" : ""}`} />
-                    </button>
-                    {mobileSolutionsOpen && (
-                      <div className="mt-1 ml-2 border-l-2 border-orange-500/20 pl-3 space-y-3 pb-2">
-                        {solutionCategories.map((category) => (
-                          <div key={category.title}>
-                            <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-muted-foreground px-2 py-1.5">
-                              {category.title}
-                            </p>
-                            <ul className="space-y-0.5">
-                              {category.items.map((subItem) => {
-                                const Icon = subItem.icon;
-                                return (
-                                  <li key={subItem.name}>
-                                    <Link
-                                      to={subItem.href}
-                                      onClick={() => { setMobileMenu(false); setMobileSolutionsOpen(false); }}
-                                      className="group flex items-center gap-2.5 rounded-lg px-2 py-2 transition-all duration-150 hover:bg-orange-500/5"
-                                    >
-                                      <div className="shrink-0 rounded-md bg-muted border border-border p-1.5 text-muted-foreground group-hover:border-orange-500/30 group-hover:text-orange-500 transition-colors">
-                                        <Icon className="h-3.5 w-3.5" />
-                                      </div>
-                                      <span className="text-xs font-medium text-foreground group-hover:text-orange-500 transition-colors leading-snug">
-                                        {subItem.name}
-                                      </span>
-                                    </Link>
-                                  </li>
-                                );
-                              })}
-                            </ul>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
+                  <MobileMegaAccordion
+                    key={item.name}
+                    label="Solutions"
+                    panelId="mobile-solutions-panel"
+                    isOpen={mobileSolutionsOpen}
+                    onToggle={() => setMobileSolutionsOpen((prev) => !prev)}
+                    categories={solutionCategories}
+                    featured={solutionsFeatured}
+                    onLinkClick={() => { setMobileMenu(false); setMobileSolutionsOpen(false); }}
+                  />
                 );
               }
 
-              // Mobile Services Accordion
               if (item.name === "Services") {
                 return (
-                  <div key={item.name}>
-                    <button
-                      onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                      className={`w-full flex items-center justify-between px-2 py-3 text-sm font-medium transition-colors rounded-lg ${
-                        mobileServicesOpen ? "text-orange-500 bg-orange-500/5" : "hover:text-orange-500 hover:bg-orange-500/5"
-                      }`}
-                    >
-                      <span>{item.name}</span>
-                      <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${mobileServicesOpen ? "rotate-180 text-orange-500" : ""}`} />
-                    </button>
-                    {mobileServicesOpen && (
-                      <div className="mt-1 ml-2 border-l-2 border-orange-500/20 pl-3 space-y-3 pb-2">
-                        {serviceCategories.map((category) => (
-                          <div key={category.title}>
-                            <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-muted-foreground px-2 py-1.5">
-                              {category.title}
-                            </p>
-                            <ul className="space-y-0.5">
-                              {category.items.map((subItem) => {
-                                const Icon = subItem.icon;
-                                return (
-                                  <li key={subItem.name}>
-                                    <Link
-                                      to={subItem.href}
-                                      onClick={() => { setMobileMenu(false); setMobileServicesOpen(false); }}
-                                      className="group flex items-center gap-2.5 rounded-lg px-2 py-2 transition-all duration-150 hover:bg-orange-500/5"
-                                    >
-                                      <div className="shrink-0 rounded-md bg-muted border border-border p-1.5 text-muted-foreground group-hover:border-orange-500/30 group-hover:text-orange-500 transition-colors">
-                                        <Icon className="h-3.5 w-3.5" />
-                                      </div>
-                                      <span className="text-xs font-medium text-foreground group-hover:text-orange-500 transition-colors leading-snug">
-                                        {subItem.name}
-                                      </span>
-                                    </Link>
-                                  </li>
-                                );
-                              })}
-                            </ul>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
+                  <MobileMegaAccordion
+                    key={item.name}
+                    label="Services"
+                    panelId="mobile-services-panel"
+                    isOpen={mobileServicesOpen}
+                    onToggle={() => setMobileServicesOpen((prev) => !prev)}
+                    categories={serviceCategories}
+                    featured={servicesFeatured}
+                    onLinkClick={() => { setMobileMenu(false); setMobileServicesOpen(false); }}
+                  />
                 );
               }
 
-              // Mobile Industries Accordion
               if (item.name === "Industries") {
                 return (
-                  <div key={item.name}>
-                    <button
-                      onClick={() => setMobileIndustriesOpen(!mobileIndustriesOpen)}
-                      className={`w-full flex items-center justify-between px-2 py-3 text-sm font-medium transition-colors rounded-lg ${
-                        mobileIndustriesOpen ? "text-orange-500 bg-orange-500/5" : "hover:text-orange-500 hover:bg-orange-500/5"
-                      }`}
-                    >
-                      <span>{item.name}</span>
-                      <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${mobileIndustriesOpen ? "rotate-180 text-orange-500" : ""}`} />
-                    </button>
-                    {mobileIndustriesOpen && (
-                      <div className="mt-1 ml-2 border-l-2 border-orange-500/20 pl-3 space-y-3 pb-2">
-                        {industryCategories.map((category) => (
-                          <div key={category.title}>
-                            <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-muted-foreground px-2 py-1.5">
-                              {category.title}
-                            </p>
-                            <ul className="space-y-0.5">
-                              {category.items.map((subItem) => {
-                                const Icon = subItem.icon;
-                                return (
-                                  <li key={subItem.name}>
-                                    <Link
-                                      to={subItem.href}
-                                      onClick={() => { setMobileMenu(false); setMobileIndustriesOpen(false); }}
-                                      className="group flex items-center gap-2.5 rounded-lg px-2 py-2 transition-all duration-150 hover:bg-orange-500/5"
-                                    >
-                                      <div className="shrink-0 rounded-md bg-muted border border-border p-1.5 text-muted-foreground group-hover:border-orange-500/30 group-hover:text-orange-500 transition-colors">
-                                        <Icon className="h-3.5 w-3.5" />
-                                      </div>
-                                      <span className="text-xs font-medium text-foreground group-hover:text-orange-500 transition-colors leading-snug">
-                                        {subItem.name}
-                                      </span>
-                                    </Link>
-                                  </li>
-                                );
-                              })}
-                            </ul>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
+                  <MobileMegaAccordion
+                    key={item.name}
+                    label="Industries"
+                    panelId="mobile-industries-panel"
+                    isOpen={mobileIndustriesOpen}
+                    onToggle={() => setMobileIndustriesOpen((prev) => !prev)}
+                    categories={industryCategories}
+                    featured={industriesFeatured}
+                    onLinkClick={() => { setMobileMenu(false); setMobileIndustriesOpen(false); }}
+                  />
                 );
               }
 
-              // Regular nav links
               return (
                 <Link
                   key={item.name}
                   to={item.href}
-                  className={`block px-2 py-3 text-sm font-medium transition-colors rounded-lg ${
+                  className={`block px-2 py-3 text-sm font-medium transition-colors rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-orange-500/40 ${
                     isActive ? "text-orange-500" : "hover:text-orange-500 hover:bg-orange-500/5"
                   }`}
                   onClick={() => setMobileMenu(false)}

@@ -1,10 +1,9 @@
 import type { ReactNode } from "react";
 import { useEffect, useMemo } from "react";
 import { useParams, Link } from "react-router-dom";
-import { motion, type Variants } from "framer-motion";
+import { motion, type Variants, useMotionValue, useTransform, animate } from "framer-motion";
 import {
   ArrowRight,
-  // ChevronRight,
   Eye,
   Brain,
   AlertTriangle,
@@ -15,22 +14,13 @@ import {
   CheckCircle2,
   AlertCircle,
   Cpu,
-  // Layers,
-  // Monitor,
-  // MapPin,
   Truck,
-  // Activity,
   Zap,
   Cloud,
-  // Settings,
-  // Sliders,
-  // Briefcase,
-  // Wrench,
   GraduationCap,
   Flame,
   Droplet,
   Factory,
-  // Building,
   HeartPulse,
   Fuel,
   Building2
@@ -38,9 +28,20 @@ import {
 import { Button } from "@/components/ui/button";
 import { servicesRegistry } from "@/data/servicesRegistry";
 import type { ServiceData } from "@/types/service";
-// import { Badge } from "@/components/ui/badge";
 import { SectionBadge } from "@/components/ui/section-badge";
 import CTASection from "@/components/CTASection";
+import {
+  GAUGE_CENTER,
+  GAUGE_RADIUS,
+  GAUGE_START_ANGLE,
+  GAUGE_END_ANGLE,
+  GAUGE_TRACK_PATH,
+  GAUGE_TICK_VALUES,
+  angleForValue,
+  describeArc,
+  pointOnGauge,
+  getLoadZone,
+} from "@/lib/gauge";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 28 },
@@ -59,7 +60,7 @@ const cardVariant: Variants = {
 
 function SectionLabel({ children }: { children: ReactNode }) {
   return (
-    <span className="font-mono text-xs tracking-[0.2em] uppercase text-muted-foreground">
+    <span className="font-bold text-xs tracking-[0.2em] uppercase text-muted-foreground">
       {children}
     </span>
   );
@@ -96,12 +97,31 @@ const getIconForText = (text: string) => {
   return CheckCircle2;
 };
 
+const METRIC_COLORS = ["#34d399", "#3b82f6"];
+
 const LivePanel = ({ service }: { service: ServiceData }) => {
-  const seed = useMemo(() => service.slug.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0), [service.slug]);
-  const systemLoad = (seed % 15) + 70; // 70-85
+  const seed = useMemo(
+    () => service.slug.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0),
+    [service.slug]
+  );
+  const systemLoad = (seed % 15) + 70; // 70-85, deterministic per service
   const metric1 = service.whatWeDeliver?.length ?? service.keyBenefits.length;
   const metric2 = service.industries.length;
-  const capabilities = service.whatWeDeliver?.map(d => d.title) ?? service.keyBenefits;
+  const capabilities = (service.whatWeDeliver?.map((d) => d.title) ?? service.keyBenefits).slice(0, 6);
+  const activeIdx = seed % Math.max(capabilities.length, 1);
+
+  const loadMV = useMotionValue(0);
+  const needleAngle = useTransform(loadMV, (v) => angleForValue(v));
+  const needleX = useTransform(needleAngle, (a) => pointOnGauge(72, a).x);
+  const needleY = useTransform(needleAngle, (a) => pointOnGauge(72, a).y);
+  const progress = useTransform(loadMV, [0, 100], [0, 1]);
+  const zone = getLoadZone(systemLoad);
+
+  // Sweep the needle up to its resting value on mount, like an instrument booting up.
+  useEffect(() => {
+    const controls = animate(loadMV, systemLoad, { duration: 1.2, ease: "easeOut" });
+    return () => controls.stop();
+  }, [loadMV, systemLoad]);
 
   return (
     <div className="rounded-2xl border border-border bg-[var(--bg-surface)]/80 backdrop-blur-md p-6 shadow-xl w-full max-w-xl">
@@ -112,48 +132,97 @@ const LivePanel = ({ service }: { service: ServiceData }) => {
           <div className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
           <div className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
           <div className="h-4 w-px bg-white/10 mx-1" />
-          <span className="font-mono text-[10px] text-[var(--text-muted)] uppercase tracking-widest">ALTREX PLATFORM — LIVE</span>
+          <span className="font-mono text-[10px] text-[var(--text-muted)] uppercase tracking-widest">
+            ALTREX PLATFORM — LIVE
+          </span>
         </div>
         <div className="flex items-center gap-2">
           <div className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
           <span className="text-[10px] text-[var(--data-green)] font-mono">LIVE</span>
         </div>
       </div>
-      {/* Load */}
-      <div className="mb-6">
-        <div className="flex justify-between items-center mb-2">
+
+      {/* Gauge */}
+      <div className="flex items-center gap-4 mb-6">
+        <svg viewBox="0 0 200 200" className="w-24 h-24 shrink-0">
+          {/* threshold zones */}
+          <path d={describeArc(GAUGE_RADIUS, GAUGE_START_ANGLE, angleForValue(60))} fill="none" stroke="#34d399" strokeOpacity={0.18} strokeWidth={10} strokeLinecap="round" />
+          <path d={describeArc(GAUGE_RADIUS, angleForValue(60), angleForValue(85))} fill="none" stroke="#22d3ee" strokeOpacity={0.18} strokeWidth={10} strokeLinecap="round" />
+          <path d={describeArc(GAUGE_RADIUS, angleForValue(85), GAUGE_END_ANGLE)} fill="none" stroke="#fbbf24" strokeOpacity={0.18} strokeWidth={10} strokeLinecap="round" />
+
+          {/* live fill */}
+          <motion.path
+            d={GAUGE_TRACK_PATH}
+            fill="none"
+            stroke={zone.color}
+            strokeWidth={8}
+            strokeLinecap="round"
+            style={{ pathLength: progress, filter: `drop-shadow(0 0 3px ${zone.color}90)` }}
+          />
+
+          {/* tick marks */}
+          {GAUGE_TICK_VALUES.map((v) => {
+            const angle = angleForValue(v);
+            const inner = pointOnGauge(88, angle);
+            const outer = pointOnGauge(96, angle);
+            return <line key={v} x1={inner.x} y1={inner.y} x2={outer.x} y2={outer.y} stroke="currentColor" strokeOpacity={0.15} strokeWidth={1.5} />;
+          })}
+
+          {/* needle */}
+          <motion.line x1={GAUGE_CENTER} y1={GAUGE_CENTER} x2={needleX} y2={needleY} stroke={zone.color} strokeWidth={2.5} strokeLinecap="round" />
+          <circle cx={GAUGE_CENTER} cy={GAUGE_CENTER} r={5} fill={zone.color} />
+        </svg>
+
+        <div className="flex flex-col gap-1">
           <span className="font-mono text-[10px] text-[var(--text-muted)] uppercase">SYSTEM LOAD</span>
-          <span className="text-[10px] text-orange-400 bg-orange-500/10 border border-orange-500/20 px-2 py-0.5 rounded">OPTIMAL</span>
-        </div>
-        <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
-          <motion.div className="h-full bg-gradient-to-r from-orange-600 to-orange-400" initial={{ width: 0 }} animate={{ width: `${systemLoad}%` }} transition={{ duration: 1.2, ease: "easeOut" }} />
+          <span className="font-mono text-xl font-bold tabular-nums">{systemLoad}%</span>
+          <span
+            className="text-[10px] px-2 py-0.5 rounded border w-fit"
+            style={{ color: zone.color, backgroundColor: `${zone.color}1a`, borderColor: `${zone.color}33` }}
+          >
+            {zone.label}
+          </span>
         </div>
       </div>
+
       {/* Metrics */}
       <div className="grid grid-cols-2 gap-4 mb-6">
         <div className="rounded-xl border border-border p-4 bg-background">
-          <div className="h-1.5 w-1.5 rounded-full bg-[var(--data-green)] mb-2" />
+          <div className="h-1.5 w-1.5 rounded-full mb-2" style={{ backgroundColor: METRIC_COLORS[0] }} />
           <div className="font-mono text-[9px] text-[var(--text-muted)] uppercase">ACTIVE CAPABILITIES</div>
           <div className="text-xl font-bold">{metric1}</div>
         </div>
         <div className="rounded-xl border border-border p-4 bg-background">
-          <div className="h-1.5 w-1.5 rounded-full bg-[#3b82f6] mb-2" />
+          <div className="h-1.5 w-1.5 rounded-full mb-2" style={{ backgroundColor: METRIC_COLORS[1] }} />
           <div className="font-mono text-[9px] text-[var(--text-muted)] uppercase">INDUSTRIES</div>
           <div className="text-xl font-bold">{metric2}</div>
         </div>
       </div>
+
       {/* Modules */}
       <div>
         <div className="font-mono text-[10px] text-[var(--text-muted)] uppercase tracking-widest mb-3">ACTIVE MODULES</div>
         <div className="flex flex-wrap gap-2">
-          {capabilities.slice(0, 6).map((cap, i) => (
-            <span key={cap} className={`rounded-md border border-border px-2.5 py-1 text-[10px] font-mono ${i === (seed % 6) ? 'border-orange-500/40 bg-orange-500/10 text-orange-300' : 'text-muted-foreground'}`}>{cap}</span>
+          {capabilities.map((cap, i) => (
+            <span
+              key={cap}
+              className="rounded-md border px-2.5 py-1 text-[10px] font-mono"
+              style={
+                i === activeIdx
+                  ? { borderColor: "#22d3ee66", backgroundColor: "#22d3ee1a", color: "#22d3ee" }
+                  : { borderColor: "var(--border)", color: "var(--text-muted)" }
+              }
+            >
+              {cap}
+            </span>
           ))}
         </div>
       </div>
     </div>
   );
 };
+
+export default LivePanel;
 
 export const ServicePage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -201,9 +270,9 @@ export const ServicePage: React.FC = () => {
                 className="mb-8"
               />
             </motion.div>
-            <motion.p variants={fadeUp} className="font-mono text-sm tracking-[0.2em] uppercase text-[var(--accent-violet)] mb-4">{service.hero.subtitle}</motion.p>
+            <motion.p variants={fadeUp} className="text-sm font-semibold tracking-[0.1em] uppercase text-[var(--accent-violet)] mb-4">{service.hero.subtitle}</motion.p>
             <motion.h1 variants={fadeUp} className="text-4xl font-bold tracking-[-0.03em] text-foreground sm:text-5xl lg:text-6xl leading-[1.1] uppercase">{service.title}</motion.h1>
-            <motion.p variants={fadeUp} transition={{ delay: 0.8 }} className="mt-8 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">{service.hero.description}</motion.p>
+            <motion.p variants={fadeUp} transition={{ delay: 0.8 }} className="mt-8 max-w-2xl text-base font-semibold leading-7 text-muted-foreground sm:text-lg">{service.hero.description}</motion.p>
             {service.hero.badge && <motion.div variants={fadeUp} transition={{ delay: 0.95 }} className="mt-8 max-w-2xl rounded-2xl border border-orange-400/20 bg-orange-50/50 p-5 text-sm text-foreground">{service.hero.badge}</motion.div>}
             <motion.div variants={fadeUp} transition={{ delay: 1 }} className="mt-10 flex flex-wrap gap-4">
               {service.hero.ctas.slice(0, 2).map((cta, idx) => (

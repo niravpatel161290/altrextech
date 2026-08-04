@@ -17,8 +17,6 @@ const fadeUp: Variants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.7 } },
 };
 
-
-
 const CTASection = ({
   title,
   description,
@@ -27,34 +25,34 @@ const CTASection = ({
   badge = "[ READY TO START ]",
 }: CTAData) => {
   return (
-    <section className="my-10 lg:my-20 px-4 sm:px-6 lg:px-8">
+    <section className="my-6 sm:my-10 lg:my-20 px-6 sm:px-8 lg:px-8">
       <Card
-        className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 lg:py-16 text-center border border-border rounded-3xl"
+        className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-8 py-8 sm:py-12 lg:py-16 text-center rounded-3xl"
       >
         <motion.p
           variants={fadeUp}
-          className="font-mono font-semibold text-[10px] lg:text-xs text-muted-foreground tracking-[0.25em] uppercase mb-4 lg:mb-6"
+          className="font-bold text-[10px] lg:text-xs text-muted-foreground tracking-[0.25em] uppercase mb-2 sm:mb-4 lg:mb-5"
         >
           {badge}
         </motion.p>
 
         <motion.h2
           variants={fadeUp}
-          className="text-3xl lg:text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl max-w-3xl mx-auto"
+          className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground lg:text-5xl max-w-3xl mx-auto leading-tight"
         >
           {title}
         </motion.h2>
 
         <motion.p
           variants={fadeUp}
-          className="mt-4 lg:mt-6 max-w-2xl mx-auto text-sm lg:text-base text-muted-foreground font-medium leading-6 lg:leading-7"
+          className="mt-3 sm:mt-4 lg:mt-5 max-w-2xl mx-auto text-sm lg:text-base text-muted-foreground font-semibold leading-6 lg:leading-7"
         >
           {description}
         </motion.p>
 
         <motion.div
           variants={fadeUp}
-          className="mt-10 flex flex-wrap gap-4 justify-center"
+          className="mt-6 sm:mt-8 lg:mt-9 flex flex-wrap gap-3 sm:gap-4 justify-center"
         >
           <Link to={primaryButton.href}>
             <Button className="bg-orange-500 hover:bg-primary text-white h-11 px-8 rounded-lg font-medium">

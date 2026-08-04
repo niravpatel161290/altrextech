@@ -962,7 +962,6 @@ const About = () => {
       <HowWeWork />
       <MissionSection />
       <StatsSection />
-      {/* <TimelineSection /> */}
       <TeamSection />
       <ValuesSection />
       <CTASection

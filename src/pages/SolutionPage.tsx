@@ -1,11 +1,27 @@
 import { useParams, Link } from "react-router-dom";
 import { motion, type Variants } from "framer-motion";
-import { useState} from "react";
-import { 
-  ArrowRight, Activity, Zap, Database, LayoutDashboard, 
-  Settings, Network, Factory, Flame, Droplet, Truck, 
-  BarChart3, Cpu, Layers, Share2, TrendingUp, CheckCircle2,
-  Clock, ShieldCheck, Workflow
+import { useState } from "react";
+import {
+  ArrowRight,
+  Activity,
+  Zap,
+  Database,
+  LayoutDashboard,
+  Settings,
+  Network,
+  Factory,
+  Flame,
+  Droplet,
+  Truck,
+  BarChart3,
+  Cpu,
+  Layers,
+  Share2,
+  TrendingUp,
+  CheckCircle2,
+  Clock,
+  ShieldCheck,
+  Workflow,
 } from "lucide-react";
 
 import { SectionBadge } from "@/components/ui/section-badge";
@@ -44,7 +60,7 @@ const cardVariant: Variants = {
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <span className="font-mono text-xs tracking-[0.2em] uppercase text-muted-foreground">
+    <span className="text-sm font-bold tracking-[0.2em] uppercase text-muted-foreground">
       {children}
     </span>
   );
@@ -52,7 +68,7 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 
 function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+    <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
       {children}
     </h2>
   );
@@ -67,25 +83,73 @@ const getIndustryIcon = (name: string) => {
   const nameLower = name.toLowerCase();
   if (nameLower.includes("gas") || nameLower.includes("oil")) return Flame;
   if (nameLower.includes("water")) return Droplet;
-  if (nameLower.includes("manufactur") || nameLower.includes("factory")) return Factory;
-  if (nameLower.includes("renewab") || nameLower.includes("solar") || nameLower.includes("energy")) return Zap;
-  if (nameLower.includes("utilit") || nameLower.includes("power")) return Activity;
-  if (nameLower.includes("fleet") || nameLower.includes("mobil") || nameLower.includes("vehicle")) return Truck;
-  if (nameLower.includes("building") || nameLower.includes("commercial")) return LayoutDashboard;
+  if (nameLower.includes("manufactur") || nameLower.includes("factory"))
+    return Factory;
+  if (
+    nameLower.includes("renewab") ||
+    nameLower.includes("solar") ||
+    nameLower.includes("energy")
+  )
+    return Zap;
+  if (nameLower.includes("utilit") || nameLower.includes("power"))
+    return Activity;
+  if (
+    nameLower.includes("fleet") ||
+    nameLower.includes("mobil") ||
+    nameLower.includes("vehicle")
+  )
+    return Truck;
+  if (nameLower.includes("building") || nameLower.includes("commercial"))
+    return LayoutDashboard;
   if (nameLower.includes("iot")) return Network;
   return Settings;
 };
 
 const getBenefitVisual = (title: string, description: string) => {
   const text = (title + " " + description).toLowerCase();
-  
-  if (text.match(/reduce|minimize|lower|save|cost/)) return { icon: TrendingUp, color: "text-green-500", bg: "bg-green-500/10", animate: "reduce" };
-  if (text.match(/accelerate|speed|fast|quick|time/)) return { icon: Clock, color: "text-blue-500", bg: "bg-blue-500/10", animate: "pulse" };
-  if (text.match(/increase|maximize|improve|efficiency|growth/)) return { icon: BarChart3, color: "text-orange-500", bg: "bg-orange-500/10", animate: "grow" };
-  if (text.match(/security|reliable|safe|secure|protect/)) return { icon: ShieldCheck, color: "text-indigo-500", bg: "bg-indigo-500/10", animate: "shield" };
-  if (text.match(/digital|transform|modern|future/)) return { icon: Zap, color: "text-fuchsia-500", bg: "bg-fuchsia-500/10", animate: "spark" };
-  
-  return { icon: CheckCircle2, color: "text-orange-500", bg: "bg-orange-500/10", animate: "fade" };
+
+  if (text.match(/reduce|minimize|lower|save|cost/))
+    return {
+      icon: TrendingUp,
+      color: "text-green-500",
+      bg: "bg-green-500/10",
+      animate: "reduce",
+    };
+  if (text.match(/accelerate|speed|fast|quick|time/))
+    return {
+      icon: Clock,
+      color: "text-blue-500",
+      bg: "bg-blue-500/10",
+      animate: "pulse",
+    };
+  if (text.match(/increase|maximize|improve|efficiency|growth/))
+    return {
+      icon: BarChart3,
+      color: "text-orange-500",
+      bg: "bg-orange-500/10",
+      animate: "grow",
+    };
+  if (text.match(/security|reliable|safe|secure|protect/))
+    return {
+      icon: ShieldCheck,
+      color: "text-indigo-500",
+      bg: "bg-indigo-500/10",
+      animate: "shield",
+    };
+  if (text.match(/digital|transform|modern|future/))
+    return {
+      icon: Zap,
+      color: "text-fuchsia-500",
+      bg: "bg-fuchsia-500/10",
+      animate: "spark",
+    };
+
+  return {
+    icon: CheckCircle2,
+    color: "text-orange-500",
+    bg: "bg-orange-500/10",
+    animate: "fade",
+  };
 };
 
 // ─── Platform Capabilities — Bento Grid ───────────────────────────────────────
@@ -111,7 +175,11 @@ const spanPattern = [
   "lg:col-span-1 lg:row-span-1", // 5 — square
 ];
 
-function PlatformCapabilities({ capabilities }: { capabilities: Capability[] }) {
+function PlatformCapabilities({
+  capabilities,
+}: {
+  capabilities: Capability[];
+}) {
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
 
   return (
@@ -126,13 +194,14 @@ function PlatformCapabilities({ capabilities }: { capabilities: Capability[] }) 
           <motion.div variants={fadeUp} className="mb-16 space-y-3 text-center">
             <SectionLabel>Core Engine</SectionLabel>
             <SectionHeading>Platform Capabilities</SectionHeading>
-            <p className="text-muted-foreground max-w-2xl mx-auto mt-4 text-sm">
-              Built for scale and resilience. Explore the core technological modules driving our infrastructure.
+            <p className="text-muted-foreground font-semibold max-w-2xl mx-auto mt-4 text-lg">
+              Built for scale and resilience. Explore the core technological
+              modules driving our infrastructure.
             </p>
           </motion.div>
 
           <div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:auto-rows-[190px]"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:auto-rows-[minmax(190px,auto)]"
             style={{ gridAutoFlow: "dense" }}
           >
             {capabilities.map((cap, idx) => {
@@ -141,7 +210,11 @@ function PlatformCapabilities({ capabilities }: { capabilities: Capability[] }) 
               const isHero = idx === 0;
               const span = spanPattern[idx % spanPattern.length];
               const ordinal = String(idx + 1).padStart(2, "0");
-              const bulletLimit = isHero ? cap.items.length : span.includes("row-span-2") ? 5 : 3;
+              const bulletLimit = isHero
+                ? cap.items.length
+                : span.includes("row-span-2")
+                  ? 5
+                  : 3;
 
               return (
                 <motion.div
@@ -206,7 +279,9 @@ function PlatformCapabilities({ capabilities }: { capabilities: Capability[] }) 
 
                     <p
                       className={`text-muted-foreground ${
-                        isHero ? "text-sm max-w-md mb-6" : "text-xs mb-4 line-clamp-2"
+                        isHero
+                          ? "text-sm font-semibold max-w-md mb-6"
+                          : "text-xs font-semibold mb-4 line-clamp-2"
                       }`}
                     >
                       {cap.description}
@@ -218,7 +293,12 @@ function PlatformCapabilities({ capabilities }: { capabilities: Capability[] }) 
                       whileInView="visible"
                       viewport={{ once: true }}
                       variants={{
-                        visible: { transition: { staggerChildren: 0.08, delayChildren: 0.15 } },
+                        visible: {
+                          transition: {
+                            staggerChildren: 0.08,
+                            delayChildren: 0.15,
+                          },
+                        },
                       }}
                       className="flex flex-wrap gap-1.5 mt-auto"
                     >
@@ -227,10 +307,16 @@ function PlatformCapabilities({ capabilities }: { capabilities: Capability[] }) 
                           key={item}
                           variants={{
                             hidden: { opacity: 0, scale: 0.85 },
-                            visible: { opacity: 1, scale: 1, transition: { type: "spring" } },
+                            visible: {
+                              opacity: 1,
+                              scale: 1,
+                              transition: { type: "spring" },
+                            },
                           }}
                           className={`inline-flex items-center rounded-md bg-muted/50 border border-border text-muted-foreground ${
-                            isHero ? "px-2.5 py-1 text-[10px]" : "px-2 py-0.5 text-[9px]"
+                            isHero
+                              ? "px-2.5 py-1 text-[10px] font-medium"
+                              : "px-2 py-0.5 text-[9px] font-medium"
                           }`}
                         >
                           {item}
@@ -303,7 +389,7 @@ const SolutionPage = () => {
                 dotColor="bg-emerald-500"
                 className="mb-8"
               />
-            </motion.div> 
+            </motion.div>
 
             <motion.h1
               variants={fadeUp}
@@ -314,15 +400,12 @@ const SolutionPage = () => {
 
             <motion.p
               variants={fadeUp}
-              className="mt-6 text-lg leading-8 text-muted-foreground"
+              className="mt-6 text-lg font-semibold leading-8 text-muted-foreground"
             >
               {solution.hero.description}
             </motion.p>
 
-            <motion.div
-              variants={fadeUp}
-              className="mt-8 flex flex-wrap gap-4"
-            >
+            <motion.div variants={fadeUp} className="mt-8 flex flex-wrap gap-4">
               <Link to="/contact">
                 <Button className="bg-orange-500 hover:bg-primary text-white h-11 px-6 rounded-lg font-medium shadow-md">
                   {solution.hero.ctas[0]}
@@ -338,7 +421,10 @@ const SolutionPage = () => {
             </motion.div>
           </div>
 
-          <motion.div variants={fadeUp} className="hidden lg:block w-full h-full">
+          <motion.div
+            variants={fadeUp}
+            className="hidden lg:block w-full h-full"
+          >
             <LiveSystemPanel solution={solution} />
           </motion.div>
         </motion.div>
@@ -347,32 +433,34 @@ const SolutionPage = () => {
       {/* ══════════════════════════════════════════════════════════
           METRICS STRIP
       ══════════════════════════════════════════════════════════ */}
-      <section className="border-y border-border bg-card/60 backdrop-blur-sm">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={staggerFast}
-          className="mx-auto max-w-7xl px-6 lg:px-8 py-8 grid grid-cols-2 gap-6 sm:grid-cols-4"
-        >
-          {solution.metrics.slice(0, 4).map((metric) => (
-            <motion.div
-              key={metric.label}
-              variants={cardVariant}
-              className="flex flex-col items-center justify-center text-center p-4 border-r last:border-r-0 border-border"
-            >
-              <div className="text-3xl font-bold text-orange-500 font-mono tracking-tight">
-                <ScrambleCounter
-                  target={Number(metric.value.replace(/[^0-9.]+/g, "")) || 0}
-                  finalText={metric.value}
-                />
-              </div>
-              <div className="mt-2 text-[11px] text-muted-foreground font-mono uppercase tracking-[0.1em]">
-                {metric.label}
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+      <section className="bg-transparent py-16">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={staggerFast}
+            className="grid grid-cols-2 divide-x divide-y divide-border overflow-hidden rounded-3xl border border-border bg-card shadow-sm sm:grid-cols-4 sm:divide-y-0"
+          >
+            {solution.metrics.slice(0, 4).map((metric) => (
+              <motion.div
+                key={metric.label}
+                variants={cardVariant}
+                className="flex flex-col items-center justify-center text-center px-4 py-8 sm:py-12"
+              >
+                <div className="text-3xl font-bold text-orange-500 font-mono tracking-tight">
+                  <ScrambleCounter
+                    target={Number(metric.value.replace(/[^0-9.]+/g, "")) || 0}
+                    finalText={metric.value}
+                  />
+                </div>
+                <div className="mt-2 text-[11px] font-semibold text-muted-foreground font-mono uppercase tracking-[0.1em]">
+                  {metric.label}
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
       </section>
 
       {/* ══════════════════════════════════════════════════════════
@@ -392,37 +480,44 @@ const SolutionPage = () => {
             variants={stagger}
             className="flex flex-col"
           >
-            <motion.div variants={fadeUp} className="mb-12 space-y-3 text-center">
+            <motion.div
+              variants={fadeUp}
+              className="mb-12 space-y-3 text-center"
+            >
               <SectionLabel>Ecosystem</SectionLabel>
               <SectionHeading>Industries & Applications</SectionHeading>
-              <p className="text-muted-foreground text-sm max-w-2xl mx-auto mt-4">
-                Tailored infrastructure built for mission-critical deployments across key operational domains.
+              <p className="text-muted-foreground font-semibold text-lg max-w-2xl mx-auto mt-4">
+                Tailored infrastructure built for mission-critical deployments
+                across key operational domains.
               </p>
             </motion.div>
 
-            <motion.div 
-              variants={stagger} 
+            <motion.div
+              variants={stagger}
               className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4"
             >
               {solution.industries.map((industry) => {
                 const IndIcon = getIndustryIcon(industry.name);
                 return (
-                  <motion.div 
-                    key={industry.name} 
-                    variants={cardVariant} 
+                  <motion.div
+                    key={industry.name}
+                    variants={cardVariant}
                     className="group rounded-xl border border-border bg-card p-5 hover:border-orange-500/30 transition-all hover:shadow-lg flex flex-col"
                   >
                     <div className="mb-4 h-10 w-10 rounded-lg bg-muted flex items-center justify-center text-muted-foreground group-hover:text-orange-500 group-hover:bg-orange-500/10 transition-colors">
                       <IndIcon className="h-5 w-5" />
                     </div>
                     <h4 className="text-sm font-bold text-foreground mb-4 flex items-center gap-2 leading-tight">
-                       <InViewDecryptedText text={industry.name} speed={50} />
+                      <InViewDecryptedText text={industry.name} speed={50} />
                     </h4>
                     <div className="flex flex-wrap gap-1.5 mt-auto">
                       {industry.items.slice(0, 2).map((item) => (
-                         <span key={item} className="inline-flex rounded-md px-2 py-0.5 text-[9px] font-medium bg-background border border-border text-muted-foreground truncate max-w-full">
-                           {item}
-                         </span>
+                        <span
+                          key={item}
+                          className="inline-flex rounded-md px-2 py-0.5 text-[9px] font-medium bg-background border border-border text-muted-foreground truncate max-w-full"
+                        >
+                          {item}
+                        </span>
                       ))}
                       {industry.items.length > 2 && (
                         <span className="inline-flex rounded-md px-2 py-0.5 text-[9px] font-medium bg-muted text-muted-foreground">
@@ -450,42 +545,63 @@ const SolutionPage = () => {
             variants={stagger}
             className="flex flex-col"
           >
-            <motion.div variants={fadeUp} className="mb-16 space-y-3 text-center">
+            <motion.div
+              variants={fadeUp}
+              className="mb-16 space-y-3 text-center"
+            >
               <SectionLabel>Value Proposition</SectionLabel>
               <SectionHeading>Business Value</SectionHeading>
-              <p className="text-muted-foreground text-sm max-w-2xl mx-auto mt-4">
-                Quantifiable impact and strategic advantages delivered by the Altrex infrastructure.
+              <p className="text-muted-foreground text-lg font-semibold max-w-2xl mx-auto mt-4">
+                Quantifiable impact and strategic advantages delivered by the
+                Altrex infrastructure.
               </p>
             </motion.div>
 
-            <motion.div 
-              variants={stagger} 
+            <motion.div
+              variants={stagger}
               className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
             >
               {solution.benefits.map((benefit) => {
-                const visual = getBenefitVisual(benefit.title, benefit.description);
+                const visual = getBenefitVisual(
+                  benefit.title,
+                  benefit.description,
+                );
                 const Icon = visual.icon;
-                
+
                 return (
-                  <motion.div 
-                    key={benefit.title} 
-                    variants={cardVariant} 
+                  <motion.div
+                    key={benefit.title}
+                    variants={cardVariant}
                     className="group relative rounded-2xl border border-border bg-card p-6 flex flex-col gap-5 hover:border-orange-500/20 transition-all overflow-hidden"
                   >
                     {/* Background Visual Accent */}
-                    <div className={`absolute top-0 right-0 h-24 w-24 -mr-8 -mt-8 rounded-full ${visual.bg} blur-2xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none`} />
+                    <div
+                      className={`absolute top-0 right-0 h-24 w-24 -mr-8 -mt-8 rounded-full ${visual.bg} blur-2xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none`}
+                    />
 
                     <div className="flex items-center gap-4">
-                      <div className={`flex shrink-0 h-12 w-12 items-center justify-center rounded-xl ${visual.bg} ${visual.color}`}>
+                      <div
+                        className={`flex shrink-0 h-12 w-12 items-center justify-center rounded-xl ${visual.bg} ${visual.color}`}
+                      >
                         <motion.div
                           animate={
-                            visual.animate === "pulse" ? { scale: [1, 1.2, 1] } :
-                            visual.animate === "reduce" ? { y: [0, 4, 0] } :
-                            visual.animate === "grow" ? { y: [0, -4, 0] } :
-                            visual.animate === "shield" ? { opacity: [0.6, 1, 0.6] } :
-                            visual.animate === "spark" ? { rotate: [0, 15, -15, 0] } : {}
+                            visual.animate === "pulse"
+                              ? { scale: [1, 1.2, 1] }
+                              : visual.animate === "reduce"
+                                ? { y: [0, 4, 0] }
+                                : visual.animate === "grow"
+                                  ? { y: [0, -4, 0] }
+                                  : visual.animate === "shield"
+                                    ? { opacity: [0.6, 1, 0.6] }
+                                    : visual.animate === "spark"
+                                      ? { rotate: [0, 15, -15, 0] }
+                                      : {}
                           }
-                          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                          transition={{
+                            duration: 3,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                          }}
                         >
                           <Icon className="h-6 w-6" />
                         </motion.div>
@@ -494,32 +610,58 @@ const SolutionPage = () => {
                         {benefit.title}
                       </h4>
                     </div>
-                    
+
                     <p className="text-sm text-muted-foreground leading-relaxed flex-1">
                       {benefit.description}
                     </p>
 
                     {/* Tiny inline visual based on benefit type */}
                     <div className="pt-4 border-t border-border mt-auto flex items-center justify-between">
-                       <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest">Efficiency Module</span>
-                       {visual.animate === "reduce" && (
-                         <div className="flex items-end gap-0.5 h-3">
-                            {[10, 8, 6, 4].map((h, j) => <div key={j} className="w-1 bg-green-500/40 rounded-full" style={{ height: `${h}px` }} />)}
-                         </div>
-                       )}
-                       {visual.animate === "grow" && (
-                         <div className="flex items-end gap-0.5 h-3">
-                            {[4, 6, 8, 10].map((h, j) => <div key={j} className="w-1 bg-orange-500/40 rounded-full" style={{ height: `${h}px` }} />)}
-                         </div>
-                       )}
-                       {visual.animate === "pulse" && (
-                         <div className="flex items-center gap-1">
-                            <motion.div animate={{ opacity: [0, 1, 0] }} transition={{ duration: 1, repeat: Infinity }} className="h-1.5 w-1.5 rounded-full bg-blue-500" />
-                            <div className="h-1 w-8 bg-muted rounded-full overflow-hidden">
-                               <motion.div animate={{ x: ["-100%", "100%"] }} transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }} className="h-full w-1/2 bg-blue-500" />
-                            </div>
-                         </div>
-                       )}
+                      <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest">
+                        Efficiency Module
+                      </span>
+                      {visual.animate === "reduce" && (
+                        <div className="flex items-end gap-0.5 h-3">
+                          {[10, 8, 6, 4].map((h, j) => (
+                            <div
+                              key={j}
+                              className="w-1 bg-green-500/40 rounded-full"
+                              style={{ height: `${h}px` }}
+                            />
+                          ))}
+                        </div>
+                      )}
+                      {visual.animate === "grow" && (
+                        <div className="flex items-end gap-0.5 h-3">
+                          {[4, 6, 8, 10].map((h, j) => (
+                            <div
+                              key={j}
+                              className="w-1 bg-orange-500/40 rounded-full"
+                              style={{ height: `${h}px` }}
+                            />
+                          ))}
+                        </div>
+                      )}
+                      {visual.animate === "pulse" && (
+                        <div className="flex items-center gap-1">
+                          <motion.div
+                            animate={{ opacity: [0, 1, 0] }}
+                            transition={{ duration: 1, repeat: Infinity }}
+                            className="h-1.5 w-1.5 rounded-full bg-blue-500"
+                          />
+                          <div className="h-1 w-8 bg-muted rounded-full overflow-hidden">
+                            <motion.div
+                              animate={{ x: ["-100%", "100%"] }}
+                              transition={{
+                                duration: 1.5,
+                                repeat: Infinity,
+                                ease: "linear",
+                              }}
+                              className="h-full w-1/2 bg-blue-500"
+                            />
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </motion.div>
                 );
@@ -541,11 +683,15 @@ const SolutionPage = () => {
               viewport={{ once: true, amount: 0.15 }}
               variants={stagger}
             >
-              <motion.div variants={fadeUp} className="mb-12 space-y-3 text-center">
+              <motion.div
+                variants={fadeUp}
+                className="mb-12 space-y-3 text-center"
+              >
                 <SectionLabel>Architecture</SectionLabel>
                 <SectionHeading>Platform Architecture</SectionHeading>
-                <p className="text-sm text-muted-foreground max-w-2xl mx-auto mt-4">
-                  End-to-end data flow from field devices to enterprise systems — secured and orchestrated in real time.
+                <p className="text-lg font-semibold text-muted-foreground max-w-2xl mx-auto mt-4">
+                  End-to-end data flow from field devices to enterprise systems
+                  — secured and orchestrated in real time.
                 </p>
               </motion.div>
             </motion.div>
