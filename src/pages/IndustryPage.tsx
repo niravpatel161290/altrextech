@@ -12,6 +12,7 @@ import { getIndustryBySlug } from "@/data/industriesRegistry";
 import DynamicArchitecture from "@/components/sections/DynamicArchitecture";
 import { SectionBadge } from "@/components/ui/section-badge";
 import CTASection from "@/components/CTASection";
+import { IndustryMetricsSection } from "@/components/sections/Industrymetricssection";
 
 
 // ─── Animation Variants ───────────────────────────────────────────────────────
@@ -77,15 +78,6 @@ const IndustryPage = () => {
       </div>
     );
   }
-
-  // Derive bar widths — clamp between 10% and 95%
-  const metricMaxes = [1000, 100, 24, 5];
-  const getBarWidth = (value: string, idx: number) => {
-    const num = Number(value.replace(/[^0-9.]+/g, "")) || 0;
-    const max = metricMaxes[idx] ?? 100;
-    const raw = (num / max) * 100;
-    return Math.min(95, Math.max(10, raw));
-  };
 
   const activeModule = industry.modules[selectedModule];
 
@@ -201,50 +193,8 @@ const IndustryPage = () => {
       {/* ══════════════════════════════════════════════════════════
           METRICS STRIP — Animated fill bars
       ══════════════════════════════════════════════════════════ */}
-      <section className="border-y border-border bg-card/60 backdrop-blur-sm">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={stagger}
-          className="mx-auto max-w-7xl px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-6 py-10"
-        >
-          {industry.metrics.map((metric, idx) => {
-            const targetPct = getBarWidth(metric.value, idx);
-            return (
-              <motion.div
-                key={metric.label}
-                variants={fadeUp}
-                transition={{ delay: idx * 0.15 }}
-                className="flex flex-col items-center justify-center p-6 rounded-2xl border border-border bg-card/40"
-              >
-                <div className="relative w-24 h-24 flex items-center justify-center">
-                  <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
-                    <circle cx="50" cy="50" r="40" stroke="currentColor" strokeWidth="8" fill="transparent" className="text-muted/30" />
-                    <motion.circle
-                      cx="50" cy="50" r="40" stroke="currentColor" strokeWidth="8" fill="transparent"
-                      strokeDasharray="251.2"
-                      strokeDashoffset="251.2"
-                      initial={{ strokeDashoffset: 251.2 }}
-                      whileInView={{ strokeDashoffset: 251.2 - (251.2 * targetPct) / 100 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 1.5, ease: "easeOut", delay: idx * 0.15 }}
-                      strokeLinecap="round"
-                      className="text-orange-500 drop-shadow-[0_0_8px_rgba(249,115,22,0.6)]"
-                    />
-                  </svg>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-lg font-bold text-orange-400">{metric.value}</span>
-                  </div>
-                </div>
-                <span className="font-semibold text-xs uppercase tracking-wider text-muted-foreground mt-4 text-center">
-                  {metric.label}
-                </span>
-              </motion.div>
-            );
-          })}
-        </motion.div>
-      </section>
+
+      <IndustryMetricsSection industry={industry} />
 
       {/* ══════════════════════════════════════════════════════════
           OVERVIEW

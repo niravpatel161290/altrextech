@@ -104,10 +104,10 @@ const values = [
 ];
 
 const stats = [
-  { value: 200, suffix: "+", label: "Global Deployments" },
-  { value: 50, suffix: "+", label: "Team Members" },
+  { value: 100, suffix: "+", label: "Global Deployments" },
+  { value: 5, suffix: "+", label: "Team Members" },
   { value: 99.99, suffix: "%", label: "Uptime SLA" },
-  { value: 15, suffix: "ms", label: "Avg Latency" },
+  { value: 1500, suffix: "ms", label: "Avg Latency" },
 ];
 
 const team = [
@@ -571,7 +571,7 @@ function HeroSection() {
               {[
                 { icon: Building2, label: "Founded 2021" },
                 { icon: MapPin, label: "Ahmedabad, India" },
-                { icon: Globe, label: "200+ Global Deployments" },
+                { icon: Globe, label: "100+ Global Deployments" },
               ].map(({ icon: Icon, label }) => (
                 <div
                   key={label}

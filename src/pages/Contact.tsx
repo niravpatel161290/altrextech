@@ -45,14 +45,14 @@ const CONTACT_CARDS = [
   {
     icon: Mail,
     label: "Email",
-    value: "hello@altrex.com",
-    href: "mailto:hello@altrex.com",
+    value: "info@altrextech.com",
+    href: "mailto:info@altrextech.com",
   },
   {
     icon: Phone,
     label: "Phone",
-    value: "+91 12345 67890",
-    href: "tel:+911234567890",
+    value: "+91 92654 69633",
+    href: "tel:+919265469633",
   },
   {
     icon: Clock,
@@ -136,15 +136,15 @@ const Contact = () => {
               transition={{ delay: 1.6 }}
               className="mt-12 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-muted-foreground"
             >
-              <span className="flex items-center gap-2">
+              <span className="flex items-center gap-2 font-medium">
                 <ShieldCheck className="h-4 w-4 text-emerald-500" />
                 SOC 2 compliant
               </span>
-              <span className="flex items-center gap-2">
+              <span className="flex items-center gap-2 font-medium">
                 <Activity className="h-4 w-4 text-emerald-500" />
                 99.9% platform uptime
               </span>
-              <span className="flex items-center gap-2">
+              <span className="flex items-center gap-2 font-medium">
                 <Headset className="h-4 w-4 text-emerald-500" />
                 24/7 monitoring support
               </span>
