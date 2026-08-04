@@ -164,3 +164,30 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  .bento-card-number {
+    position: absolute;
+    right: 1.25rem;
+    top: 1.25rem;
+    opacity: 0.8;
+    pointer-events: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.04);
+    padding: 0.5rem 0.8rem;
+    font-family: 'M PLUS U', ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: -0.05em;
+    text-transform: uppercase;
+    transition: opacity 0.25s ease, background-color 0.25s ease, transform 0.25s ease;
+  }
+
+  .group:hover .bento-card-number {
+    opacity: 1;
+    transform: translateX(0.12rem);
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+}
