@@ -115,6 +115,15 @@ const IndustryPage = () => {
 
   const activeModule = industry.modules[selectedModule];
 
+  const benefitSizes = [
+    "lg:col-span-2",
+    "lg:col-span-1",
+    "lg:col-span-1",
+    "lg:col-span-2",
+    "lg:col-span-1",
+    "lg:col-span-2",
+  ];
+
   return (
     <div className={`relative min-h-screen bg-background text-foreground`}>
       {/* ── Background ambient glows ── */}
@@ -499,21 +508,24 @@ const IndustryPage = () => {
 
             <motion.div
               variants={stagger}
-              className="columns-1 sm:columns-2 lg:columns-3 gap-5 space-y-5"
+              className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:grid-flow-dense lg:auto-rows-min"
             >
               {industry.benefits.map((benefit, idx) => {
                 return (
                   <motion.div
                     key={benefit.title}
                     variants={cardVariant}
-                    className="group break-inside-avoid rounded-xl border border-border bg-card/40 p-6 hover:border-orange-500/25 hover:bg-card transition-all duration-300"
+                    className={`group relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-card/80 p-6 shadow-[0_24px_80px_rgba(0,0,0,0.18)] transition-all duration-300 hover:border-orange-400/40 hover:bg-card/95 ${benefitSizes[idx]}`}
                   >
-                    {/* Animated SVG icon — strokeDashoffset draw effect */}
+                    <span className="bento-card-number pointer-events-none absolute right-5 top-5 inline-flex items-center justify-center rounded-3xl border border-white/10 bg-white/5 px-4 py-3 text-[3.6rem] font-black uppercase tracking-[-0.08em] text-orange-300/25 opacity-90 transition-all duration-300 group-hover:text-orange-300/45 group-hover:opacity-100">
+                      {String(idx + 1).padStart(2, "0")}
+                    </span>
+
                     <motion.svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
                       fill="none"
-                      className="h-8 w-8 text-orange-500 mb-4 stroke-[1.5]"
+                      className="h-10 w-10 text-orange-400 mb-5 stroke-[1.5]"
                       stroke="currentColor"
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -523,7 +535,6 @@ const IndustryPage = () => {
                       transition={{ duration: 0.8, delay: idx * 0.1 }}
                       style={{ strokeDasharray: 100 }}
                     >
-                      {/* Render the icon path by temporarily using IconComponent for its path data */}
                       {idx % 6 === 0 && <><polyline points="22 7 13.5 15.5 8.5 10.5 2 17" /><polyline points="16 7 22 7 22 13" /></>}
                       {idx % 6 === 1 && <><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></>}
                       {idx % 6 === 2 && <><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></>}
@@ -532,13 +543,10 @@ const IndustryPage = () => {
                       {idx % 6 === 5 && <><polyline points="9 11 12 14 22 4" /><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" /></>}
                     </motion.svg>
 
-                    <p className="font-mono text-[10px] text-muted-foreground mb-1">
-                      {String(idx + 1).padStart(2, "0")}
-                    </p>
-                    <h3 className="text-sm font-semibold text-foreground mb-2 group-hover:text-orange-400 transition-colors duration-300">
+                    <h3 className="text-base font-semibold text-foreground mb-3 group-hover:text-orange-300 transition-colors duration-300">
                       {benefit.title}
                     </h3>
-                    <p className="text-xs leading-5 text-muted-foreground">
+                    <p className="text-sm leading-6 text-muted-foreground">
                       {benefit.description}
                     </p>
                   </motion.div>
