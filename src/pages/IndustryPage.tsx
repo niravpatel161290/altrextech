@@ -440,7 +440,7 @@ const IndustryPage = () => {
                   <motion.div
                     key={benefit.title}
                     variants={cardVariant}
-                    className={`group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-[0_8px_40px_rgba(15,23,42,0.12)] transition-all duration-300 hover:border-orange-500/35 hover:shadow-[0_0_40px_rgba(249,115,22,0.07)] ${benefitSizes[idx]}`}
+                    className={`group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:border-orange-500/35 ${benefitSizes[idx]}`}
                   >
                     {/* Top row: icon + number */}
                     <div className="flex items-start justify-between">
