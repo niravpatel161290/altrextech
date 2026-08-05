@@ -82,12 +82,13 @@ const IndustryPage = () => {
   const activeModule = industry.modules[selectedModule];
 
   const benefitSizes = [
-    "lg:col-span-2",
-    "lg:col-span-1",
-    "lg:col-span-1",
-    "lg:col-span-2",
-    "lg:col-span-1",
-    "lg:col-span-2",
+    "lg:col-span-1",                                             // card 1 — col 1, row 1
+    "lg:col-span-1",                                             // card 2 — col 2, row 1
+    "lg:col-span-1",                                             // card 3 — col 3, row 1
+    "lg:col-span-1",                                             // card 4 — col 1, row 2
+    "lg:col-span-1",                                             // card 5 — col 2, row 2
+    "lg:col-span-1",                                             // card 6 — col 3, row 2
+    "lg:col-span-1",                                             // card 7 — col 1, row 3
   ];
 
   return (
@@ -432,47 +433,77 @@ const IndustryPage = () => {
 
             <motion.div
               variants={stagger}
-              className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:grid-flow-dense lg:auto-rows-min"
+              className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:grid-flow-dense"
             >
               {industry.benefits.map((benefit, idx) => {
                 return (
                   <motion.div
                     key={benefit.title}
                     variants={cardVariant}
-                    className={`group relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-card/80 p-6 shadow-[0_24px_80px_rgba(0,0,0,0.18)] transition-all duration-300 hover:border-orange-400/40 hover:bg-card/95 ${benefitSizes[idx]}`}
+                    className={`group relative flex flex-col overflow-hidden rounded-2xl border border-white/8 bg-[#0e0e0e] p-6 shadow-[0_8px_40px_rgba(0,0,0,0.35)] transition-all duration-300 hover:border-orange-500/35 hover:shadow-[0_0_40px_rgba(249,115,22,0.07)] ${benefitSizes[idx]}`}
                   >
-                    <span className="bento-card-number pointer-events-none absolute right-5 top-5 inline-flex items-center justify-center rounded-3xl border border-white/10 bg-white/5 px-4 py-3 text-[3.6rem] font-black uppercase tracking-[-0.08em] text-orange-300/25 opacity-90 transition-all duration-300 group-hover:text-orange-300/45 group-hover:opacity-100">
-                      {String(idx + 1).padStart(2, "0")}
-                    </span>
+                    {/* Top row: icon + number */}
+                    <div className="flex items-start justify-between">
+                      {/* Icon in orange square */}
+                      <div className="relative shrink-0 w-12 h-12 rounded-xl bg-orange-500/10 border border-orange-500/25 flex items-center justify-center">
+                        <motion.svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          className="h-5 w-5 text-orange-400 stroke-[1.75]"
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          initial={{ strokeDashoffset: 100 }}
+                          whileInView={{ strokeDashoffset: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.8, delay: idx * 0.1 }}
+                          style={{ strokeDasharray: 100 }}
+                        >
+                          {idx % 7 === 0 && <><polyline points="22 7 13.5 15.5 8.5 10.5 2 17" /><polyline points="16 7 22 7 22 13" /></>}
+                          {idx % 7 === 1 && <><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></>}
+                          {idx % 7 === 2 && <><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></>}
+                          {idx % 7 === 3 && <><line x1="18" y1="20" x2="18" y2="10" /><line x1="12" y1="20" x2="12" y2="4" /><line x1="6" y1="20" x2="6" y2="14" /></>}
+                          {idx % 7 === 4 && <><circle cx="12" cy="12" r="3" /><path d="M19.07 4.93a10 10 0 0 1 0 14.14M5.93 19.07a10 10 0 0 1 0-14.14M15.54 8.46a5 5 0 0 1 0 7.07M8.46 15.54a5 5 0 0 1 0-7.07" /></>}
+                          {idx % 7 === 5 && <><polyline points="9 11 12 14 22 4" /><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" /></>}
+                          {idx % 7 === 6 && <><path d="M12 2L2 7l10 5 10-5-10-5z" /><path d="M2 17l10 5 10-5" /><path d="M2 12l10 5 10-5" /></>}
+                        </motion.svg>
+                      </div>
 
-                    <motion.svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      className="h-10 w-10 text-orange-400 mb-5 stroke-[1.5]"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      initial={{ strokeDashoffset: 100 }}
-                      whileInView={{ strokeDashoffset: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.8, delay: idx * 0.1 }}
-                      style={{ strokeDasharray: 100 }}
-                    >
-                      {idx % 6 === 0 && <><polyline points="22 7 13.5 15.5 8.5 10.5 2 17" /><polyline points="16 7 22 7 22 13" /></>}
-                      {idx % 6 === 1 && <><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></>}
-                      {idx % 6 === 2 && <><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></>}
-                      {idx % 6 === 3 && <><line x1="18" y1="20" x2="18" y2="10" /><line x1="12" y1="20" x2="12" y2="4" /><line x1="6" y1="20" x2="6" y2="14" /></>}
-                      {idx % 6 === 4 && <><circle cx="12" cy="12" r="3" /><path d="M19.07 4.93a10 10 0 0 1 0 14.14M5.93 19.07a10 10 0 0 1 0-14.14M15.54 8.46a5 5 0 0 1 0 7.07M8.46 15.54a5 5 0 0 1 0-7.07" /></>}
-                      {idx % 6 === 5 && <><polyline points="9 11 12 14 22 4" /><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" /></>}
-                    </motion.svg>
+                      {/* Number watermark */}
+                      <span className="text-[3.5rem] font-black tracking-[-0.08em] text-white/15 leading-none select-none">
+                        {String(idx + 1).padStart(2, "0")}
+                      </span>
+                    </div>
 
-                    <h3 className="text-base font-semibold text-foreground mb-3 group-hover:text-orange-300 transition-colors duration-300">
-                      {benefit.title}
-                    </h3>
-                    <p className="text-sm leading-6 text-muted-foreground">
-                      {benefit.description}
-                    </p>
+                    {/* Content */}
+                    <div className="mt-6">
+                      {benefit.stat && (
+                        <div className="mb-3">
+                          <span className="text-2xl font-black text-orange-400 tracking-tight leading-none">
+                            {benefit.stat}
+                          </span>
+                        </div>
+                      )}
+                      <h3 className="text-lg font-bold text-white mb-2 leading-snug">
+                        {benefit.title}
+                      </h3>
+                      <p className="text-sm leading-6 text-zinc-400 font-medium">
+                        {benefit.description}
+                      </p>
+                      {benefit.tags && benefit.tags.length > 0 && (
+                        <div className="flex flex-wrap gap-1.5 mt-4">
+                          {benefit.tags.map((tag) => (
+                            <span
+                              key={tag}
+                              className="rounded-md border border-white/10 bg-white/5 px-2 py-0.5 text-[11px] font-medium text-zinc-400"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   </motion.div>
                 );
               })}

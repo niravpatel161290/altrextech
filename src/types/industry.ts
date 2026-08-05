@@ -41,6 +41,10 @@ export interface IndustryModule {
 export interface IndustryBenefit {
   title: string;
   description: string;
+  /** Optional headline KPI, e.g. "40% ↓" or "3× faster" */
+  stat?: string;
+  /** Optional short pill labels shown at the bottom of the card */
+  tags?: string[];
 }
 
 export interface IndustryData {

@@ -42,6 +42,7 @@ import {
   pointOnGauge,
   getLoadZone,
 } from "@/lib/gauge";
+import WhyChooseBento from "@/components/sections/WhyChooseUsIndustries";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 28 },
@@ -375,34 +376,16 @@ export const ServicePage: React.FC = () => {
         </section>
       ) : null}
 
-      {/* SECTION 4: Why Choose Altrex - Redesigned */}
-      {service.whyChoose ? (
-        <section className="mx-auto max-w-7xl px-6 lg:px-8 py-24 border-y border-border bg-card/60 backdrop-blur-sm">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.15 }} variants={stagger}>
-            <motion.div variants={fadeUp} className="mb-14 space-y-3">
-              <SectionLabel>Differentiators</SectionLabel>
-              <SectionHeading>{service.whyChoose.title}</SectionHeading>
-            </motion.div>
-
-            <motion.div variants={stagger} className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {service.whyChoose.items.map((item, idx) => {
-                const title = typeof item === "string" ? item : item.title;
-                const desc = typeof item === "string" ? "" : item.description;
-                return (
-                  <motion.div key={`${title}-${idx}`} variants={cardVariant} className="rounded-2xl border border-border bg-background p-6 shadow-sm flex flex-col gap-4">
-                    <span className="font-mono text-[11px] text-orange-500 block">{String(idx + 1).padStart(2, "0")}</span>
-                    <h3 className="text-lg font-semibold text-foreground">{title}</h3>
-                    <div className="flex items-center gap-1 text-[10px] font-mono text-muted-foreground border border-border p-2 rounded bg-[var(--bg-raised)]">
-                      {idx === 0 ? <><div className="flex-1 text-center bg-[var(--bg-surface)] p-1 rounded">Input</div><ArrowRight className="h-3 w-3" /><div className="flex-1 text-center bg-orange-500 text-white p-1 rounded">ALTREX</div><ArrowRight className="h-3 w-3" /><div className="flex-1 text-center bg-[var(--bg-surface)] p-1 rounded">Outcome</div></> : <><div className="flex flex-col gap-1"><div className="bg-[var(--bg-surface)] p-1 rounded">In 1</div><div className="bg-[var(--bg-surface)] p-1 rounded">In 2</div></div><ArrowRight className="h-3 w-3" /><div className="flex-1 text-center bg-orange-500 text-white p-1 rounded flex items-center justify-center">Unified View</div></>}
-                    </div>
-                    <p className="text-xs leading-6 text-muted-foreground line-clamp-1">{desc}</p>
-                  </motion.div>
-                );
-              })}
-            </motion.div>
-          </motion.div>
-        </section>
-      ) : null}
+      {/* SECTION 4: Why Choose Altrex — Bento */}
+      {service.whyChoose && (
+        <WhyChooseBento
+          title={service.whyChoose.title}
+          items={service.whyChoose.items.filter(
+            (item): item is { title: string; description: string } =>
+              typeof item === "object"
+          )}
+        />
+      )}
 
       {/* Other sections - UNCHANGED */}
       {service.whatWeDeliver ? (
