@@ -3,7 +3,7 @@
 // Each bento cell renders a different visual component based on what the
 // differentiator is actually claiming — speed, cost, scale, reliability, etc.
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, type Variants } from "framer-motion";
 import {
   CheckCircle2, XCircle, Zap, TrendingDown, Layers,
   Shield, Brain, Link2, Clock, ArrowRight,
@@ -392,7 +392,7 @@ function ExpertiseVisual() {
   );
 }
 // DEFAULT — clean tick/cross comparison
-function DefaultVisual({ title }: { title: string }) {
+function DefaultVisual({ title: _title }: { title: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true });
   return (
@@ -462,15 +462,15 @@ interface WhyChooseBentoProps {
   title: string;
   items: WhyChooseItem[];
 }
-const cardVariant = {
+const cardVariant: Variants = {
   hidden: { opacity: 0, y: 20, scale: 0.97 },
   visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
 };
-const stagger = {
+const stagger: Variants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.09, delayChildren: 0.1 } },
 };
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.55 } },
 };
