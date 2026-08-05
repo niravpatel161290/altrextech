@@ -278,36 +278,50 @@ export const industriesRegistry: IndustryData[] = [
         title: "Improve Operational Efficiency",
         description:
           "Gain complete visibility across your CGD network and make informed decisions using real-time operational data.",
+        stat: "35% ↑",
+        tags: ["Web SCADA", "Real-Time Dashboards", "Centralized Control"],
       },
       {
         title: "Increase Asset Availability",
         description:
-          "Reduce downtime through proactive monitoring and predictive maintenance.",
+          "Reduce downtime through proactive monitoring and predictive maintenance across CNG stations and pipelines.",
+        stat: "99.9%",
+        tags: ["Predictive Maintenance", "Condition Monitoring", "Alarm Management"],
       },
       {
         title: "Optimize Fleet Operations",
         description:
-          "Improve cascade utilization and reduce transportation costs.",
+          "Improve cascade utilization and reduce transportation costs through live tracking and route optimization.",
+        stat: "20% ↓",
+        tags: ["GPS Tracking", "Route Optimization", "Cascade Management"],
       },
       {
         title: "Reduce Energy Consumption",
         description:
-          "Monitor and optimize energy-intensive equipment across all stations.",
+          "Monitor and optimize energy-intensive compressors, dispensers, and equipment across all stations.",
+        stat: "15% ↓",
+        tags: ["Energy Metering", "kWh Analytics", "Load Optimization"],
       },
       {
         title: "Enhance Safety",
         description:
-          "Real-time alarms, surveillance systems, and operational monitoring improve overall network safety.",
+          "Real-time alarms, gas leak detection, CCTV analytics, and operational monitoring keep personnel and assets safe.",
+        stat: "< 800ms",
+        tags: ["Leak Detection", "CCTV Analytics", "Emergency Alerts"],
       },
       {
         title: "Improve Regulatory Compliance",
         description:
-          "Maintain complete operational records, audit trails, and compliance reports.",
+          "Maintain complete operational records, audit trails, and compliance reports for PNGRB and other regulators.",
+        stat: "100%",
+        tags: ["Audit Trails", "PNGRB Reports", "Document Management"],
       },
       {
         title: "Enable Data-Driven Decisions",
         description:
-          "Leverage analytics and reporting to improve operational and business performance.",
+          "Leverage AI analytics and reporting to optimize station performance and business outcomes.",
+        stat: "3× faster",
+        tags: ["AI Analytics", "KPI Dashboards", "Trend Reports"],
       },
     ],
     whyAltrex: [
@@ -592,32 +606,44 @@ export const industriesRegistry: IndustryData[] = [
       {
         title: "Improve Operational Visibility",
         description:
-          "Monitor all assets and operations from a centralized platform across upstream, midstream, and downstream.",
+          "Monitor all upstream, midstream, and downstream assets from a single command center with real-time SCADA dashboards.",
+        stat: "24×7",
+        tags: ["Web SCADA", "Pipeline Monitoring", "Remote Telemetry"],
       },
       {
         title: "Increase Asset Reliability",
         description:
-          "Reduce downtime through proactive monitoring and maintenance.",
+          "Reduce unplanned downtime through condition-based monitoring, predictive analytics, and proactive maintenance workflows.",
+        stat: "40% ↓",
+        tags: ["Predictive Maintenance", "Condition Monitoring", "APM"],
       },
       {
         title: "Enhance Safety & Security",
         description:
-          "Protect critical infrastructure using intelligent monitoring systems.",
+          "Protect critical oil & gas infrastructure with intelligent CCTV analytics, perimeter monitoring, and gas leak detection.",
+        stat: "< 1min",
+        tags: ["Leak Detection", "Perimeter Security", "Emergency Response"],
       },
       {
         title: "Reduce Operational Costs",
         description:
-          "Optimize energy usage, maintenance activities, and logistics operations.",
+          "Optimize energy usage, maintenance intervals, and logistics to cut operating expenditure across all facilities.",
+        stat: "25% ↓",
+        tags: ["Energy Analytics", "Fleet Management", "Maintenance Optimization"],
       },
       {
         title: "Improve Compliance",
         description:
-          "Maintain complete operational records and audit trails for regulatory requirements.",
+          "Maintain tamper-proof operational records, audit logs, and regulatory reports for PNGRB, PESO, and HSE requirements.",
+        stat: "100%",
+        tags: ["Audit Trails", "HSE Reporting", "PESO Compliance"],
       },
       {
         title: "Enable Data-Driven Decisions",
         description:
-          "Leverage real-time analytics and reporting for better business outcomes.",
+          "Leverage AI-powered analytics, production optimization, and advanced KPI dashboards for better business outcomes.",
+        stat: "3× faster",
+        tags: ["AI Analytics", "Production KPIs", "Digital Twin"],
       },
     ],
     whyAltrex: [
@@ -877,35 +903,51 @@ export const industriesRegistry: IndustryData[] = [
       {
         title: "Reduce Non-Revenue Water (NRW)",
         description:
-          "Identify leaks and unauthorized consumption before they impact revenue.",
+          "Identify leaks, unauthorized connections, and distribution losses through pressure zoning and flow analytics before they impact revenue.",
+        stat: "30% ↓",
+        tags: ["Leak Detection", "Pressure Zoning", "DMA Monitoring"],
       },
       {
         title: "Improve Service Reliability",
         description:
-          "Monitor infrastructure continuously and respond faster to operational issues.",
+          "Monitor pumps, treatment plants, and distribution networks continuously — respond faster to faults and reduce supply disruptions.",
+        stat: "99.5%",
+        tags: ["Pump Monitoring", "SCADA", "SLA Tracking"],
       },
       {
         title: "Optimize Energy Consumption",
         description:
-          "Reduce pumping and treatment costs through energy analytics.",
+          "Reduce pumping, aeration, and treatment energy costs through smart load scheduling and real-time consumption analytics.",
+        stat: "20% ↓",
+        tags: ["Energy Analytics", "Load Scheduling", "kWh Monitoring"],
       },
       {
         title: "Improve Billing Efficiency",
         description:
-          "Automate consumption data collection through smart metering.",
+          "Automate meter reading, consumption data collection, and billing through AMR/AMI smart metering integration.",
+        stat: "100%",
+        tags: ["AMR / AMI", "Smart Metering", "Auto Billing"],
       },
       {
         title: "Enhance Asset Utilization",
-        description: "Improve maintenance planning and asset performance.",
+        description:
+          "Improve maintenance planning, spare parts management, and equipment lifecycle through integrated asset performance management.",
+        stat: "45% ↑",
+        tags: ["Asset Management", "Preventive Maintenance", "Work Orders"],
       },
       {
         title: "Strengthen Regulatory Compliance",
-        description: "Maintain complete operational records and audit trails.",
+        description:
+          "Maintain complete operational records, water quality data, and audit trails for CPCB, MoEFCC, and local authority requirements.",
+        stat: "100%",
+        tags: ["CPCB Compliance", "Quality Monitoring", "Audit Logs"],
       },
       {
         title: "Enable Smart Water Operations",
         description:
-          "Build a scalable digital foundation for future smart city initiatives.",
+          "Build a scalable digital foundation integrating GIS, IoT, and AI for future smart city and NRW reduction initiatives.",
+        stat: "Digital Ready",
+        tags: ["Smart City", "GIS Integration", "AI Analytics"],
       },
     ],
     whyAltrex: [
@@ -1168,33 +1210,51 @@ export const industriesRegistry: IndustryData[] = [
       {
         title: "Improve Grid Reliability",
         description:
-          "Monitor and manage infrastructure proactively to reduce outages.",
+          "Monitor substations, feeders, and distribution infrastructure proactively to minimize outages and restore power faster.",
+        stat: "99.9%",
+        tags: ["Substation SCADA", "Fault Detection", "DMS Integration"],
       },
       {
         title: "Optimize Energy Usage",
         description:
-          "Gain complete visibility into consumption and generation patterns.",
+          "Gain complete visibility into generation, transmission, and consumption patterns to reduce peak demand and energy waste.",
+        stat: "18% ↓",
+        tags: ["Energy Analytics", "Demand Forecasting", "Peak Management"],
       },
       {
         title: "Improve Revenue Assurance",
-        description: "Detect theft, tampering, and billing discrepancies.",
+        description:
+          "Detect electricity theft, tampering, and billing discrepancies through AMR/AMI smart metering and anomaly detection.",
+        stat: "₹ Cr Saved",
+        tags: ["Smart Metering", "Theft Detection", "Billing Accuracy"],
       },
       {
         title: "Enhance Asset Utilization",
-        description: "Improve maintenance planning and asset performance.",
+        description:
+          "Improve transformer, switchgear, and line maintenance planning through asset health monitoring and predictive analytics.",
+        stat: "30% ↑",
+        tags: ["Asset Health", "Predictive Maintenance", "Lifecycle Management"],
       },
       {
         title: "Support Renewable Integration",
-        description: "Monitor and manage renewable energy assets efficiently.",
+        description:
+          "Monitor solar, wind, and BESS assets alongside the grid to balance generation and ensure stability.",
+        stat: "15%+ ↑",
+        tags: ["Solar Monitoring", "Wind SCADA", "BESS Management"],
       },
       {
         title: "Improve Regulatory Compliance",
-        description: "Maintain accurate operational records and reporting.",
+        description:
+          "Maintain accurate operational logs, MIS reports, and audit trails for CERC, SERC, and bureau of energy efficiency.",
+        stat: "100%",
+        tags: ["CERC / SERC", "MIS Reports", "BEE Compliance"],
       },
       {
         title: "Enable Smart Utility Operations",
         description:
-          "Build a digital foundation for smart grids and future utility initiatives.",
+          "Build the digital foundation for smart grids, advanced metering infrastructure, and demand-side management programs.",
+        stat: "Future Ready",
+        tags: ["Smart Grid", "AMI / AMR", "DSM Programs"],
       },
     ],
     whyAltrex: [
@@ -1456,36 +1516,51 @@ export const industriesRegistry: IndustryData[] = [
       {
         title: "Maximize Energy Generation",
         description:
-          "Improve plant performance through continuous monitoring and analytics.",
+          "Boost plant performance through continuous PR monitoring, irradiance correlation, and inverter-level analytics to capture every kWh.",
+        stat: "15% ↑",
+        tags: ["PR Monitoring", "Inverter Analytics", "Irradiance Tracking"],
       },
       {
         title: "Increase Asset Availability",
         description:
-          "Reduce downtime through proactive maintenance and real-time visibility.",
+          "Reduce turbine and panel downtime through predictive fault detection, string-level monitoring, and automated maintenance alerts.",
+        stat: "99.5%",
+        tags: ["Fault Detection", "String Monitoring", "Predictive Alerts"],
       },
       {
         title: "Improve Operational Efficiency",
         description:
-          "Manage multiple renewable energy sites from a centralized platform.",
+          "Manage multiple solar, wind, and hybrid sites from a single centralized SCADA and plant management platform.",
+        stat: "60% ↓",
+        tags: ["Multi-Site SCADA", "Remote O&M", "Plant Analytics"],
       },
       {
         title: "Optimize Energy Storage",
-        description: "Enhance battery utilization and dispatch strategies.",
+        description:
+          "Enhance BESS utilization with real-time SOC monitoring, charge/discharge optimization, and grid dispatch strategies.",
+        stat: "20% ↑",
+        tags: ["BESS Management", "SOC Monitoring", "Grid Dispatch"],
       },
       {
         title: "Improve Financial Performance",
         description:
-          "Reduce operational costs and maximize return on investment.",
+          "Reduce O&M costs, maximize generation revenue, and improve ROI through data-driven operational decisions.",
+        stat: "ROI ↑",
+        tags: ["O&M Optimization", "Revenue Analytics", "Cost Tracking"],
       },
       {
         title: "Enhance Security & Compliance",
         description:
-          "Protect critical infrastructure and maintain regulatory compliance.",
+          "Protect remote solar parks and wind farms with AI-powered CCTV analytics, perimeter alerts, and regulatory reporting.",
+        stat: "24×7",
+        tags: ["Perimeter Security", "AI Surveillance", "Compliance Reports"],
       },
       {
         title: "Enable Data-Driven Decisions",
         description:
-          "Leverage analytics to improve operational and business outcomes.",
+          "Leverage AI forecasting, generation predictions, and advanced KPI dashboards to optimize plant and portfolio performance.",
+        stat: "3× faster",
+        tags: ["AI Forecasting", "Generation KPIs", "Portfolio Analytics"],
       },
     ],
     whyAltrex: [
@@ -1745,35 +1820,51 @@ export const industriesRegistry: IndustryData[] = [
       {
         title: "Increase Production Efficiency",
         description:
-          "Gain real-time visibility into production performance and bottlenecks.",
+          "Gain real-time OEE visibility, identify bottlenecks, and improve throughput across every production line and shift.",
+        stat: "85%+ OEE",
+        tags: ["OEE Tracking", "Line Performance", "Shift Analytics"],
       },
       {
         title: "Reduce Downtime",
         description:
-          "Implement predictive maintenance and proactive monitoring.",
+          "Implement condition-based monitoring and predictive maintenance to eliminate unplanned machine stoppages.",
+        stat: "20% ↓",
+        tags: ["Predictive Maintenance", "Vibration Monitoring", "MTTR Reduction"],
       },
       {
         title: "Optimize Utility Costs",
         description:
-          "Monitor electricity, water, gas, steam, and compressed air consumption.",
+          "Monitor electricity, water, gas, steam, and compressed air in real time to eliminate waste and reduce energy spend.",
+        stat: "15% ↓",
+        tags: ["Energy Metering", "Steam Analytics", "Compressed Air"],
       },
       {
         title: "Improve Product Quality",
         description:
-          "Track quality metrics and process performance continuously.",
+          "Track SPC, process parameters, and quality metrics continuously to reduce defects and rework at every stage.",
+        stat: "Defects ↓",
+        tags: ["SPC Monitoring", "Quality Analytics", "Process Control"],
       },
       {
         title: "Enhance Asset Reliability",
-        description: "Manage assets throughout their lifecycle.",
+        description:
+          "Manage machines, equipment, and tooling throughout their lifecycle with integrated asset performance management.",
+        stat: "30% ↑",
+        tags: ["APM", "Asset Lifecycle", "Maintenance Planning"],
       },
       {
         title: "Improve Workforce Productivity",
-        description: "Digitize operations and maintenance workflows.",
+        description:
+          "Digitize shift handovers, work orders, inspections, and maintenance workflows to eliminate paper and speed up response.",
+        stat: "2× faster",
+        tags: ["Digital Work Orders", "Shift Handover", "Mobile Workflows"],
       },
       {
         title: "Enable Industry 4.0 Transformation",
         description:
-          "Build a connected and intelligent manufacturing ecosystem.",
+          "Connect machines, production lines, and enterprise systems into a unified data-driven smart factory ecosystem.",
+        stat: "Future Ready",
+        tags: ["IIoT Platform", "MES Integration", "Digital Twin"],
       },
     ],
     whyAltrex: [
@@ -2015,33 +2106,52 @@ export const industriesRegistry: IndustryData[] = [
     benefits: [
       {
         title: "Improve Fleet Visibility",
-        description: "Track vehicles, drivers, and assets in real time.",
+        description:
+          "Track every vehicle, driver, and cargo asset in real time with live GPS, geofencing, and trip replay across your entire fleet.",
+        stat: "50,000+",
+        tags: ["Live GPS", "Geofencing", "Trip Replay"],
       },
       {
         title: "Reduce Transportation Costs",
-        description: "Optimize routes, fuel usage, and vehicle utilization.",
+        description:
+          "Cut fuel spend and vehicle idle time through AI-powered route optimization, fuel monitoring, and utilization analytics.",
+        stat: "30% ↓",
+        tags: ["Route Optimization", "Fuel Monitoring", "Idle Detection"],
       },
       {
         title: "Enhance Driver Safety",
         description:
-          "Implement AI-powered driver monitoring and safety analytics.",
+          "Detect harsh braking, overspeeding, and fatigue with AI-powered driver monitoring, scorecards, and real-time coaching.",
+        stat: "40% ↓",
+        tags: ["Driver Scorecard", "AI DMS", "Harsh Event Alerts"],
       },
       {
         title: "Improve Delivery Performance",
-        description: "Increase on-time deliveries and customer satisfaction.",
+        description:
+          "Boost on-time delivery rates with live ETAs, automated customer notifications, and delivery confirmation workflows.",
+        stat: "95%+ OTD",
+        tags: ["Live ETA", "Customer Alerts", "ePOD"],
       },
       {
         title: "Reduce Asset Losses",
-        description: "Monitor high-value assets and equipment continuously.",
+        description:
+          "Monitor high-value assets, trailers, and equipment continuously with tamper alerts, immobilization, and theft recovery.",
+        stat: "Near Zero",
+        tags: ["Asset Tracking", "Tamper Alerts", "Immobilization"],
       },
       {
         title: "Increase Operational Efficiency",
-        description: "Digitize logistics processes and automate reporting.",
+        description:
+          "Digitize dispatch, maintenance, compliance, and reporting workflows to eliminate manual processes and reduce admin overhead.",
+        stat: "2× faster",
+        tags: ["Digital Dispatch", "Maintenance Alerts", "Auto Reports"],
       },
       {
         title: "Enable Data-Driven Operations",
         description:
-          "Leverage analytics for better planning and decision-making.",
+          "Leverage fleet analytics, driver behavior trends, and cost-per-km insights to continuously improve logistics performance.",
+        stat: "3× faster",
+        tags: ["Fleet Analytics", "Cost per km", "AI Insights"],
       },
     ],
     whyAltrex: [
@@ -2284,33 +2394,52 @@ export const industriesRegistry: IndustryData[] = [
     benefits: [
       {
         title: "Improve Service Delivery",
-        description: "Monitor and manage city infrastructure in real time.",
+        description:
+          "Monitor water, power, waste, and transport infrastructure in real time from a unified city command and control center.",
+        stat: "20+ Systems",
+        tags: ["Command Center", "Integrated Dashboard", "Real-Time Alerts"],
       },
       {
         title: "Optimize Resource Utilization",
-        description: "Reduce water, energy, and operational losses.",
+        description:
+          "Cut water NRW, reduce energy losses, and optimize maintenance resources city-wide through intelligent analytics.",
+        stat: "25% ↓",
+        tags: ["Water Analytics", "Energy Optimization", "Resource Tracking"],
       },
       {
         title: "Enhance Public Safety",
         description:
-          "Leverage AI-powered surveillance and incident management.",
+          "Deploy AI-powered CCTV surveillance, crowd analytics, and emergency incident management for proactive city policing.",
+        stat: "< 60s",
+        tags: ["AI Surveillance", "Crowd Analytics", "Incident Management"],
       },
       {
         title: "Increase Operational Efficiency",
-        description: "Integrate multiple city systems into a single platform.",
+        description:
+          "Integrate utilities, transport, waste, environment, and citizen services into one unified smart city digital platform.",
+        stat: "40% ↑",
+        tags: ["System Integration", "Unified Platform", "Workflow Automation"],
       },
       {
         title: "Improve Citizen Satisfaction",
-        description: "Provide faster, more transparent public services.",
+        description:
+          "Deliver faster, more transparent public services through citizen portals, mobile apps, and automated grievance resolution.",
+        stat: "CSAT ↑",
+        tags: ["Citizen Portal", "Mobile App", "Grievance Management"],
       },
       {
         title: "Support Sustainability Goals",
         description:
-          "Monitor environmental performance and resource consumption.",
+          "Track carbon footprint, air quality, water quality, and energy consumption to meet smart city sustainability targets.",
+        stat: "ESG Ready",
+        tags: ["Air Quality", "Carbon Tracking", "Environmental KPIs"],
       },
       {
         title: "Enable Data-Driven Governance",
-        description: "Use analytics to improve planning and decision-making.",
+        description:
+          "Equip administrators with AI analytics, predictive modeling, and executive dashboards for smarter city planning.",
+        stat: "3× faster",
+        tags: ["AI Analytics", "Policy Dashboard", "Predictive Planning"],
       },
     ],
     whyAltrex: [
@@ -2573,34 +2702,51 @@ export const industriesRegistry: IndustryData[] = [
       {
         title: "Improve Operational Visibility",
         description:
-          "Monitor all infrastructure assets and utility systems from a centralized platform.",
+          "Monitor all infrastructure assets, utility systems, and facility operations from a single centralized command platform.",
+        stat: "24×7",
+        tags: ["Unified Dashboard", "Asset Monitoring", "Real-Time Alerts"],
       },
       {
         title: "Reduce Operating Costs",
-        description: "Optimize energy, water, and maintenance expenses.",
+        description:
+          "Optimize energy, water, and maintenance spending across buildings, utilities, and transportation assets.",
+        stat: "25% ↓",
+        tags: ["Energy Analytics", "Water Monitoring", "Cost Optimization"],
       },
       {
         title: "Improve Asset Reliability",
         description:
-          "Implement proactive maintenance and asset health monitoring.",
+          "Implement condition-based monitoring, predictive maintenance, and asset health scoring across critical infrastructure.",
+        stat: "30% ↑",
+        tags: ["Predictive Maintenance", "Health Scoring", "Work Orders"],
       },
       {
         title: "Enhance Security & Safety",
         description:
-          "Protect critical infrastructure through AI-powered surveillance.",
+          "Protect critical facilities with AI-powered CCTV analytics, access control integration, and perimeter monitoring.",
+        stat: "< 5min",
+        tags: ["AI Surveillance", "Access Control", "Perimeter Alerts"],
       },
       {
         title: "Increase Workforce Productivity",
-        description: "Digitize inspections, maintenance, and field operations.",
+        description:
+          "Digitize inspections, maintenance rounds, compliance checks, and field service operations with mobile workflows.",
+        stat: "2× faster",
+        tags: ["Mobile Workflows", "Digital Inspections", "Field Operations"],
       },
       {
         title: "Improve Sustainability Performance",
-        description: "Track utility consumption and environmental metrics.",
+        description:
+          "Track electricity, water, gas, and carbon footprint across facilities to meet ESG and sustainability reporting targets.",
+        stat: "ESG Ready",
+        tags: ["Carbon Tracking", "ISO 50001", "Sustainability KPIs"],
       },
       {
         title: "Enable Data-Driven Management",
         description:
-          "Leverage analytics to improve planning and decision-making.",
+          "Leverage AI analytics, infrastructure dashboards, and predictive modeling to optimize planning and capital investment.",
+        stat: "3× faster",
+        tags: ["AI Analytics", "Capital Planning", "Executive Dashboards"],
       },
     ],
     whyAltrex: [
