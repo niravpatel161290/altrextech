@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import {
   Menu, X, ChevronDown, Cpu, Layers, Monitor, MapPin, Truck, Activity, Zap,
   Bell, BarChart3, ShieldCheck, Video, Cloud, Settings, Sliders, Briefcase,
-  Wrench, GraduationCap, Flame, Droplet, Factory, Building, Gauge, Globe, Plane, Warehouse,
+  Wrench, GraduationCap, Flame, Droplet, Factory, Building, Gauge, Globe, Warehouse,
 } from "lucide-react";
 import { Button } from "./ui/button";
 import ThemeToggle from "@/components/ThemeToggle";
