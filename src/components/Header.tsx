@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import {
   Menu, X, ChevronDown, Cpu, Layers, Monitor, MapPin, Truck, Activity, Zap,
   Bell, BarChart3, ShieldCheck, Video, Cloud, Settings, Sliders, Briefcase,
-  Wrench, GraduationCap, Flame, Droplet, Factory, Building, Gauge,
+  Wrench, GraduationCap, Flame, Droplet, Factory, Building, Gauge, Globe, Plane, Warehouse,
 } from "lucide-react";
 import { Button } from "./ui/button";
 import ThemeToggle from "@/components/ThemeToggle";
@@ -19,14 +19,17 @@ const Header = () => {
   const [solutionsOpen, setSolutionsOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [industriesOpen, setIndustriesOpen] = useState(false);
+  const [projectsOpen, setProjectsOpen] = useState(false);
   const [mobileSolutionsOpen, setMobileSolutionsOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [mobileIndustriesOpen, setMobileIndustriesOpen] = useState(false);
+  const [mobileProjectsOpen, setMobileProjectsOpen] = useState(false);
   const location = useLocation();
 
   const solutionsTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const servicesTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const industriesTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const projectsTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -41,6 +44,7 @@ const Header = () => {
       setSolutionsOpen(false);
       setServicesOpen(false);
       setIndustriesOpen(false);
+      setProjectsOpen(false);
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
@@ -51,6 +55,7 @@ const Header = () => {
     { name: "Solutions", href: "#" },
     { name: "Services", href: "#" },
     { name: "Industries", href: "#" },
+    { name: "Live Demo", href: "#" },
     { name: "Contact Us", href: "/contact" },
   ];
 
@@ -188,6 +193,40 @@ const Header = () => {
     exploreAllHref: "/industries",
   };
 
+  // --- Projects (live demos) --------------------------------------------
+  // hrefs below are placeholders — swap in the real hosted demo URLs.
+  // MegaMenu/MobileMegaAccordion detect http(s) links automatically and
+  // render them as external links (new tab) instead of in-app routes.
+  const projectCategories: MegaMenuCategory[] = [
+    {
+      title: "Live Product Demos",
+      icon: Globe,
+      viewAllHref: "https://demos.altrex.io",
+      items: [
+        { name: "EV Station Centre", href: "https://ev-station-mu.vercel.app/", icon: Zap, description: "Monitor EV charging stations and energy delivery in real time." },
+        { name: "CGD Asset Console", href: "https://cgd-network.vercel.app/", icon: Flame, description: "Track and manage assets across the CGD distribution network." },
+        { name: "CNG Logistics Console", href: "https://vts-khaki.vercel.app/", icon: Truck, description: "Live tracking of CNG cascade logistics and delivery routes." },
+        { name: "MHE Fleet Command Centre", href: "https://mhe-tracking.vercel.app/", icon: Warehouse, description: "Coordinate material handling equipment across facilities." },
+        { name: "Production & OEE Console", href: "https://manufacturing-line.vercel.app/", icon: Factory, description: "Monitor production lines and overall equipment effectiveness." },
+        { name: "Energy Command Centre", href: "https://ems-plant.vercel.app/", icon: Gauge, description: "Centralized view of plant-wide energy consumption and load." },
+        { name: "Enterprise Energy Platform", href: "https://manufacturing-line.vercel.app/", icon: BarChart3, description: "Enterprise-wide energy analytics and reporting dashboard." },
+        { name: "CGD AMR Console", href: "https://amr-cgd.vercel.app/", icon: Activity, description: "Automatic meter reading for CGD customer connections." },
+        { name: "Water AMR Console", href: "https://amr-water.vercel.app/", icon: Droplet, description: "Automatic meter reading across water utility networks." },
+        { name: "Fleet Command", href: "https://vts-logistics.vercel.app/", icon: Truck, description: "Live fleet tracking and dispatch across your network." },
+      ],
+    },
+  ];
+
+  const projectsFeatured: MegaMenuFeatured = {
+    icon: Globe,
+    title: "See Altrex in Action",
+    description: "Explore live, interactive demos of real deployments across energy, logistics, manufacturing, aerospace, and public infrastructure.",
+    ctaLabel: "Launch EV Station Centre",
+    ctaHref: "https://ev-station-mu.vercel.app/",
+    exploreAllLabel: "View All Demos",
+    exploreAllHref: "https://demos.altrex.io",
+  };
+
   const { theme } = useTheme();
   const effectiveTheme = theme;
 
@@ -227,11 +266,24 @@ const Header = () => {
     setIndustriesOpen((prev) => !prev);
   };
 
+  const handleProjectsEnter = () => {
+    if (projectsTimeoutRef.current) clearTimeout(projectsTimeoutRef.current);
+    setProjectsOpen(true);
+  };
+  const handleProjectsLeave = () => {
+    projectsTimeoutRef.current = setTimeout(() => setProjectsOpen(false), 150);
+  };
+  const toggleProjects = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setProjectsOpen((prev) => !prev);
+  };
+
   useEffect(() => {
     return () => {
       if (solutionsTimeoutRef.current) clearTimeout(solutionsTimeoutRef.current);
       if (servicesTimeoutRef.current) clearTimeout(servicesTimeoutRef.current);
       if (industriesTimeoutRef.current) clearTimeout(industriesTimeoutRef.current);
+      if (projectsTimeoutRef.current) clearTimeout(projectsTimeoutRef.current);
     };
   }, []);
 
@@ -335,6 +387,32 @@ const Header = () => {
               );
             }
 
+            if (item.name === "Live Demo") {
+              return (
+                <div key={item.name} className="relative h-16 flex items-center" onMouseEnter={handleProjectsEnter} onMouseLeave={handleProjectsLeave}>
+                  <Link
+                    to={item.href}
+                    onClick={toggleProjects}
+                    aria-haspopup="menu"
+                    aria-expanded={projectsOpen}
+                    className={`text-sm font-medium transition-colors flex items-center gap-1 relative z-50 outline-none focus-visible:ring-2 focus-visible:ring-orange-500/40 rounded-sm ${
+                      isActive || projectsOpen ? "text-orange-500" : "text-foreground hover:text-orange-500"
+                    }`}
+                  >
+                    {item.name}
+                    <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${projectsOpen ? "rotate-180 text-orange-500" : ""}`} />
+                  </Link>
+                  <MegaMenu
+                    isOpen={projectsOpen}
+                    label="Projects"
+                    categories={projectCategories}
+                    featured={projectsFeatured}
+                    onLinkClick={() => setProjectsOpen(false)}
+                  />
+                </div>
+              );
+            }
+
             return (
               <Link
                 key={item.name}
@@ -420,6 +498,21 @@ const Header = () => {
                     categories={industryCategories}
                     featured={industriesFeatured}
                     onLinkClick={() => { setMobileMenu(false); setMobileIndustriesOpen(false); }}
+                  />
+                );
+              }
+
+              if (item.name === "Projects") {
+                return (
+                  <MobileMegaAccordion
+                    key={item.name}
+                    label="Projects"
+                    panelId="mobile-projects-panel"
+                    isOpen={mobileProjectsOpen}
+                    onToggle={() => setMobileProjectsOpen((prev) => !prev)}
+                    categories={projectCategories}
+                    featured={projectsFeatured}
+                    onLinkClick={() => { setMobileMenu(false); setMobileProjectsOpen(false); }}
                   />
                 );
               }

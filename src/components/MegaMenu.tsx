@@ -1,8 +1,8 @@
 import { motion, AnimatePresence, type Variants } from "framer-motion";
-import { Link } from "react-router-dom";
-import { ArrowRight, type LucideIcon } from "lucide-react";
+import { ArrowRight, ExternalLink, type LucideIcon } from "lucide-react";
 import { Card } from "./ui/card";
 import { cn } from "@/lib/utils";
+import MenuLink, { isExternalHref } from "@/components/MenuLink";
 
 // Card (ui/card.tsx) is a plain div and can't take framer-motion props
 // (variants/initial/animate/exit). Where a card needs to animate, we render
@@ -99,10 +99,11 @@ export default function MegaMenu({ isOpen, label, categories, featured, onLinkCl
                     <ul className="flex flex-1 flex-col gap-1" role="none">
                       {category.items.map((item) => {
                         const ItemIcon = item.icon;
+                        const itemIsExternal = isExternalHref(item.href);
                         return (
                           <li key={item.name} role="none">
-                            <Link
-                              to={item.href}
+                            <MenuLink
+                              href={item.href}
                               onClick={onLinkClick}
                               role="menuitem"
                               className="group relative flex items-start gap-3 rounded-xl border-l-[3px] border-l-transparent p-2 pl-2.5 outline-none transition-all duration-[250ms] ease-out hover:-translate-y-0.5 hover:border-l-[color:var(--brand-secondary)] hover:bg-[color:var(--brand-secondary)]/5 focus-visible:border-l-[color:var(--brand-secondary)] focus-visible:bg-[color:var(--brand-secondary)]/10 focus-visible:ring-2 focus-visible:ring-[color:var(--brand-secondary)]/40 dark:hover:bg-white/[0.04] dark:hover:shadow-none dark:focus-visible:bg-white/[0.04]"
@@ -115,21 +116,27 @@ export default function MegaMenu({ isOpen, label, categories, featured, onLinkCl
                                   <span className="truncate text-[13px] font-semibold leading-snug text-slate-900 transition-colors duration-[250ms] group-hover:text-[color:var(--brand-secondary)] dark:text-[#F8FAFC] dark:group-hover:text-[color:var(--brand-secondary)]">
                                     {item.name}
                                   </span>
-                                  <ArrowRight className="h-3 w-3 shrink-0 -translate-x-1 text-[color:var(--brand-secondary)] opacity-0 transition-all duration-[250ms] group-hover:translate-x-0 group-hover:opacity-100 dark:text-[color:var(--brand-secondary)]" />
+                                  {itemIsExternal ? (
+                                    // Always-visible (not hover-only) so an external demo link is
+                                    // recognizable as "leaves the site" before the user clicks it.
+                                    <ExternalLink className="h-3 w-3 shrink-0 text-slate-400 dark:text-[#94A3B8]" />
+                                  ) : (
+                                    <ArrowRight className="h-3 w-3 shrink-0 -translate-x-1 text-[color:var(--brand-secondary)] opacity-0 transition-all duration-[250ms] group-hover:translate-x-0 group-hover:opacity-100 dark:text-[color:var(--brand-secondary)]" />
+                                  )}
                                 </div>
                                 <p className="mt-0.5 text-[11px] leading-snug text-slate-500 line-clamp-1 dark:text-[#94A3B8]">
                                   {item.description}
                                 </p>
                               </div>
-                            </Link>
+                            </MenuLink>
                           </li>
                         );
                       })}
                     </ul>
 
                     {/* Footer CTA — pinned to bottom regardless of item count */}
-                    <Link
-                      to={category.viewAllHref}
+                    <MenuLink
+                      href={category.viewAllHref}
                       onClick={onLinkClick}
                       className="group mt-auto flex items-center gap-1 border-t border-slate-100 pt-3 mt-3 text-xs font-semibold text-[color:var(--brand-secondary)] outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--brand-secondary)]/40 dark:border-white/[0.08] dark:text-[color:var(--brand-secondary)]"
                     >
@@ -137,7 +144,7 @@ export default function MegaMenu({ isOpen, label, categories, featured, onLinkCl
                         View All {category.title.split(" ")[0]}
                       </span>
                       <ArrowRight className="h-3 w-3 transition-transform duration-[250ms] group-hover:translate-x-1" />
-                    </Link>
+                    </MenuLink>
                   </motion.div>
                 );
               })}
@@ -166,21 +173,21 @@ export default function MegaMenu({ isOpen, label, categories, featured, onLinkCl
                   </div>
 
                   <div className="relative mt-6 flex flex-col gap-3">
-                    <Link
-                      to={featured.ctaHref}
+                    <MenuLink
+                      href={featured.ctaHref}
                       onClick={onLinkClick}
                       className="group inline-flex items-center justify-center gap-2 rounded-lg bg-[color:var(--brand-secondary)] px-4 py-2.5 text-sm font-semibold text-white shadow-[0_8px_20px_-4px_color-mix(in_srgb,var(--brand-secondary)_50%,transparent)] outline-none transition-all duration-[250ms] hover:bg-[color:var(--brand-accent)] hover:shadow-[0_10px_24px_-4px_color-mix(in_srgb,var(--brand-secondary)_60%,transparent)] focus-visible:ring-2 focus-visible:ring-[color:var(--brand-accent)]/50"
                     >
                       {featured.ctaLabel}
                       <ArrowRight className="h-3.5 w-3.5 transition-transform duration-[250ms] group-hover:translate-x-1" />
-                    </Link>
-                    <Link
-                      to={featured.exploreAllHref}
+                    </MenuLink>
+                    <MenuLink
+                      href={featured.exploreAllHref}
                       onClick={onLinkClick}
                       className="text-center text-xs font-medium text-slate-400 outline-none transition-colors duration-[250ms] hover:text-white focus-visible:text-white"
                     >
                       {featured.exploreAllLabel}
-                    </Link>
+                    </MenuLink>
                   </div>
                 </Card>
               </motion.div>

@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { Link } from "react-router-dom";
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { ArrowRight, ChevronDown, ExternalLink } from "lucide-react";
 import type { MegaMenuCategory, MegaMenuFeatured } from "@/components/MegaMenu";
+import MenuLink, { isExternalHref } from "@/components/MenuLink";
 
 interface MobileMegaAccordionProps {
   label: string;
@@ -64,10 +64,11 @@ export default function MobileMegaAccordion({
                     <ul className="space-y-0.5">
                       {category.items.map((item) => {
                         const Icon = item.icon;
+                        const itemIsExternal = isExternalHref(item.href);
                         return (
                           <li key={item.name}>
-                            <Link
-                              to={item.href}
+                            <MenuLink
+                              href={item.href}
                               onClick={onLinkClick}
                               className="group flex items-start gap-2.5 rounded-lg px-2 py-2 outline-none transition-all duration-150 hover:bg-orange-500/5 focus-visible:bg-orange-500/5 focus-visible:ring-2 focus-visible:ring-orange-500/40"
                             >
@@ -75,33 +76,34 @@ export default function MobileMegaAccordion({
                                 <Icon className="h-3.5 w-3.5" />
                               </div>
                               <div className="min-w-0">
-                                <span className="block text-xs font-medium leading-snug text-foreground transition-colors group-hover:text-orange-500">
+                                <span className="flex items-center gap-1 text-xs font-medium leading-snug text-foreground transition-colors group-hover:text-orange-500">
                                   {item.name}
+                                  {itemIsExternal && <ExternalLink className="h-3 w-3 shrink-0 text-muted-foreground" />}
                                 </span>
                                 <span className="block text-[11px] leading-snug text-muted-foreground line-clamp-1">
                                   {item.description}
                                 </span>
                               </div>
-                            </Link>
+                            </MenuLink>
                           </li>
                         );
                       })}
                     </ul>
-                    <Link
-                      to={category.viewAllHref}
+                    <MenuLink
+                      href={category.viewAllHref}
                       onClick={onLinkClick}
                       className="mt-1 inline-flex items-center gap-1 px-2 text-xs font-semibold text-orange-600 dark:text-orange-400"
                     >
                       View all
                       <ArrowRight className="h-3 w-3" />
-                    </Link>
+                    </MenuLink>
                   </div>
                 );
               })}
 
               {/* Featured card */}
-              <Link
-                to={featured.ctaHref}
+              <MenuLink
+                href={featured.ctaHref}
                 onClick={onLinkClick}
                 className="relative mt-2 flex flex-col gap-2 overflow-hidden rounded-2xl bg-gradient-to-br from-slate-900 to-[#0B0F19] p-4 dark:ring-1 dark:ring-white/[0.08]"
               >
@@ -117,7 +119,7 @@ export default function MobileMegaAccordion({
                   {featured.ctaLabel}
                   <ArrowRight className="h-3 w-3" />
                 </span>
-              </Link>
+              </MenuLink>
             </div>
           </motion.div>
         )}
