@@ -440,7 +440,7 @@ const IndustryPage = () => {
                   <motion.div
                     key={benefit.title}
                     variants={cardVariant}
-                    className={`group relative flex flex-col overflow-hidden rounded-2xl border border-white/8 bg-[#0e0e0e] p-6 shadow-[0_8px_40px_rgba(0,0,0,0.35)] transition-all duration-300 hover:border-orange-500/35 hover:shadow-[0_0_40px_rgba(249,115,22,0.07)] ${benefitSizes[idx]}`}
+                    className={`group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:border-orange-500/35 ${benefitSizes[idx]}`}
                   >
                     {/* Top row: icon + number */}
                     <div className="flex items-start justify-between">
@@ -471,7 +471,7 @@ const IndustryPage = () => {
                       </div>
 
                       {/* Number watermark */}
-                      <span className="text-[3.5rem] font-black tracking-[-0.08em] text-white/15 leading-none select-none">
+                      <span className="text-[3.5rem] font-black tracking-[-0.08em] text-foreground/15 leading-none select-none">
                         {String(idx + 1).padStart(2, "0")}
                       </span>
                     </div>
@@ -485,10 +485,10 @@ const IndustryPage = () => {
                           </span>
                         </div>
                       )}
-                      <h3 className="text-lg font-bold text-white mb-2 leading-snug">
+                      <h3 className="text-lg font-bold text-foreground mb-2 leading-snug">
                         {benefit.title}
                       </h3>
-                      <p className="text-sm leading-6 text-zinc-400 font-medium">
+                      <p className="text-sm leading-6 text-muted-foreground font-medium">
                         {benefit.description}
                       </p>
                       {benefit.tags && benefit.tags.length > 0 && (
@@ -496,7 +496,7 @@ const IndustryPage = () => {
                           {benefit.tags.map((tag) => (
                             <span
                               key={tag}
-                              className="rounded-md border border-white/10 bg-white/5 px-2 py-0.5 text-[11px] font-medium text-zinc-400"
+                              className="rounded-md border border-border bg-muted/10 px-2 py-0.5 text-[11px] font-medium text-muted-foreground"
                             >
                               {tag}
                             </span>
