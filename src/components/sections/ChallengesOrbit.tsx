@@ -206,8 +206,8 @@ export default function ChallengesOrbit({ challenges }: ChallengesOrbitProps) {
 
                 // ✅ position relative to wrapper div, not the viewport
                 const wrapRect = wrapper.getBoundingClientRect();
-                let lx = e.clientX - wrapRect.left + 16;
-                let ly = e.clientY - wrapRect.top - 10;
+                const lx = e.clientX - wrapRect.left + 16;
+                const ly = e.clientY - wrapRect.top - 10;
 
                 tooltip.style.opacity = "1";
                 tooltip.style.left = `${lx}px`;
