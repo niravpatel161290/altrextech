@@ -11,6 +11,8 @@ import {
   ShieldCheck,
   Sparkles,
   Users,
+  X,
+  CheckCircle2,
 } from "lucide-react";
 import { FaLinkedinIn } from "react-icons/fa6";
 
@@ -25,7 +27,6 @@ import { useState, useEffect, useCallback } from "react";
 import { useTheme } from "@/hooks/useTheme";
 import CTASection from "@/components/CTASection";
 import { Card } from "@/components/ui/card";
-import CaseStudies from "@/components/sections/CaseStudies";
 import HowWeWork from "@/components/sections/HowWeWork";
 
 // ─── Milestone data — matches reference image exactly ──────────────────────
@@ -169,6 +170,49 @@ const principles = [
     description: "Long-term relationships, not one-time transactions.",
   },
 ];
+
+const DIFFERENTIATORS = [
+  {
+    dimension: "CONNECTIVITY",
+    oldWay: "Limited to specific PLC, SCADA or hardware ecosystems",
+    altrexWay: "Vendor-agnostic — connect PLCs, meters, RTUs, IoT devices, databases & APIs",
+  },
+  {
+    dimension: "VISIBILITY",
+    oldWay: "Separate dashboards and applications for each site",
+    altrexWay: "One unified, real-time view across all sites and assets",
+  },
+  {
+    dimension: "DATA",
+    oldWay: "Data trapped across SCADA, databases and manual systems",
+    altrexWay: "Bring operational data together into one industrial data layer",
+  },
+  {
+    dimension: "ASSET MANAGEMENT",
+    oldWay: "Asset information scattered across multiple systems",
+    altrexWay: "Centralized asset hierarchy, health, history, documents & performance",
+  },
+  {
+    dimension: "ANALYTICS",
+    oldWay: "Mostly historical dashboards and manual analysis",
+    altrexWay: "Real-time KPIs, analytics, alarms, trends & AI-driven insights",
+  },
+  {
+    dimension: "SCALABILITY",
+    oldWay: "New sites often require new systems and integrations",
+    altrexWay: "Scale from a single plant to thousands of assets on the same platform",
+  },
+  {
+    dimension: "APPLICATIONS",
+    oldWay: "Multiple disconnected software products",
+    altrexWay: "Dashboard, GIS, Reporting, CMMS, APM, Workflow & Digital Twin in one platform",
+  },
+  {
+    dimension: "DATA OWNERSHIP",
+    oldWay: "Data and applications remain dependent on the solution provider",
+    altrexWay: "Your operational data. Your infrastructure. Your control.",
+  },
+] as const;
 
 /* ─── Section: Hero ──────────────────────────────────────────────────────── */
 
@@ -952,13 +996,88 @@ function ValuesSection() {
   );
 }
 
+/* ─── Section: Why Choose Us ─────────────────────────────────────────────── */
+
+function WhyChooseUsSection() {
+  const ref = useRef<HTMLElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+
+  return (
+    <section ref={ref} className="relative bg-transparent py-24">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="text-center">
+          <SectionBadge
+            title="WHY CHOOSE US"
+            dot={true}
+            dotColor="bg-emerald-500"
+            className="mb-8"
+          />
+          <h2 className="mt-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+            Built for the next generation of industrial operations
+          </h2>
+          <p className="mx-auto mt-4 max-w-4xl text-lg leading-8 text-muted-foreground font-medium">
+            Most industrial systems were designed around a single SCADA, hardware vendor, or application. 
+          </p>
+          <p className="text-lg leading-8 text-muted-foreground font-medium">W! Platform connects your existing systems into one unified industrial platform.</p>
+        </div>
+
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          className="mt-16 overflow-hidden rounded-2xl border border-border"
+        >
+          {/* Column headers — hidden on mobile, where each row stacks instead */}
+          <div className="hidden border-b border-border bg-card/50 sm:grid sm:grid-cols-[200px_1fr_1fr]">
+            <div />
+            <div className="flex items-center gap-2 px-6 py-4">
+              <X className="h-4 w-4 text-muted-foreground" />
+              <span className="text-sm font-semibold text-muted-foreground">
+                Traditional Providers
+              </span>
+            </div>
+            <div className="flex items-center gap-2 border-l border-border bg-accent/5 px-6 py-4">
+              <CheckCircle2 className="h-4 w-4 text-accent" />
+              <span className="text-sm font-semibold text-foreground">
+                The Altrex Way
+              </span>
+            </div>
+          </div>
+
+          {DIFFERENTIATORS.map((row, i) => (
+            <motion.div
+              key={row.dimension}
+              variants={cardVariants}
+              className={`grid grid-cols-1 sm:grid-cols-[200px_1fr_1fr] ${
+                i !== DIFFERENTIATORS.length - 1 ? "border-b border-border" : ""
+              }`}
+            >
+              <div className="flex items-center px-6 py-5 text-sm font-bold uppercase tracking-wide text-foreground sm:border-r sm:border-border">
+                {row.dimension}
+              </div>
+              <div className="flex items-start gap-2.5 px-6 py-4 text-sm leading-6 text-muted-foreground sm:py-5">
+                <X className="mt-0.5 h-4 w-4 shrink-0 text-red-400/70" />
+                {row.oldWay}
+              </div>
+              <div className="flex items-start gap-2.5 border-t border-border bg-accent/5 px-6 py-4 text-sm font-medium leading-6 text-foreground sm:border-l sm:border-t-0 sm:py-5">
+                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                {row.altrexWay}
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
 /* ─── Page ───────────────────────────────────────────────────────────────── */
 
 const About = () => {
   return (
     <div className="overflow-hidden bg-background">
       <HeroSection />
-      <CaseStudies />
+      <WhyChooseUsSection />
       <HowWeWork />
       <MissionSection />
       <StatsSection />

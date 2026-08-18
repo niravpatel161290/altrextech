@@ -68,9 +68,16 @@ export const LIVE_DEMO_GROUPS: LiveDemoGroup[] = [
     ],
   },
   {
-    title: "Utility Network",
+    title: "Assets & Utility",
     icon: Flame,
     demos: [
+       {
+        name: "APM & CMMS CGD",
+        href: "https://apm-cmms.vercel.app/",
+        icon: Wrench,
+        description:
+          "Manage asset performance, maintenance activities, work orders, and CGD infrastructure.",
+      },
       {
         name: "CGD Asset Console",
         href: "https://cgd-network.vercel.app/",
@@ -89,13 +96,6 @@ export const LIVE_DEMO_GROUPS: LiveDemoGroup[] = [
         href: "https://amr-water.vercel.app/",
         icon: Droplet,
         description: "Automatic meter reading across water utility networks.",
-      },
-      {
-        name: "APM & CMMS CGD",
-        href: "https://apm-cmms.vercel.app/",
-        icon: Wrench,
-        description:
-          "Manage asset performance, maintenance activities, work orders, and CGD infrastructure.",
       },
     ],
   },
