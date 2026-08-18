@@ -72,7 +72,7 @@ export default function MobileMegaAccordion({
                               onClick={onLinkClick}
                               className="group flex items-start gap-2.5 rounded-lg px-2 py-2 outline-none transition-all duration-150 hover:bg-orange-500/5 focus-visible:bg-orange-500/5 focus-visible:ring-2 focus-visible:ring-orange-500/40"
                             >
-                              <div className="mt-0.5 shrink-0 rounded-md border border-border bg-muted p-1.5 text-muted-foreground transition-colors group-hover:border-orange-500/30 group-hover:text-orange-500">
+                              <div className="mt-0.5 shrink-0 rounded-md bg-orange-500/10 p-1.5 text-orange-500 ring-1 ring-inset ring-orange-500/20 transition-transform group-hover:scale-105">
                                 <Icon className="h-3.5 w-3.5" />
                               </div>
                               <div className="min-w-0">
@@ -80,7 +80,7 @@ export default function MobileMegaAccordion({
                                   {item.name}
                                   {itemIsExternal && <ExternalLink className="h-3 w-3 shrink-0 text-muted-foreground" />}
                                 </span>
-                                <span className="block text-[11px] leading-snug text-muted-foreground line-clamp-1">
+                                <span className="block text-[11px] leading-snug text-muted-foreground line-clamp-2">
                                   {item.description}
                                 </span>
                               </div>

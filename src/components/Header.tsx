@@ -3,13 +3,14 @@ import { Link, useLocation } from "react-router-dom";
 import {
   Menu, X, ChevronDown, Cpu, Layers, Monitor, MapPin, Truck, Activity, Zap,
   Bell, BarChart3, ShieldCheck, Video, Cloud, Settings, Sliders, Briefcase,
-  Wrench, GraduationCap, Flame, Droplet, Factory, Building, Gauge, Globe, Warehouse,
+  Wrench, GraduationCap, Flame, Droplet, Factory, Building, Gauge, Globe,
 } from "lucide-react";
 import { Button } from "./ui/button";
 import ThemeToggle from "@/components/ThemeToggle";
 import { useTheme } from "@/hooks/useTheme";
 import MegaMenu, { type MegaMenuCategory, type MegaMenuFeatured } from "@/components/MegaMenu";
 import MobileMegaAccordion from "@/components/MobileMegaAccordion";
+import { LIVE_DEMO_GROUPS } from "@/data/liveDemosData";
 import lightlogo from "@/assets/AltrexLogoTr1.png";
 import darklogo from "@/assets/AltrexLogoTr2.png";
 
@@ -65,6 +66,7 @@ const Header = () => {
       title: "Core Infrastructure",
       icon: Cpu,
       viewAllHref: "/solutions#core-infrastructure",
+      viewAllLabel: "View All Infrastructure",
       items: [
         { name: "Connectivity & Data Acquisition", href: "/solutions/connectivity", icon: Cpu, description: "Unify PLCs, RTUs, sensors, and SCADA into one data layer." },
         { name: "Industrial IoT Platform", href: "/solutions/iiot-platform", icon: Layers, description: "A single real-time platform connecting every industrial asset." },
@@ -76,6 +78,7 @@ const Header = () => {
       title: "Operations & Efficiency",
       icon: Gauge,
       viewAllHref: "/solutions#operations-efficiency",
+      viewAllLabel: "View All Operations",
       items: [
         { name: "Fleet Management & VTS", href: "/solutions/fleet-management", icon: Truck, description: "Track vehicles and optimize routes with live telemetry." },
         { name: "Automatic Meter Reading (AMR)", href: "/solutions/amr", icon: Activity, description: "Remote meter reads with zero manual site visits." },
@@ -87,6 +90,7 @@ const Header = () => {
       title: "Intelligence & Security",
       icon: ShieldCheck,
       viewAllHref: "/solutions#intelligence-security",
+      viewAllLabel: "View All Security",
       items: [
         { name: "Analytics & Reporting", href: "/solutions/analytics-reporting", icon: BarChart3, description: "Turn operational data into decisions with live dashboards." },
         { name: "Cybersecurity & Access Control", href: "/solutions/cybersecurity", icon: ShieldCheck, description: "Protect OT networks and control who accesses what." },
@@ -111,6 +115,7 @@ const Header = () => {
       title: "Core Deployments",
       icon: Briefcase,
       viewAllHref: "/services#core-deployments",
+      viewAllLabel: "View All Deployments",
       items: [
         { name: "SaaS Platform Services", href: "/services/saas-platform", icon: Cloud, description: "Fully managed platform access, hosted and maintained by us." },
         { name: "Turnkey Project Implementation", href: "/services/turnkey-implementation", icon: Briefcase, description: "End-to-end deployment from design to commissioning." },
@@ -121,6 +126,7 @@ const Header = () => {
       title: "Integration Services",
       icon: Sliders,
       viewAllHref: "/services#integration-services",
+      viewAllLabel: "View All Integrations",
       items: [
         { name: "System Integration Services", href: "/services/system-integration", icon: Sliders, description: "Connect existing systems into one unified architecture." },
         { name: "Industrial IoT & Edge Integration", href: "/services/industrial-iot-edge", icon: Cpu, description: "Bridge OT and IT with edge-ready IoT integration." },
@@ -131,6 +137,7 @@ const Header = () => {
       title: "Infrastructure & Advisory",
       icon: Settings,
       viewAllHref: "/services#infrastructure-advisory",
+      viewAllLabel: "View All Advisory",
       items: [
         { name: "Cloud & Infrastructure Services", href: "/services/cloud-infrastructure", icon: Settings, description: "Scalable cloud infrastructure built for industrial data." },
         { name: "GIS & Asset Digitization", href: "/services/gis-asset-digitization", icon: MapPin, description: "Digitize field assets into a searchable spatial record." },
@@ -155,6 +162,7 @@ const Header = () => {
       title: "Energy & Resources",
       icon: Flame,
       viewAllHref: "/industries#energy-resources",
+      viewAllLabel: "View All Energy",
       items: [
         { name: "City Gas Distribution (CGD)", href: "/industries/cgd", icon: Flame, description: "Purpose-built monitoring for CGD networks end-to-end." },
         { name: "Oil & Gas", href: "/industries/oil-gas", icon: Settings, description: "Real-time visibility across upstream to downstream operations." },
@@ -165,6 +173,7 @@ const Header = () => {
       title: "Infrastructure & Automation",
       icon: Factory,
       viewAllHref: "/industries#infrastructure-automation",
+      viewAllLabel: "View All Automation",
       items: [
         { name: "Water & Wastewater", href: "/industries/water-wastewater", icon: Droplet, description: "Monitor treatment and distribution networks in real time." },
         { name: "Renewable Energy", href: "/industries/renewable-energy", icon: Activity, description: "Track generation and performance across renewable assets." },
@@ -175,6 +184,7 @@ const Header = () => {
       title: "Smart Ecosystems",
       icon: Building,
       viewAllHref: "/industries#smart-ecosystems",
+      viewAllLabel: "View All Ecosystems",
       items: [
         { name: "Logistics & Transportation", href: "/industries/logistics-transportation", icon: Truck, description: "Live fleet and cargo visibility across your network." },
         { name: "Smart Cities", href: "/industries/smart-cities", icon: Building, description: "Unify city infrastructure into one operational view." },
@@ -194,28 +204,17 @@ const Header = () => {
   };
 
   // --- Projects (live demos) --------------------------------------------
-  // hrefs below are placeholders — swap in the real hosted demo URLs.
-  // MegaMenu/MobileMegaAccordion detect http(s) links automatically and
-  // render them as external links (new tab) instead of in-app routes.
-  const projectCategories: MegaMenuCategory[] = [
-    {
-      title: "Live Product Demos",
-      icon: Globe,
-      viewAllHref: "https://demos.altrex.io",
-      items: [
-        { name: "EV Station Centre", href: "https://ev-station-mu.vercel.app/", icon: Zap, description: "Monitor EV charging stations and energy delivery in real time." },
-        { name: "CGD Asset Console", href: "https://cgd-network.vercel.app/", icon: Flame, description: "Track and manage assets across the CGD distribution network." },
-        { name: "CNG Logistics Console", href: "https://vts-khaki.vercel.app/", icon: Truck, description: "Live tracking of CNG cascade logistics and delivery routes." },
-        { name: "MHE Fleet Command Centre", href: "https://mhe-tracking.vercel.app/", icon: Warehouse, description: "Coordinate material handling equipment across facilities." },
-        { name: "Production & OEE Console", href: "https://manufacturing-line.vercel.app/", icon: Factory, description: "Monitor production lines and overall equipment effectiveness." },
-        { name: "Energy Command Centre", href: "https://ems-plant.vercel.app/", icon: Gauge, description: "Centralized view of plant-wide energy consumption and load." },
-        { name: "Enterprise Energy Platform", href: "https://manufacturing-line.vercel.app/", icon: BarChart3, description: "Enterprise-wide energy analytics and reporting dashboard." },
-        { name: "CGD AMR Console", href: "https://amr-cgd.vercel.app/", icon: Activity, description: "Automatic meter reading for CGD customer connections." },
-        { name: "Water AMR Console", href: "https://amr-water.vercel.app/", icon: Droplet, description: "Automatic meter reading across water utility networks." },
-        { name: "Fleet Command", href: "https://vts-logistics.vercel.app/", icon: Truck, description: "Live fleet tracking and dispatch across your network." },
-      ],
-    },
-  ];
+  // Item hrefs are external (hosted demo deployments) — MegaMenu/
+  // MobileMegaAccordion detect http(s) links automatically and render them
+  // as external links (new tab) instead of in-app routes. viewAllHref below
+  // is internal — it opens the /live-demo overview page in this app.
+  const projectCategories: MegaMenuCategory[] = LIVE_DEMO_GROUPS.map((group) => ({
+    title: group.title,
+    icon: group.icon,
+    items: group.demos,
+    viewAllHref: "/live-demo",
+    viewAllLabel: "View All Live Demos",
+  }));
 
   const projectsFeatured: MegaMenuFeatured = {
     icon: Globe,
@@ -224,7 +223,7 @@ const Header = () => {
     ctaLabel: "Launch EV Station Centre",
     ctaHref: "https://ev-station-mu.vercel.app/",
     exploreAllLabel: "View All Demos",
-    exploreAllHref: "https://demos.altrex.io",
+    exploreAllHref: "/live-demo",
   };
 
   const { theme } = useTheme();
@@ -404,7 +403,7 @@ const Header = () => {
                   </Link>
                   <MegaMenu
                     isOpen={projectsOpen}
-                    label="Projects"
+                    label="Live Demo"
                     categories={projectCategories}
                     featured={projectsFeatured}
                     onLinkClick={() => setProjectsOpen(false)}
@@ -502,11 +501,11 @@ const Header = () => {
                 );
               }
 
-              if (item.name === "Projects") {
+              if (item.name === "Live Demo") {
                 return (
                   <MobileMegaAccordion
                     key={item.name}
-                    label="Projects"
+                    label="Live Demo"
                     panelId="mobile-projects-panel"
                     isOpen={mobileProjectsOpen}
                     onToggle={() => setMobileProjectsOpen((prev) => !prev)}

@@ -22,6 +22,8 @@ export interface MegaMenuCategory {
   icon: LucideIcon;
   items: MegaMenuItem[];
   viewAllHref: string;
+  /** Footer link text. Defaults to `View All {title}` when omitted. */
+  viewAllLabel?: string;
 }
 
 export interface MegaMenuFeatured {
@@ -108,7 +110,7 @@ export default function MegaMenu({ isOpen, label, categories, featured, onLinkCl
                               role="menuitem"
                               className="group relative flex items-start gap-3 rounded-xl border-l-[3px] border-l-transparent p-2 pl-2.5 outline-none transition-all duration-[250ms] ease-out hover:-translate-y-0.5 hover:border-l-[color:var(--brand-secondary)] hover:bg-[color:var(--brand-secondary)]/5 focus-visible:border-l-[color:var(--brand-secondary)] focus-visible:bg-[color:var(--brand-secondary)]/10 focus-visible:ring-2 focus-visible:ring-[color:var(--brand-secondary)]/40 dark:hover:bg-white/[0.04] dark:hover:shadow-none dark:focus-visible:bg-white/[0.04]"
                             >
-                              <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-border">
+                              <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[color:var(--brand-secondary)]/10 text-[color:var(--brand-secondary)] ring-1 ring-inset ring-[color:var(--brand-secondary)]/20 transition-transform duration-[250ms] group-hover:scale-105">
                                 <ItemIcon className="h-4 w-4" />
                               </div>
                               <div className="min-w-0 flex-1">
@@ -124,7 +126,7 @@ export default function MegaMenu({ isOpen, label, categories, featured, onLinkCl
                                     <ArrowRight className="h-3 w-3 shrink-0 -translate-x-1 text-[color:var(--brand-secondary)] opacity-0 transition-all duration-[250ms] group-hover:translate-x-0 group-hover:opacity-100 dark:text-[color:var(--brand-secondary)]" />
                                   )}
                                 </div>
-                                <p className="mt-0.5 text-[11px] leading-snug text-slate-500 line-clamp-1 dark:text-[#94A3B8]">
+                                <p className="mt-0.5 text-[11px] leading-snug text-slate-500 line-clamp-2 dark:text-[#94A3B8]">
                                   {item.description}
                                 </p>
                               </div>
@@ -141,7 +143,7 @@ export default function MegaMenu({ isOpen, label, categories, featured, onLinkCl
                       className="group mt-auto flex items-center gap-1 border-t border-slate-100 pt-3 mt-3 text-xs font-semibold text-[color:var(--brand-secondary)] outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--brand-secondary)]/40 dark:border-white/[0.08] dark:text-[color:var(--brand-secondary)]"
                     >
                       <span className="border-b border-transparent group-hover:border-[color:var(--brand-secondary)]">
-                        View All {category.title.split(" ")[0]}
+                        {category.viewAllLabel ?? `View All ${category.title}`}
                       </span>
                       <ArrowRight className="h-3 w-3 transition-transform duration-[250ms] group-hover:translate-x-1" />
                     </MenuLink>

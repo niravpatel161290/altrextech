@@ -10,6 +10,7 @@ import ServicesOverview from "./pages/ServicesOverview";
 import IndustriesOverview from "./pages/IndustriesOverview";
 import { ServicePage } from "./pages/ServicePage";
 import IndustryPage from "./pages/IndustryPage";
+import LiveDemoOverview from "./pages/LiveDemoOverview";
 
 const SolutionPageWithKey = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -45,7 +46,8 @@ export const router = createBrowserRouter([
       {
         path: 'industries/:slug',
         element: <IndustryPageWithKey />
-      }
+      },
+      { path: "/live-demo", element: <LiveDemoOverview /> },
     ],
   },
 ]);
