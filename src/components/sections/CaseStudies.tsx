@@ -163,6 +163,7 @@ function CaseStudyCard({ item }: { item: (typeof caseStudies)[number] }) {
           <motion.button
             whileHover={{ x: 3 }}
             transition={{ duration: 0.2 }}
+            
             className="flex h-10 w-10 items-center justify-center rounded-lg border transition-colors duration-300"
             style={{ borderColor: `${item.accent}55`, color: item.accent }}
             aria-label={`View ${item.title} case study`}

@@ -19,10 +19,8 @@ export default function MobileMegaAccordion({
   isOpen,
   onToggle,
   categories,
-  featured,
   onLinkClick,
 }: MobileMegaAccordionProps) {
-  const FeaturedIcon = featured.icon;
 
   return (
     <div>
@@ -100,26 +98,6 @@ export default function MobileMegaAccordion({
                   </div>
                 );
               })}
-
-              {/* Featured card */}
-              <MenuLink
-                href={featured.ctaHref}
-                onClick={onLinkClick}
-                className="relative mt-2 flex flex-col gap-2 overflow-hidden rounded-2xl bg-gradient-to-br from-slate-900 to-[#0B0F19] p-4 dark:ring-1 dark:ring-white/[0.08]"
-              >
-                <div className="pointer-events-none absolute -right-6 -top-6 h-24 w-24 rounded-full bg-orange-500/25 blur-2xl" aria-hidden="true" />
-                <div className="relative flex h-9 w-9 items-center justify-center rounded-lg bg-orange-500/20 text-orange-400">
-                  <FeaturedIcon className="h-4 w-4" />
-                </div>
-                <div className="relative">
-                  <p className="text-sm font-bold text-white">{featured.title}</p>
-                  <p className="mt-1 text-[11px] leading-snug text-slate-300 line-clamp-2">{featured.description}</p>
-                </div>
-                <span className="relative mt-1 inline-flex items-center gap-1 text-xs font-semibold text-orange-400">
-                  {featured.ctaLabel}
-                  <ArrowRight className="h-3 w-3" />
-                </span>
-              </MenuLink>
             </div>
           </motion.div>
         )}

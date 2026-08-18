@@ -1,6 +1,5 @@
 import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { ArrowRight, ExternalLink, type LucideIcon } from "lucide-react";
-import { Card } from "./ui/card";
 import { cn } from "@/lib/utils";
 import MenuLink, { isExternalHref } from "@/components/MenuLink";
 
@@ -59,8 +58,7 @@ const panelVariants: Variants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.22, ease: "easeOut" } },
 };
 
-export default function MegaMenu({ isOpen, label, categories, featured, onLinkClick }: MegaMenuProps) {
-  const FeaturedIcon = featured.icon;
+export default function MegaMenu({ isOpen, label, categories, onLinkClick }: MegaMenuProps) {
 
   return (
     <AnimatePresence>
@@ -150,49 +148,6 @@ export default function MegaMenu({ isOpen, label, categories, featured, onLinkCl
                   </motion.div>
                 );
               })}
-
-              {/* Featured card */}
-              <motion.div variants={panelVariants} className="md:col-span-2 lg:col-span-3 xl:col-span-1 xl:h-full">
-                <Card className="relative flex h-full min-h-[280px] flex-col justify-between overflow-hidden p-6 bg-stone-950">
-                  <motion.div
-                    className="pointer-events-none absolute -right-8 -top-8 h-36 w-36 rounded-full bg-[color:var(--brand-secondary)]/25 blur-3xl"
-                    animate={{ opacity: [0.5, 0.9, 0.5], scale: [1, 1.08, 1] }}
-                    transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                    aria-hidden="true"
-                  />
-                  <div className="pointer-events-none absolute -bottom-10 -left-10 h-32 w-32 rounded-full bg-[color:var(--brand-secondary)]/10 blur-3xl" aria-hidden="true" />
-                  <div
-                    className="pointer-events-none absolute inset-0 opacity-[0.04]"
-                    aria-hidden="true"
-                  />
-
-                  <div className="relative">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-[color:var(--brand-secondary)]/25 to-[color:var(--brand-secondary)]/10 text-[color:var(--brand-secondary)] ring-1 ring-inset ring-[color:var(--brand-secondary)]/30 shadow-[0_0_24px_color-mix(in_srgb,var(--brand-secondary)_25%,transparent)]">
-                      <FeaturedIcon className="h-6 w-6" />
-                    </div>
-                    <h3 className="mt-4 text-xl font-bold text-white">{featured.title}</h3>
-                    <p className="mt-2 text-[13px] leading-relaxed text-slate-300">{featured.description}</p>
-                  </div>
-
-                  <div className="relative mt-6 flex flex-col gap-3">
-                    <MenuLink
-                      href={featured.ctaHref}
-                      onClick={onLinkClick}
-                      className="group inline-flex items-center justify-center gap-2 rounded-lg bg-[color:var(--brand-secondary)] px-4 py-2.5 text-sm font-semibold text-white shadow-[0_8px_20px_-4px_color-mix(in_srgb,var(--brand-secondary)_50%,transparent)] outline-none transition-all duration-[250ms] hover:bg-[color:var(--brand-accent)] hover:shadow-[0_10px_24px_-4px_color-mix(in_srgb,var(--brand-secondary)_60%,transparent)] focus-visible:ring-2 focus-visible:ring-[color:var(--brand-accent)]/50"
-                    >
-                      {featured.ctaLabel}
-                      <ArrowRight className="h-3.5 w-3.5 transition-transform duration-[250ms] group-hover:translate-x-1" />
-                    </MenuLink>
-                    <MenuLink
-                      href={featured.exploreAllHref}
-                      onClick={onLinkClick}
-                      className="text-center text-xs font-medium text-slate-400 outline-none transition-colors duration-[250ms] hover:text-white focus-visible:text-white"
-                    >
-                      {featured.exploreAllLabel}
-                    </MenuLink>
-                  </div>
-                </Card>
-              </motion.div>
             </div>
           </div>
         </motion.div>

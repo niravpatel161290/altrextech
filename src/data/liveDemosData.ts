@@ -1,4 +1,4 @@
-import { Zap, Flame, Truck, Warehouse, Factory, Gauge, BarChart3, Activity, Droplet, type LucideIcon } from "lucide-react";
+import { Zap, FlaskConical, Flame, Truck, Warehouse, Factory, Gauge, BarChart3, Activity, Wind, Sun, Droplet, type LucideIcon } from "lucide-react";
 
 export interface LiveDemo {
   name: string;
@@ -27,7 +27,7 @@ export const LIVE_DEMO_GROUPS: LiveDemoGroup[] = [
     ],
   },
   {
-    title: "Gas & Water Network",
+    title: "Utility Network",
     icon: Flame,
     demos: [
       { name: "CGD Asset Console", href: "https://cgd-network.vercel.app/", icon: Flame, description: "Track and manage assets across the CGD distribution network." },
@@ -36,13 +36,22 @@ export const LIVE_DEMO_GROUPS: LiveDemoGroup[] = [
     ],
   },
   {
-    title: "Fleet & Manufacturing",
+    title: "Fleet & Logistics",
     icon: Truck,
     demos: [
       { name: "CNG Logistics Console", href: "https://vts-khaki.vercel.app/", icon: Truck, description: "Live tracking of CNG cascade logistics and delivery routes." },
       { name: "MHE Fleet Command Centre", href: "https://mhe-tracking.vercel.app/", icon: Warehouse, description: "Coordinate material handling equipment across facilities." },
-      { name: "Production & OEE Console", href: "https://manufacturing-line.vercel.app/", icon: Factory, description: "Monitor production lines and overall equipment effectiveness." },
       { name: "Fleet Command", href: "https://vts-logistics.vercel.app/", icon: Truck, description: "Live fleet tracking and dispatch across your network." },
+    ],
+  },
+  {
+    title: "Process Industry",
+    icon: FlaskConical,
+    demos: [
+      { name: "Production & OEE Console", href: "https://manufacturing-line.vercel.app/", icon: Factory, description: "Monitor production lines and overall equipment effectiveness." },
+      { name: "Plant infrastructure", href: "https://solar-plants.vercel.app/", icon: Sun, description: "Track solar plant generation and infrastructure health in real time." },
+      { name: "Wind farm infrastructure", href: "https://wind-farms.vercel.app/", icon: Wind, description: "Monitor turbine performance and output across a wind farm." },
+      { name: "Plant operations", href: "https://wtp-plant.vercel.app/", icon: Droplet, description: "Oversee water treatment plant operations and process status." },
     ],
   },
 ];
