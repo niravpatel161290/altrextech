@@ -25,7 +25,6 @@ import { useState, useEffect, useCallback } from "react";
 import { useTheme } from "@/hooks/useTheme";
 import CTASection from "@/components/CTASection";
 import { Card } from "@/components/ui/card";
-import CaseStudies from "@/components/sections/CaseStudies";
 import HowWeWork from "@/components/sections/HowWeWork";
 
 // ─── Milestone data — matches reference image exactly ──────────────────────
@@ -958,7 +957,6 @@ const About = () => {
   return (
     <div className="overflow-hidden bg-background">
       <HeroSection />
-      <CaseStudies />
       <HowWeWork />
       <MissionSection />
       <StatsSection />

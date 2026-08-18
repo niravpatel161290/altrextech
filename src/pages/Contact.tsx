@@ -1,4 +1,5 @@
-import { useState, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
+import emailjs from "@emailjs/browser";
 import { motion, type Variants } from "framer-motion";
 import {
   Mail,
@@ -68,18 +69,36 @@ const SIDE_PANEL_STATS = [
   { icon: Headset, label: "Monitoring coverage", value: "24/7" },
 ];
 
-type FormStatus = "idle" | "submitting" | "success";
+const EMAILJS_SERVICE_ID = "service_8555u0o";
+const EMAILJS_TEMPLATE_ID = "template_sy9wo75";
+const EMAILJS_PUBLIC_KEY = "KoRY7N3zj8okmHci2"; // Replace with your EmailJS public key
+
+type FormStatus = "idle" | "submitting" | "success" | "error";
 
 const Contact = () => {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [industry, setIndustry] = useState("");
   const [industryOpen, setIndustryOpen] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!formRef.current) return;
     setStatus("submitting");
-    // TODO: replace with real submit call once backend endpoint is available
-    setTimeout(() => setStatus("success"), 1400);
+
+    emailjs
+      .sendForm(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        formRef.current,
+        EMAILJS_PUBLIC_KEY
+      )
+      .then(() => {
+        setStatus("success");
+      })
+      .catch(() => {
+        setStatus("error");
+      });
   };
 
   return (
@@ -237,8 +256,30 @@ const Contact = () => {
                   Send another message
                 </Button>
               </div>
+            ) : status === "error" ? (
+              <div className="flex h-full min-h-[480px] flex-col items-center justify-center text-center">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-red-500/10">
+                  <svg className="h-8 w-8 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
+                  </svg>
+                </div>
+                <h2 className="mt-6 text-2xl font-semibold text-foreground">
+                  Something went wrong.
+                </h2>
+                <p className="mt-3 max-w-sm text-sm leading-7 text-muted-foreground">
+                  We couldn't send your message. Please try again or email us directly at{" "}
+                  <a href="mailto:info@altrextech.com" className="text-accent underline underline-offset-2">info@altrextech.com</a>.
+                </p>
+                <Button
+                  variant="outline"
+                  className="mt-8 border-border"
+                  onClick={() => setStatus("idle")}
+                >
+                  Try again
+                </Button>
+              </div>
             ) : (
-              <form onSubmit={handleSubmit} className="grid gap-8">
+              <form ref={formRef} onSubmit={handleSubmit} className="grid gap-8">
                 <div className="space-y-4">
                   <p className="text-sm uppercase tracking-[0.1em] font-semibold text-muted-foreground">
                     Request a consultation
@@ -255,6 +296,7 @@ const Contact = () => {
                     </label>
                     <Input
                       required
+                      name="name"
                       placeholder="Your name"
                       className="mt-3 w-full p-5"
                     />
@@ -265,6 +307,7 @@ const Contact = () => {
                     </label>
                     <Input
                       required
+                      name="email"
                       type="email"
                       placeholder="name@company.com"
                       className="mt-3 w-full p-5"
@@ -275,6 +318,7 @@ const Contact = () => {
                       Company
                     </label>
                     <Input
+                      name="company"
                       placeholder="Company name"
                       className="mt-3 w-full p-5"
                     />
@@ -284,6 +328,7 @@ const Contact = () => {
                       Phone
                     </label>
                     <Input
+                      name="phone"
                       type="tel"
                       placeholder="+91 12345 67890"
                       className="mt-3 w-full p-5"
@@ -308,6 +353,8 @@ const Contact = () => {
                         }`}
                       />
                     </button>
+                    {/* Hidden input carries the industry value for EmailJS */}
+                    <input type="hidden" name="industry" value={industry} />
                     {industryOpen && (
                       <div className="absolute z-10 mt-2 w-full overflow-hidden rounded-xl border border-border bg-card shadow-[0_30px_80px_-30px_rgba(15,23,42,0.25)]">
                         {INDUSTRIES.map((option) => (
@@ -333,6 +380,7 @@ const Contact = () => {
                     </label>
                     <textarea
                       required
+                      name="message"
                       rows={6}
                       className="mt-3 min-h-[160px] w-full rounded-lg border border-input bg-transparent px-4 py-4 text-sm text-foreground outline-none transition-colors focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
                       placeholder="Tell us about your project, timeline, and current challenges."
