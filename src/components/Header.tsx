@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import {
   Menu, X, ChevronDown, Cpu, Layers, Monitor, MapPin, Truck, Activity, Zap,
   Bell, BarChart3, ShieldCheck, Video, Cloud, Settings, Sliders, Briefcase,
-  Wrench, GraduationCap, Flame, Droplet, Factory, Building, Gauge, Globe,
+  Wrench, GraduationCap, Flame, Droplet, Factory, Building, Gauge,
 } from "lucide-react";
 import { Button } from "./ui/button";
 import ThemeToggle from "@/components/ThemeToggle";
@@ -216,16 +216,6 @@ const Header = () => {
     viewAllLabel: "View All Live Demos",
   }));
 
-  const projectsFeatured: MegaMenuFeatured = {
-    icon: Globe,
-    title: "See Altrex in Action",
-    description: "Explore live, interactive demos of real deployments across energy, logistics, manufacturing, aerospace, and public infrastructure.",
-    ctaLabel: "Launch EV Station Centre",
-    ctaHref: "https://ev-station-mu.vercel.app/",
-    exploreAllLabel: "View All Demos",
-    exploreAllHref: "/live-demo",
-  };
-
   const { theme } = useTheme();
   const effectiveTheme = theme;
 
@@ -405,7 +395,6 @@ const Header = () => {
                     isOpen={projectsOpen}
                     label="Live Demo"
                     categories={projectCategories}
-                    featured={projectsFeatured}
                     onLinkClick={() => setProjectsOpen(false)}
                   />
                 </div>
@@ -510,7 +499,6 @@ const Header = () => {
                     isOpen={mobileProjectsOpen}
                     onToggle={() => setMobileProjectsOpen((prev) => !prev)}
                     categories={projectCategories}
-                    featured={projectsFeatured}
                     onLinkClick={() => { setMobileMenu(false); setMobileProjectsOpen(false); }}
                   />
                 );

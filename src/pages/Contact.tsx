@@ -30,10 +30,16 @@ const staggerContainer: Variants = {
 };
 
 const INDUSTRIES = [
-  "Manufacturing",
-  "Energy & Utilities",
-  "Logistics & Supply Chain",
-  "Other",
+  "CGD",
+  "Oil Gas",
+  "Water Wastewater",
+  "Power Utilities",
+  "Renewable Energy",
+  "Manufacturing Automation",
+  "Logistics Transportation",
+  "Smart Cities",
+  "Infrastructure Utilities",
+  "Others (Specify In Message)"
 ];
 
 const CONTACT_CARDS = [
@@ -102,7 +108,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-background text-foreground">
+    <div className="relative min-h-screen bg-background text-foreground">
       {/* ---------------- Hero ---------------- */}
       <section>
         <div className="mx-auto max-w-7xl px-6 lg:px-8 py-40">
