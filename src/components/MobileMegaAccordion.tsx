@@ -9,7 +9,7 @@ interface MobileMegaAccordionProps {
   isOpen: boolean;
   onToggle: () => void;
   categories: MegaMenuCategory[];
-  featured: MegaMenuFeatured;
+  featured?: MegaMenuFeatured;
   onLinkClick: () => void;
 }
 

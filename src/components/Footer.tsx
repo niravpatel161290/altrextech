@@ -1,5 +1,5 @@
 import { FiMail } from "react-icons/fi";
-import { FaGithub, FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
+import { FaLinkedinIn, FaWhatsapp, FaXTwitter } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
 import { useTheme } from "@/hooks/useTheme";
@@ -137,7 +137,7 @@ const Footer = () => {
 
           <div className="flex items-center gap-4">
             <Button size="icon-lg" variant="outline">
-              <FaGithub />
+              <FaWhatsapp />
             </Button>
             <Button size="icon-lg" variant="outline">
               <FaXTwitter />
