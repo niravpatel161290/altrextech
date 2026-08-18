@@ -46,7 +46,7 @@ export const LIVE_DEMO_GROUPS: LiveDemoGroup[] = [
       },
       {
         name: "Energy Command Centre",
-        href: "https://ecc.altrextech.com/",
+        href: "https://eccems.altrextech.com/",
         icon: Gauge,
         description:
           "Centralized view of plant-wide energy consumption and load.",
