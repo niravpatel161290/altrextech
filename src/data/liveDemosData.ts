@@ -12,7 +12,9 @@ import {
   Sun,
   Building2,
   Wrench,
-  Droplets, Package,
+  Network,
+  Droplets,
+  Package,
   Droplet,
   type LucideIcon,
 } from "lucide-react";
@@ -98,6 +100,13 @@ export const LIVE_DEMO_GROUPS: LiveDemoGroup[] = [
         href: "https://amrgas.altrextech.com/",
         icon: Activity,
         description: "Automatic meter reading for CGD customer connections.",
+      },
+      {
+        name: "CGD Pipeline Network",
+        href: "https://cgdpipeline.altrextech.com/",
+        icon: Network,
+        description:
+          "Monitor and manage CGD pipeline networks, gas flow, pressure, distribution assets, stations, and real-time network operations.",
       },
       {
         name: "Water AMR Console",
