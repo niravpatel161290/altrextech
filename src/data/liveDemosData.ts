@@ -7,9 +7,10 @@ import {
   Factory,
   Gauge,
   BarChart3,
-  Activity,
+  // Activity,
   Wind,
   Sun,
+  RadioTower,
   Building2,
   Wrench,
   Network,
@@ -95,11 +96,18 @@ export const LIVE_DEMO_GROUPS: LiveDemoGroup[] = [
         description:
           "Track and manage assets across the CGD distribution network.",
       },
+      // {
+      //   name: "CGD AMR Console",
+      //   href: "https://amrgas.altrextech.com/",
+      //   icon: Activity,
+      //   description: "Automatic meter reading for CGD customer connections.",
+      // },
       {
-        name: "CGD AMR Console",
-        href: "https://amrgas.altrextech.com/",
-        icon: Activity,
-        description: "Automatic meter reading for CGD customer connections.",
+        name: "CGD AMR Telemetry",
+        href: "https://amrdemo-cgd.altrextech.com/",
+        icon: RadioTower,
+        description:
+          "Monitor and manage AMR telemetry, smart meter readings, communication status, consumption data, and real-time metering operations.",
       },
       {
         name: "CGD Pipeline Network",
