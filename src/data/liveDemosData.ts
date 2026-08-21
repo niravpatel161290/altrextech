@@ -12,6 +12,7 @@ import {
   Sun,
   Building2,
   Wrench,
+  Droplets, Package,
   Droplet,
   type LucideIcon,
 } from "lucide-react";
@@ -78,7 +79,7 @@ export const LIVE_DEMO_GROUPS: LiveDemoGroup[] = [
     title: "Assets & Utility",
     icon: Flame,
     demos: [
-       {
+      {
         name: "APM & CMMS CGD",
         href: "https://apm.altrextech.com/",
         icon: Wrench,
@@ -156,6 +157,21 @@ export const LIVE_DEMO_GROUPS: LiveDemoGroup[] = [
         icon: Building2,
         description:
           "Monitor and manage smart city infrastructure, operations, assets, and real-time services.",
+      },
+      {
+        name: "Water Distribution",
+        href: "https://waterdistribution.altrextech.com/",
+        icon: Droplets,
+        description:
+          "Monitor and manage water distribution networks, pumping stations, reservoirs, flow, pressure, and real-time water supply operations.",
+      },
+
+      {
+        name: "Product Management",
+        href: "https://pmplant.altrextech.com/",
+        icon: Package,
+        description:
+          "Manage products, inventory, specifications, lifecycle, pricing, and real-time product information across operations.",
       },
     ],
   },
