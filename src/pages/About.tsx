@@ -113,7 +113,6 @@ const stats = [
 
 const team = [
   {
-    pfp: "https://media.licdn.com/dms/image/v2/D5603AQF9ZrluFL7wsw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1718306857557?e=1787184000&v=beta&t=C51BCvUJ9JgY-qLoShT7vFuQmLeUWckMDTGjhotjMAQ",
     initials: "AK",
     name: "Amolkumar Kapure",
     role: "Director / CEO",
@@ -121,7 +120,6 @@ const team = [
     linkedin: "https://www.linkedin.com/in/amolkumar-kapure-8406041aa",
   },
   {
-    pfp: "https://media.licdn.com/dms/image/v2/D4D03AQGmU-KRUDlyVA/profile-displayphoto-crop_800_800/B4DZ.npgW4IwAI-/0/1785224106314?e=1787184000&v=beta&t=rGL4dF_03C8ljqkyDfzWvj3DQD5D25XIgPYp38eHVG4",
     initials: "MP",
     name: "Mit Patel",
     role: "Director / BD",
@@ -129,7 +127,6 @@ const team = [
     linkedin: "https://www.linkedin.com/in/mit-patel-053034ab/",
   },
   {
-    pfp: "https://media.licdn.com/dms/image/v2/C5103AQEZ5MJvEfl5tw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1537507665967?e=1787184000&v=beta&t=B55QMxaZzsLa6GtUF34B4NYYmMNAQDh_fRFqi13N-N0",
     initials: "NP",
     name: "Nirav Patel",
     role: "Director / CTO",
@@ -878,28 +875,22 @@ function TeamSection() {
                 variants={cardVariants}
                 onMouseMove={tilt.onMouseMove}
                 onMouseLeave={tilt.onMouseLeave}
-                whileHover={{ y: -6 }}
-                transition={{ duration: 0.3 }}
+                transition={{ duration: 0.5 }}
                 style={{ transformStyle: "preserve-3d" }}
-                className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-border bg-card p-3 shadow-sm transition-colors hover:border-accent/30"
+                className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-border bg-card p-5 shadow-sm transition-colors hover:border-accent/30"
               >
                 {/* F1 style large watermark role (top right) */}
-                <div className="absolute right-0 top-0 pointer-events-none select-none overflow-hidden rounded-tr-3xl">
+                {/* <div className="absolute right-0 top-0 pointer-events-none select-none overflow-hidden rounded-tr-3xl">
                   <div className="translate-x-[10%] -translate-y-[15%]">
                     <span className="text-[100px] font-black leading-none tracking-tighter text-foreground/[0.1] transition-colors duration-300 group-hover:text-accent/[0.4]">
                       {member.role.split(' / ').pop()}
                     </span>
                   </div>
-                </div>
+                </div> */}
 
                 <div className="flex flex-col relative z-10 h-full">
-                  {/* Avatar box top left (styled like the icon boxes but larger for photos) */}
-                  <div className="mb-6 flex h-24 w-24 shrink-0 items-center justify-center overflow-hidden rounded-[1.25rem] border border-accent/20 bg-accent/5 shadow-sm transition-all duration-300 group-hover:border-accent/40 group-hover:shadow-[0_0_20px_-5px_var(--accent)]">
-                    <img src={member.pfp} alt={member.name} className="h-full w-full object-cover" />
-                  </div>
-                  
                   {/* Name (Title) */}
-                  <div className="mb-2">
+                  <div className="mb-3">
                     <h3 className="text-2xl font-bold tracking-tight text-foreground transition-colors duration-300 group-hover:text-accent">
                       {member.name}
                     </h3>
