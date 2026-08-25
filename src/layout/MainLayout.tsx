@@ -29,6 +29,7 @@ const MainLayout = () => {
       window.scrollTo(0, 0);
     }
   }, [location.pathname]);
+  
   return (
     <div className="relative flex min-h-screen flex-col [overflow-x:clip] bg-background text-foreground">
       {/* Custom Cursor */}
