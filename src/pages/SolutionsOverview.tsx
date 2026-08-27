@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import { SectionBadge } from "@/components/ui/section-badge";
 import { SOLUTIONS } from "@/data/solutionsData";
+import { Seo } from "@/components/Seo";
 
 function getIconForSolution(slug: string) {
   switch (slug) {
@@ -52,6 +53,11 @@ const headerFadeUp: Variants = {
 export default function SolutionsOverview() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-transparent">
+      <Seo
+        title="Solutions | Altrex Digital Platforms Pvt Ltd"
+        description="Explore Altrex's integrated industrial platform modules — IIoT connectivity, Web SCADA, GIS asset management, fleet management, energy management, analytics and cybersecurity."
+        path="/solutions"
+      />
       <div className="mx-auto max-w-7xl px-6 py-28 lg:px-8">
 
         {/* ── Page header ── */}

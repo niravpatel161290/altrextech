@@ -14,6 +14,7 @@ import PlatformOverview from "@/components/sections/PlatformOverview";
 import IndustriesTeaser from "@/components/sections/IndustriesTeaser";
 import WhyChooseUs from "@/components/sections/WhyChooseUs";
 import CTASection from "@/components/CTASection";
+import { Seo } from "@/components/Seo";
 
 const Home = () => {
   const { isInitialLoadComplete, setInitialLoadComplete } = useLoading();
@@ -39,6 +40,12 @@ const Home = () => {
 
   return (
     <div className="relative">
+      <Seo
+        title="Altrex Digital Platforms Pvt Ltd | Digital Platform for Industrial Operations"
+        description="Altrex Digital Platforms Pvt Ltd provides industrial digital platforms for asset management, operations, dashboards, analytics, CMMS, APM and IIoT connectivity."
+        path="/"
+      />
+
       {/* Loading Screen */}
       {showLoading && <LoadingScreen onComplete={handleLoadingComplete} />}
 

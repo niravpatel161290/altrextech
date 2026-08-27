@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { SectionBadge } from "@/components/ui/section-badge";
 import { industriesRegistry } from "@/data/industriesRegistry";
+import { Seo } from "@/components/Seo";
 
 function getIconForIndustry(slug: string) {
   switch (slug) {
@@ -48,6 +49,11 @@ const headerFadeUp: Variants = {
 export default function IndustriesOverview() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-transparent">
+      <Seo
+        title="Industries We Serve | Altrex Digital Platforms Pvt Ltd"
+        description="Tailored digital solutions across City Gas Distribution, Oil & Gas, Water & Wastewater, Power Utilities, Renewable Energy, Manufacturing, Logistics and Smart Cities."
+        path="/industries"
+      />
       <div className="mx-auto max-w-7xl px-6 py-28 lg:px-8">
 
         {/* Page header */}

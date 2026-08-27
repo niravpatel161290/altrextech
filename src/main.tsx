@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import Lenis from "lenis";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { HelmetProvider } from "react-helmet-async";
 
 import "./global.css";
 import App from "./App";
@@ -33,10 +34,12 @@ requestAnimationFrame(raf);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <ThemeProvider>
-      <LoadingProvider>
-        <App />
-      </LoadingProvider>
-    </ThemeProvider>
+    <HelmetProvider>
+      <ThemeProvider>
+        <LoadingProvider>
+          <App />
+        </LoadingProvider>
+      </ThemeProvider>
+    </HelmetProvider>
   </React.StrictMode>
 );

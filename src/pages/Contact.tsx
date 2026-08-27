@@ -18,6 +18,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import CharReveal from "@/components/CharReveal";
 import { SectionBadge } from "@/components/ui/section-badge";
+import { Seo } from "@/components/Seo";
 
 const fadeUpVariants: Variants = {
   hidden: { opacity: 0, y: 40 },
@@ -109,6 +110,11 @@ const Contact = () => {
 
   return (
     <div className="relative min-h-screen bg-background text-foreground">
+      <Seo
+        title="Contact Us | Altrex Digital Platforms Pvt Ltd"
+        description="Get in touch with Altrex Digital Platforms Pvt Ltd for demos, partnerships and support. Headquartered in Ahmedabad, India — reach us by phone, email or the contact form."
+        path="/contact"
+      />
       {/* ---------------- Hero ---------------- */}
       <section>
         <div className="mx-auto max-w-7xl px-6 lg:px-8 py-40">

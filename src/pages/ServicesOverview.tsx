@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { SectionBadge } from "@/components/ui/section-badge";
 import { servicesRegistry } from "@/data/servicesRegistry";
+import { Seo } from "@/components/Seo";
 
 function getIconForService(slug: string) {
   switch (slug) {
@@ -50,6 +51,11 @@ export default function ServicesOverview() {
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-transparent">
+      <Seo
+        title="Services | Altrex Digital Platforms Pvt Ltd"
+        description="End-to-end digital services from Altrex — SaaS deployment, turnkey implementation, system integration, industrial IoT edge, cloud infrastructure and managed services."
+        path="/services"
+      />
       <div className="mx-auto max-w-7xl px-6 py-28 lg:px-8">
 
         {/* Page header */}

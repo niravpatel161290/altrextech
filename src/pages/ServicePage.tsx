@@ -43,6 +43,7 @@ import {
   getLoadZone,
 } from "@/lib/gauge";
 import WhyChooseBento from "@/components/sections/WhyChooseUsIndustries";
+import { Seo } from "@/components/Seo";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 28 },
@@ -238,6 +239,12 @@ export const ServicePage: React.FC = () => {
   if (!service) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-background px-6 py-12">
+        <Seo
+          title="Service Not Found | Altrex Digital Platforms Pvt Ltd"
+          description="The service you're looking for doesn't exist or may have moved."
+          path={`/services/${slug ?? ""}`}
+          noindex
+        />
         <div className="text-center">
           <p className="font-mono text-sm text-muted-foreground mb-4">
             404 — SERVICE NOT FOUND
@@ -254,6 +261,11 @@ export const ServicePage: React.FC = () => {
 
   return (
     <div className="relative min-h-screen bg-background text-foreground">
+      <Seo
+        title={`${service.title} | Altrex Digital Platforms Pvt Ltd`}
+        description={service.hero.description}
+        path={`/services/${service.slug}`}
+      />
       <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[700px] overflow-hidden">
         <div className="absolute left-[-5%] top-[5%] h-[500px] w-[500px] rounded-full bg-orange-500/8 blur-[120px]" />
         <div className="absolute right-[-5%] top-[15%] h-[400px] w-[400px] rounded-full bg-fuchsia-500/8 blur-[120px]" />

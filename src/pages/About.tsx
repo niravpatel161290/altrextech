@@ -28,6 +28,7 @@ import { useTheme } from "@/hooks/useTheme";
 import CTASection from "@/components/CTASection";
 import { Card } from "@/components/ui/card";
 import HowWeWork from "@/components/sections/HowWeWork";
+import { Seo } from "@/components/Seo";
 
 // ─── Milestone data — matches reference image exactly ──────────────────────
 const MILESTONES = [
@@ -1066,6 +1067,11 @@ function WhyChooseUsSection() {
 const About = () => {
   return (
     <div className="overflow-hidden bg-background">
+      <Seo
+        title="About Us | Altrex Digital Platforms Pvt Ltd"
+        description="Founded in Ahmedabad to solve industrial data complexity, Altrex builds unified digital platforms for asset management, SCADA, IIoT and analytics across 9+ industries."
+        path="/about"
+      />
       <HeroSection />
       <WhyChooseUsSection />
       <HowWeWork />

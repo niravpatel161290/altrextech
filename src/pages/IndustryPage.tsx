@@ -13,6 +13,7 @@ import DynamicArchitecture from "@/components/sections/DynamicArchitecture";
 import { SectionBadge } from "@/components/ui/section-badge";
 import CTASection from "@/components/CTASection";
 import { IndustryMetricsSection } from "@/components/sections/Industrymetricssection";
+import { Seo } from "@/components/Seo";
 
 
 // ─── Animation Variants ───────────────────────────────────────────────────────
@@ -64,6 +65,12 @@ const IndustryPage = () => {
   if (!industry) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-background">
+        <Seo
+          title="Industry Not Found | Altrex Digital Platforms Pvt Ltd"
+          description="The industry page you're looking for doesn't exist or may have moved."
+          path={`/industries/${slug ?? ""}`}
+          noindex
+        />
         <div className="text-center">
           <p className="font-mono text-sm text-muted-foreground mb-4">
             404 — INDUSTRY NOT FOUND
@@ -93,6 +100,12 @@ const IndustryPage = () => {
 
   return (
     <div className={`relative min-h-screen bg-background text-foreground`}>
+      <Seo
+        title={`${industry.name} | Altrex Digital Platforms Pvt Ltd`}
+        description={industry.hero.description}
+        path={`/industries/${industry.slug}`}
+        image={industry.image}
+      />
       {/* ── Background ambient glows ── */}
       <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[700px] overflow-hidden">
         <div className="absolute left-[-5%] top-[5%] h-[500px] w-[500px] rounded-full bg-orange-500/8 blur-[120px]" />

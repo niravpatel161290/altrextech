@@ -2,6 +2,7 @@ import { motion, type Variants } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { SectionBadge } from "@/components/ui/section-badge";
 import { LIVE_DEMOS } from "@/data/liveDemosData";
+import { Seo } from "@/components/Seo";
 
 const containerVariants: Variants = {
   hidden: {},
@@ -21,6 +22,11 @@ const headerFadeUp: Variants = {
 export default function LiveDemoOverview() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-transparent">
+      <Seo
+        title="Live Demos | Altrex Digital Platforms Pvt Ltd"
+        description="Explore interactive live demos of the Altrex industrial platform — SCADA dashboards, asset management, analytics and IIoT connectivity in action."
+        path="/live-demo"
+      />
       <div className="mx-auto max-w-7xl px-6 py-28 lg:px-8">
 
         {/* Page header */}
