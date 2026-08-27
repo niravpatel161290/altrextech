@@ -543,7 +543,7 @@ const HeroSection = () => {
               <Link to="/contact">
                 <Button
                   size="lg"
-                  className="gap-1.5 sm:gap-2 bg-primary px-4 sm:px-8 py-5 sm:py-6 text-sm sm:text-base text-primary-foreground hover:bg-accent  shadow-primary/20"
+                  className="gap-1.5 sm:gap-2 bg-primary px-4 sm:px-8 py-5 sm:py-6 text-sm sm:text-base text-primary-foreground hover:bg-accent cursor-pointer shadow-primary/20"
                 >
                   Request Demo
                   <ArrowRight size={16} className="sm:h-5 sm:w-5" />

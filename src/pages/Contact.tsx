@@ -407,7 +407,7 @@ const Contact = () => {
                   <Button
                     type="submit"
                     disabled={status === "submitting"}
-                    className="w-full sm:w-auto bg-accent px-8 py-6"
+                    className="w-full sm:w-auto bg-accent px-8 py-6 cursor-pointer"
                   >
                     {status === "submitting" ? (
                       <span className="flex items-center gap-2">

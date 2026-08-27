@@ -76,7 +76,7 @@ const IndustryPage = () => {
             404 — INDUSTRY NOT FOUND
           </p>
           <Link to="/">
-            <Button variant="ghost" className="text-foreground">
+            <Button variant="ghost" className="text-foreground cursor-pointer">
               <ArrowRight className="mr-2 h-4 w-4 rotate-180" />
               Back to Home
             </Button>
@@ -195,7 +195,7 @@ const IndustryPage = () => {
               className="mt-10 flex flex-wrap gap-4"
             >
               <Link to="/contact">
-                <Button className="bg-orange-500 hover:bg-primary text-white h-11 px-6 rounded-lg font-medium">
+                <Button className="bg-orange-500 hover:bg-primary text-white h-11 px-6 cursor-pointer rounded-lg font-medium">
                   {industry.hero.ctas[0]}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
@@ -203,7 +203,7 @@ const IndustryPage = () => {
               <Link to="/contact">
                 <Button
                   variant="outline"
-                  className="h-11 px-6 rounded-lg border border-border text-foreground hover:bg-card"
+                  className="h-11 px-6 rounded-lg border border-border text-foreground cursor-pointer hover:bg-card"
                 >
                   {industry.hero.ctas[1]}
                 </Button>
@@ -264,7 +264,7 @@ const IndustryPage = () => {
               <button
                 key={mod.title}
                 onClick={() => setSelectedModule(idx)}
-                className={`shrink-0 px-3 py-1.5 text-xs rounded-full border transition-colors duration-200 ${
+                className={`shrink-0 px-3 py-1.5 text-xs rounded-full border cursor-pointer transition-colors duration-200 ${
                   selectedModule === idx
                     ? "border-orange-500/50 bg-orange-500/10 text-orange-400"
                     : "border-border text-muted-foreground hover:text-foreground"
@@ -286,7 +286,7 @@ const IndustryPage = () => {
                 <button
                   key={mod.title}
                   onClick={() => setSelectedModule(idx)}  
-                  className={`text-left px-5 py-3.5 text-sm font-medium transition-colors duration-200 relative ${
+                  className={`text-left px-5 py-3.5 text-sm font-medium transition-colors duration-200 cursor-pointer relative ${
                     selectedModule === idx
                       ? "text-foreground bg-orange-500/8"
                       : "text-muted-foreground hover:text-foreground hover:bg-muted/30"

@@ -360,7 +360,7 @@ const SolutionPage = () => {
             404 — SOLUTION NOT FOUND
           </p>
           <Link to="/">
-            <Button variant="ghost" className="text-foreground">
+            <Button variant="ghost" className="text-foreground cursor-pointer">
               <ArrowRight className="mr-2 h-4 w-4 rotate-180" />
               Back to Home
             </Button>
@@ -419,14 +419,14 @@ const SolutionPage = () => {
 
             <motion.div variants={fadeUp} className="mt-8 flex flex-wrap gap-4">
               <Link to="/contact">
-                <Button className="bg-orange-500 hover:bg-primary text-white h-11 px-6 rounded-lg font-medium shadow-md">
+                <Button className="bg-orange-500 hover:bg-primary text-white h-11 px-6 rounded-lg font-medium shadow-md cursor-pointer">
                   {solution.hero.ctas[0]}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
               <Button
                 variant="ghost"
-                className="h-11 px-6 rounded-lg border border-border text-foreground hover:bg-card"
+                className="h-11 px-6 rounded-lg border border-border text-foreground hover:bg-card cursor-pointer"
               >
                 {solution.hero.ctas[1]}
               </Button>

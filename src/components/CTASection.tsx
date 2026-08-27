@@ -55,7 +55,7 @@ const CTASection = ({
           className="mt-6 sm:mt-8 lg:mt-9 flex flex-wrap gap-3 sm:gap-4 justify-center"
         >
           <Link to={primaryButton.href}>
-            <Button className="bg-orange-500 hover:bg-primary text-white h-11 px-8 rounded-lg font-medium">
+            <Button className="bg-orange-500 hover:bg-primary text-white h-11 px-8 rounded-lg font-medium cursor-pointer">
               {primaryButton.label}
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
@@ -63,7 +63,7 @@ const CTASection = ({
           <Link to={secondaryButton.href}>
             <Button
               variant="ghost"
-              className="h-11 px-8 rounded-lg border border-border text-foreground hover:bg-card"
+              className="h-11 px-8 rounded-lg border border-border text-foreground hover:bg-card cursor-pointer"
             >
               {secondaryButton.label}
             </Button>

@@ -250,7 +250,7 @@ export const ServicePage: React.FC = () => {
             404 — SERVICE NOT FOUND
           </p>
           <Link to="/">
-            <Button variant="ghost" className="text-foreground">
+            <Button variant="ghost" className="text-foreground cursor-pointer">
               Return to Home
             </Button>
           </Link>
@@ -290,7 +290,7 @@ export const ServicePage: React.FC = () => {
             <motion.div variants={fadeUp} transition={{ delay: 1 }} className="mt-10 flex flex-wrap gap-4">
               {service.hero.ctas.slice(0, 2).map((cta, idx) => (
                 <Link key={cta} to="/contact">
-                  <Button variant={idx === 0 ? "default" : "ghost"} className={idx === 0 ? "h-11 px-6 rounded-lg bg-orange-500 text-white hover:bg-primary" : "h-11 px-6 rounded-lg border border-border text-foreground hover:bg-card"}>
+                  <Button variant={idx === 0 ? "default" : "ghost"} className={idx === 0 ? "h-11 px-6 cursor-pointer rounded-lg bg-orange-500 text-white hover:bg-primary" : "h-11 px-6 rounded-lg border border-border text-foreground hover:bg-card cursor-pointer"}>
                     {cta} {idx === 0 && <ArrowRight className="ml-2 h-4 w-4" />}
                   </Button>
                 </Link>
