@@ -1068,8 +1068,8 @@ const About = () => {
   return (
     <div className="overflow-hidden bg-background">
       <Seo
-        title="About Us | Altrex Digital Platforms Pvt Ltd"
-        description="Founded in Ahmedabad to solve industrial data complexity, Altrex builds unified digital platforms for asset management, SCADA, IIoT and analytics across 9+ industries."
+        title="Industrial Operations Management Platform | Altrex Tech"
+        description="Learn about Altrex, industrial operations management platform, designed to streamline processes, improve visibility, and optimize operational efficiency."
         path="/about"
       />
       <HeroSection />

@@ -350,7 +350,7 @@ const SolutionPage = () => {
     return (
       <div className="flex min-h-screen items-center justify-center bg-background">
         <Seo
-          title="Solution Not Found | Altrex Digital Platforms Pvt Ltd"
+          title="Solution Not Found | Altrex Tech"
           description="The solution you're looking for doesn't exist or may have moved."
           path={`/solutions/${slug ?? ""}`}
           noindex
@@ -373,8 +373,8 @@ const SolutionPage = () => {
   return (
     <div className="relative min-h-screen bg-background text-foreground overflow-x-hidden">
       <Seo
-        title={`${solution.name} | Altrex Digital Platforms Pvt Ltd`}
-        description={solution.hero.description}
+        title={`${solution.metaTitle} | Altrex Tech`}
+        description={solution.metaDescription}
         path={`/solutions/${solution.slug}`}
       />
       {/* Background ambient glows */}

@@ -54,8 +54,8 @@ export default function SolutionsOverview() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-transparent">
       <Seo
-        title="Solutions | Altrex Digital Platforms Pvt Ltd"
-        description="Explore Altrex's integrated industrial platform modules — IIoT connectivity, Web SCADA, GIS asset management, fleet management, energy management, analytics and cybersecurity."
+        title="Industrial Process Management Solutions | Altrex Tech"
+        description="Explore industrial process management solutions and manufacturing operations management software built to streamline processes and improve operational performance."
         path="/solutions"
       />
       <div className="mx-auto max-w-7xl px-6 py-28 lg:px-8">

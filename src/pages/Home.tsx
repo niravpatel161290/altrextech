@@ -41,8 +41,8 @@ const Home = () => {
   return (
     <div className="relative">
       <Seo
-        title="Altrex Digital Platforms Pvt Ltd | Digital Platform for Industrial Operations"
-        description="Altrex Digital Platforms Pvt Ltd provides industrial digital platforms for asset management, operations, dashboards, analytics, CMMS, APM and IIoT connectivity."
+        title="Digital Operations Management Platform | Altrex Tech"
+        description="Streamline industrial operations with a digital operations management platform for real-time monitoring, process optimization, and improved efficiency."
         path="/"
       />
 

@@ -53,6 +53,8 @@ export interface SolutionMetric {
 }
 
 export interface Solution {
+  metaTitle: string;
+  metaDescription: string;
   slug: string;
   name: string;
   hero: {
@@ -77,7 +79,8 @@ export interface Solution {
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
 export const SOLUTIONS: Solution[] = [
-  {
+  { metaTitle: "Industrial Connectivity Solutions | Altrex Tech",
+    metaDescription: "Connect industrial assets, devices, and systems with scalable industrial connectivity and data acquisition solutions for real-time operations.",
     slug: "connectivity",
     name: "Connectivity & Data Acquisition",
     hero: {
@@ -259,7 +262,8 @@ export const SOLUTIONS: Solution[] = [
     },
   },
 
-  {
+  { metaTitle: "Industrial IoT Connectivity & Integration Platform | Altrex Tech",
+    metaDescription: "Connect devices, assets, and enterprise systems with an Industrial IoT platform built for real-time monitoring, data analytics, and scalable operations.",
     slug: "iiot-platform",
     name: "Industrial IoT Platform",
     hero: {
@@ -512,7 +516,8 @@ export const SOLUTIONS: Solution[] = [
     },
   },
 
-  {
+  { metaTitle: "SCADA System for Industrial Automation | Altrex Tech",
+    metaDescription: "Improve industrial automation with a modern SCADA system for real-time monitoring, centralized control, alarms, dashboards, and operational visibility.",
     slug: "web-scada",
     name: "Web SCADA & Real-Time Monitoring",
     hero: {
@@ -756,7 +761,8 @@ export const SOLUTIONS: Solution[] = [
       "Empower operators, maintenance teams, and decision-makers with a modern Web-SCADA platform built for industrial operations.",
   },
 
-  {
+  { metaTitle: "GIS Asset Management System for Infrastructure | Altrex Tech",
+    metaDescription: "Manage infrastructure with a GIS asset management system that enables asset visualization, lifecycle management, maintenance, and performance monitoring.",
     slug: "gis-asset-management",
     name: "GIS & Asset Management",
     hero: {
@@ -1015,7 +1021,8 @@ export const SOLUTIONS: Solution[] = [
     },
   },
 
-  {
+  { metaTitle: "Fleet Management Platform & Vehicle Tracking | Altrex Tech",
+    metaDescription: "Manage fleets with a fleet management platform for real-time vehicle tracking, route optimization, driver monitoring, fuel management, and maintenance.",
     slug: "fleet-management",
     name: "Fleet Management & VTS",
     hero: {
@@ -1277,7 +1284,8 @@ export const SOLUTIONS: Solution[] = [
     },
   },
 
-  {
+  { metaTitle: "Automated Meter Reading System & Platform | Altrex Tech",
+    metaDescription: "Automate utility meter data collection with an automated meter reading system for real-time monitoring, accurate billing, loss detection, and analytics.",
     slug: "amr",
     name: "Automatic Meter Reading (AMR)",
     hero: {
@@ -1550,7 +1558,8 @@ export const SOLUTIONS: Solution[] = [
     },
   },
 
-  {
+  { metaTitle: "Energy Management Software & Monitoring System | Altrex Tech",
+    metaDescription: "Optimize energy consumption with energy management software and a monitoring system for real-time insights, cost reduction, analytics, and sustainability.",
     slug: "energy-management",
     name: "Energy Management",
     hero: {
@@ -1815,7 +1824,8 @@ export const SOLUTIONS: Solution[] = [
     },
   },
 
-  {
+  { metaTitle: "Alarm & Event Management Software | Altrex Tech",
+    metaDescription: "Altrex Alarm & Event Management helps organizations detect operational anomalies, prioritize critical events, automate notifications, and accelerate response times.",
     slug: "alarm-management",
     name: "Alarm & Event Management",
     hero: {
@@ -2086,7 +2096,8 @@ export const SOLUTIONS: Solution[] = [
     },
   },
 
-  {
+  { metaTitle: "Analytics & Reporting Software | Altrex Tech",
+    metaDescription: "Altrex Analytics & Reporting enables organizations to convert operational data into meaningful insights through real-time dashboards, KPI monitoring, advanced analytics, and automated reporting.",
     slug: "analytics-reporting",
     name: "Analytics & Reporting",
     hero: {
@@ -2361,7 +2372,8 @@ export const SOLUTIONS: Solution[] = [
     },
   },
 
-  {
+  { metaTitle: "Cybersecurity & Access Control Software | Altrex Tech",
+    metaDescription: "Altrex Cybersecurity & Access Control provides comprehensive protection for industrial operations, critical infrastructure, and enterprise systems.",
     slug: "cybersecurity",
     name: "Cybersecurity & Access Control",
     hero: {
@@ -2626,7 +2638,8 @@ export const SOLUTIONS: Solution[] = [
     },
   },
 
-  {
+  { metaTitle: "CCTV & Video Surveillance Management | Altrex Tech",
+    metaDescription: "Altrex CCTV & Video Surveillance Management enables organizations to monitor facilities, assets, operations, and critical infrastructure through a centralized video management platform.",
     slug: "cctv-surveillance",
     name: "CCTV & Video Surveillance Management",
     hero: {
