@@ -29,6 +29,7 @@ import CTASection from "@/components/CTASection";
 import { Card } from "@/components/ui/card";
 import HowWeWork from "@/components/sections/HowWeWork";
 import { Seo } from "@/components/Seo";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
 // ─── Milestone data — matches reference image exactly ──────────────────────
 const MILESTONES = [
@@ -173,7 +174,8 @@ const DIFFERENTIATORS = [
   {
     dimension: "CONNECTIVITY",
     oldWay: "Limited to specific PLC, SCADA or hardware ecosystems",
-    altrexWay: "Vendor-agnostic — connect PLCs, meters, RTUs, IoT devices, databases & APIs",
+    altrexWay:
+      "Vendor-agnostic — connect PLCs, meters, RTUs, IoT devices, databases & APIs",
   },
   {
     dimension: "VISIBILITY",
@@ -188,7 +190,8 @@ const DIFFERENTIATORS = [
   {
     dimension: "ASSET MANAGEMENT",
     oldWay: "Asset information scattered across multiple systems",
-    altrexWay: "Centralized asset hierarchy, health, history, documents & performance",
+    altrexWay:
+      "Centralized asset hierarchy, health, history, documents & performance",
   },
   {
     dimension: "ANALYTICS",
@@ -198,12 +201,14 @@ const DIFFERENTIATORS = [
   {
     dimension: "SCALABILITY",
     oldWay: "New sites often require new systems and integrations",
-    altrexWay: "Scale from a single plant to thousands of assets on the same platform",
+    altrexWay:
+      "Scale from a single plant to thousands of assets on the same platform",
   },
   {
     dimension: "APPLICATIONS",
     oldWay: "Multiple disconnected software products",
-    altrexWay: "Dashboard, GIS, Reporting, CMMS, APM, Workflow & Digital Twin in one platform",
+    altrexWay:
+      "Dashboard, GIS, Reporting, CMMS, APM, Workflow & Digital Twin in one platform",
   },
   {
     dimension: "DATA OWNERSHIP",
@@ -297,9 +302,7 @@ function MilestoneCard({
         >
           {milestone.title}
         </p>
-        <p
-          className="mt-1 leading-snug text-muted-foreground font-medium text-sm"
-        >
+        <p className="mt-1 leading-snug text-muted-foreground font-medium text-sm">
           {milestone.body}
         </p>
       </div>
@@ -476,9 +479,7 @@ function CompanyJourneyPanel({ inView }: { inView: boolean }) {
         transition={{ delay: 0.3, duration: 0.45 }}
       >
         {/* Label */}
-        <p
-          className="font-mono text-xs text-muted-foreground font-semibold uppercase tracking-[0.1em]"
-        >
+        <p className="font-mono text-xs text-muted-foreground font-semibold uppercase tracking-[0.1em]">
           Company Journey
         </p>
       </motion.div>
@@ -535,9 +536,7 @@ function CompanyJourneyPanel({ inView }: { inView: boolean }) {
               "linear-gradient(to right, var(--accent-violet), transparent)",
           }}
         />
-        <span
-          className="font-mono text-xs font-semibold uppercase tracking-[0.1em] text-muted-foreground"
-        >
+        <span className="font-mono text-xs font-semibold uppercase tracking-[0.1em] text-muted-foreground">
           And Beyond →
         </span>
       </motion.div>
@@ -587,7 +586,11 @@ function HeroSection() {
             {/* H1 */}
             <CharReveal
               as="h1"
-              lines={["WE ARE BUILDING THE", "FUTURE OF INDUSTRIAL", "INTELLIGENCE"]}
+              lines={[
+                "WE ARE BUILDING THE",
+                "FUTURE OF INDUSTRIAL",
+                "INTELLIGENCE",
+              ]}
               className="mx-auto max-w-5xl text-2xl font-bold tracking-[-0.04em] text-foreground sm:text-3xl lg:mx-0 lg:text-4xl xl:text-5xl mt-8 sm:mt-16 leading-tight sm:leading-[0.95]"
               immediate
               delay={0}
@@ -626,7 +629,6 @@ function HeroSection() {
                 </div>
               ))}
             </motion.div>
-
           </motion.div>
 
           <CompanyJourneyPanel inView={inView} />
@@ -788,7 +790,9 @@ function MissionSection() {
                 <h3 className="mt-6 text-xl font-semibold text-foreground">
                   {item.title}
                 </h3>
-                <p className="mt-3 text-muted-foreground font-medium">{item.description}</p>
+                <p className="mt-3 text-muted-foreground font-medium">
+                  {item.description}
+                </p>
               </motion.div>
             );
           })}
@@ -806,7 +810,6 @@ function StatsSection() {
 
   return (
     <section ref={ref} className="relative bg-transparent py-16">
-
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
@@ -850,7 +853,6 @@ function TeamSection() {
       ref={ref}
       className="relative overflow-hidden bg-transparent py-24"
     >
-
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="text-center">
           <SectionBadge
@@ -878,47 +880,50 @@ function TeamSection() {
               onMouseLeave={tilt.onMouseLeave}
               transition={{ duration: 0.5 }}
               style={{ transformStyle: "preserve-3d" }}
-              className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-border bg-card p-5 shadow-sm transition-colors hover:border-accent/30"
+              className="group relative flex flex-col overflow-hidden rounded-2xl border border-border/60 bg-card transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/5"
             >
-              {/* F1 style large watermark role (top right) */}
-              {/* <div className="absolute right-0 top-0 pointer-events-none select-none overflow-hidden rounded-tr-3xl">
-                  <div className="translate-x-[10%] -translate-y-[15%]">
-                    <span className="text-[100px] font-black leading-none tracking-tighter text-foreground/[0.1] transition-colors duration-300 group-hover:text-accent/[0.4]">
-                      {member.role.split(' / ').pop()}
-                    </span>
+              {/* Top accent line — brightens on hover instead of a glow/shadow trick */}
+              <div className="h-px w-full bg-border/60 transition-colors duration-300 group-hover:bg-accent/60" />
+
+              <div className="flex flex-1 flex-col p-6">
+                {/* Header: avatar + name + technical role label */}
+                <div className="flex items-start gap-4">
+                  <Avatar className="h-12 w-12 shrink-0 ring-1 ring-border/60">
+                    <AvatarFallback>{member.initials}</AvatarFallback>
+                  </Avatar>
+
+                  <div className="flex-1 pt-0.5">
+                    <h3 className="text-lg font-semibold leading-tight text-foreground">
+                      {member.name}
+                    </h3>
+                    <div className="mt-1.5 flex items-center gap-2">
+                      <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                      <span className="font-mono text-xs tracking-wide text-muted-foreground">
+                        {member.role}
+                      </span>
+                    </div>
                   </div>
-                </div> */}
-
-              <div className="flex flex-col relative z-10 h-full">
-                {/* Name (Title) */}
-                <div className="mb-3">
-                  <h3 className="text-2xl font-bold tracking-tight text-foreground transition-colors duration-300 group-hover:text-accent">
-                    {member.name}
-                  </h3>
                 </div>
 
-                {/* Bio (Description) */}
-                <div className="mb-8 flex-1">
-                  <p className="font-medium leading-relaxed text-[15px] text-muted-foreground">
-                    {member.bio}
-                  </p>
-                </div>
+                {/* Bio */}
+                <p className="mt-4 flex-1 text-[14px] leading-relaxed text-muted-foreground">
+                  {member.bio}
+                </p>
 
-                {/* LinkedIn tag (Styled like the feature tags in the reference) */}
-                <div className="mt-auto flex flex-wrap gap-2">
+                {/* Footer: hairline divider + plain text link, no chip */}
+                <div className="mt-6 border-t border-border/50 pt-4">
                   <a
                     href={member.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-transparent px-3 py-1.5 font-medium text-muted-foreground transition-all hover:border-accent/40 hover:text-foreground hover:bg-accent/5"
+                    className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-accent"
                   >
-                    <FaLinkedinIn className="h-4 w-4" />
+                    <FaLinkedinIn className="h-3.5 w-3.5" />
                     Connect on LinkedIn
                   </a>
                 </div>
               </div>
             </motion.div>
-
           ))}
         </motion.div>
       </div>
@@ -936,7 +941,6 @@ function ValuesSection() {
 
   return (
     <section ref={ref} className="relative bg-transparent py-24">
-
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="text-center">
           <SectionBadge
@@ -965,9 +969,7 @@ function ValuesSection() {
                 We override the inner div styling via className on StarBorder,
                 then put our actual card content inside.
               */}
-              <Card
-                className="h-full p-6"
-              >
+              <Card className="h-full p-6">
                 <div className="">
                   <div className="bg-accent bg-clip-text text-6xl font-bold text-transparent">
                     {item.number}
@@ -1008,9 +1010,13 @@ function WhyChooseUsSection() {
             Built for the next generation of industrial operations
           </h2>
           <p className="mx-auto mt-4 max-w-4xl text-lg leading-8 text-muted-foreground font-medium">
-            Most industrial systems were designed around a single SCADA, hardware vendor, or application.
+            Most industrial systems were designed around a single SCADA,
+            hardware vendor, or application.
           </p>
-          <p className="text-lg leading-8 text-muted-foreground font-medium">W! Platform connects your existing systems into one unified industrial platform.</p>
+          <p className="text-lg leading-8 text-muted-foreground font-medium">
+            W! Platform connects your existing systems into one unified
+            industrial platform.
+          </p>
         </div>
 
         <motion.div
@@ -1040,8 +1046,9 @@ function WhyChooseUsSection() {
             <motion.div
               key={row.dimension}
               variants={cardVariants}
-              className={`grid grid-cols-1 sm:grid-cols-[200px_1fr_1fr] ${i !== DIFFERENTIATORS.length - 1 ? "border-b border-border" : ""
-                }`}
+              className={`grid grid-cols-1 sm:grid-cols-[200px_1fr_1fr] ${
+                i !== DIFFERENTIATORS.length - 1 ? "border-b border-border" : ""
+              }`}
             >
               <div className="flex items-center px-6 py-5 text-sm font-bold uppercase tracking-wide text-foreground sm:border-r sm:border-border">
                 {row.dimension}
