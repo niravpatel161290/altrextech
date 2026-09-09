@@ -373,7 +373,7 @@ const SolutionPage = () => {
   return (
     <div className="relative min-h-screen bg-background text-foreground overflow-x-hidden">
       <Seo
-        title={`${solution.metaTitle} | Altrex Tech`}
+        title={`${solution.metaTitle}`}
         description={solution.metaDescription}
         path={`/solutions/${solution.slug}`}
       />

@@ -79,7 +79,7 @@ export interface Solution {
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
 export const SOLUTIONS: Solution[] = [
-  { metaTitle: "Industrial Connectivity Solutions",
+  { metaTitle: "Industrial Connectivity Solutions | Altrex Tech",
     metaDescription: "Connect industrial assets, devices, and systems with scalable industrial connectivity and data acquisition solutions for real-time operations.",
     slug: "connectivity",
     name: "Connectivity & Data Acquisition",
@@ -516,7 +516,7 @@ export const SOLUTIONS: Solution[] = [
     },
   },
 
-  { metaTitle: "SCADA System for Industrial Automation",
+  { metaTitle: "SCADA System for Industrial Automation | Altrex Tech",
     metaDescription: "Improve industrial automation with a modern SCADA system for real-time monitoring, centralized control, alarms, dashboards, and operational visibility.",
     slug: "web-scada",
     name: "Web SCADA & Real-Time Monitoring",
@@ -761,7 +761,7 @@ export const SOLUTIONS: Solution[] = [
       "Empower operators, maintenance teams, and decision-makers with a modern Web-SCADA platform built for industrial operations.",
   },
 
-  { metaTitle: "GIS Asset Management System for Infrastructure",
+  { metaTitle: "GIS Asset Management System for Infrastructure | Altrex",
     metaDescription: "Manage infrastructure with a GIS asset management system that enables asset visualization, lifecycle management, maintenance, and performance monitoring.",
     slug: "gis-asset-management",
     name: "GIS & Asset Management",
@@ -1021,7 +1021,7 @@ export const SOLUTIONS: Solution[] = [
     },
   },
 
-  { metaTitle: "Fleet Management Platform & Vehicle Tracking",
+  { metaTitle: "Fleet Management Platform & Vehicle Tracking | Altrex",
     metaDescription: "Manage fleets with a fleet management platform for real-time vehicle tracking, route optimization, driver monitoring, fuel management, and maintenance.",
     slug: "fleet-management",
     name: "Fleet Management & VTS",
@@ -1284,7 +1284,7 @@ export const SOLUTIONS: Solution[] = [
     },
   },
 
-  { metaTitle: "Automated Meter Reading System & Platform",
+  { metaTitle: "Automated Meter Reading System & Platform | Altrex",
     metaDescription: "Automate utility meter data collection with an automated meter reading system for real-time monitoring, accurate billing, loss detection, and analytics.",
     slug: "amr",
     name: "Automatic Meter Reading (AMR)",
@@ -1558,7 +1558,7 @@ export const SOLUTIONS: Solution[] = [
     },
   },
 
-  { metaTitle: "Energy Management Software & Monitoring System",
+  { metaTitle: "Energy Management Software & Monitoring System | Altrex",
     metaDescription: "Optimize energy consumption with energy management software and a monitoring system for real-time insights, cost reduction, analytics, and sustainability.",
     slug: "energy-management",
     name: "Energy Management",
