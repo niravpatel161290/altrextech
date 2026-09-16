@@ -101,8 +101,8 @@ const IndustryPage = () => {
   return (
     <div className={`relative min-h-screen bg-background text-foreground`}>
       <Seo
-        title={`${industry.name} | Altrex Digital Platforms Pvt Ltd`}
-        description={industry.hero.description}
+        title={`${industry.metaTitle}`}
+        description={industry.metaDescription}
         path={`/industries/${industry.slug}`}
         image={industry.image}
       />

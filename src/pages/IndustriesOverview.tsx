@@ -50,8 +50,8 @@ export default function IndustriesOverview() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-transparent">
       <Seo
-        title="Industries We Serve | Altrex Digital Platforms Pvt Ltd"
-        description="Tailored digital solutions across City Gas Distribution, Oil & Gas, Water & Wastewater, Power Utilities, Renewable Energy, Manufacturing, Logistics and Smart Cities."
+        title="Industrial Digital Transformation Solutions | Altrex"
+        description="Explore industrial digital transformation solutions from Altrex for smarter operations, connected infrastructure, real-time monitoring and improved efficiency."
         path="/industries"
       />
       <div className="mx-auto max-w-7xl px-6 py-28 lg:px-8">

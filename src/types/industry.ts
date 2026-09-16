@@ -48,6 +48,8 @@ export interface IndustryBenefit {
 }
 
 export interface IndustryData {
+  metaTitle: string;
+  metaDescription: string;
   slug: string;
   name: string;
   image?: string; // path relative to /public, e.g. "/industries/renewable-energy.jpg"

@@ -262,8 +262,8 @@ export const ServicePage: React.FC = () => {
   return (
     <div className="relative min-h-screen bg-background text-foreground">
       <Seo
-        title={`${service.title} | Altrex Digital Platforms Pvt Ltd`}
-        description={service.hero.description}
+        title={`${service.metaTitle}`}
+        description={service.metaDescription}
         path={`/services/${service.slug}`}
       />
       <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[700px] overflow-hidden">

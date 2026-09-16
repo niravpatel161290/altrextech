@@ -22,6 +22,8 @@ export interface ActivityGroup {
 }
 
 export interface ServiceData {
+  metaTitle: string;
+  metaDescription: string;
   slug: string;
   title: string;
   hero: {

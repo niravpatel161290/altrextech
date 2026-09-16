@@ -15,6 +15,8 @@ import type { IndustryData } from "../types/industry";
 export const industriesRegistry: IndustryData[] = [
   // ── 1. City Gas Distribution ─────────────────────────────────────────────
   {
+    metaTitle: "City Gas Distribution Automation Solutions | Altrex",
+    metaDescription: "Improve CGD operations with City Gas Distribution automation solutions from Altrex, enabling real-time monitoring, asset visibility & smarter operational control.",
     slug: "cgd",
     image: "/industries/cgd.jpg",
     name: "City Gas Distribution",
@@ -357,6 +359,8 @@ export const industriesRegistry: IndustryData[] = [
 
   // ── 2. Oil & Gas ─────────────────────────────────────────────────────────
   {
+    metaTitle: "Oil & Gas Asset Management Solutions | Altrex",
+    metaDescription: "Improve oil and gas asset management with Altrex digital solutions for real-time monitoring, automation and efficient operational control.",
     slug: "oil-gas",
     image: "/industries/oil-gas.jpg",
     name: "Oil & Gas",
@@ -661,7 +665,9 @@ export const industriesRegistry: IndustryData[] = [
   },
 
   // ── 3. Water & Wastewater ─────────────────────────────────────────────────
-  {
+  { 
+    metaTitle: "Wastewater Management Solutions | Altrex",
+    metaDescription: "Altrex delivers smart water management, monitoring and automation solutions for water utilities & wastewater facilities, leak detection and efficient operations.",
     slug: "water-wastewater",
     image: "/industries/water-wastewater.jpg",
     name: "Water & Wastewater",
@@ -966,6 +972,8 @@ export const industriesRegistry: IndustryData[] = [
 
   // ── 4. Power & Utilities ─────────────────────────────────────────────────
   {
+    metaTitle: "Power Generation & Utility Solutions | Altrex",
+    metaDescription: "Altrex provides power generation and utility solutions for smart grid management, energy optimization, asset management and operational efficiency.",
     slug: "power-utilities",
     image: "/industries/power-utilities.jpg",
     name: "Power & Utilities",
@@ -1273,6 +1281,8 @@ export const industriesRegistry: IndustryData[] = [
 
   // ── 5. Renewable Energy ──────────────────────────────────────────────────
   {
+    metaTitle: "Renewable Energy Management Solutions | Altrex",
+    metaDescription: "Discover renewable energy management solutions from Altrex for asset management, performance optimization and efficient renewable energy operations.",
     slug: "renewable-energy",
     image: "/industries/renewable-energy.jpg",
     name: "Renewable Energy",
@@ -1579,6 +1589,8 @@ export const industriesRegistry: IndustryData[] = [
 
   // ── 6. Manufacturing & Industrial Automation ──────────────────────────────
   {
+    metaTitle: "Industrial Automation & Manufacturing Solutions | Altrex",
+    metaDescription: "Explore industrial automation and manufacturing solutions from Altrex for smart factories, Industrial IoT, SCADA and Industry 4.0 transformation.",
     slug: "manufacturing-automation",
     image: "/industries/manufacturing-automation.jpg",
     name: "Manufacturing & Industrial Automation",
@@ -1883,6 +1895,8 @@ export const industriesRegistry: IndustryData[] = [
 
   // ── 7. Logistics & Transportation ────────────────────────────────────────
   {
+    metaTitle: "Logistics & Vehicle Tracking Solutions | Altrex",
+    metaDescription: "Altrex provides logistics management and vehicle tracking solutions for transportation companies, helping optimize routes, monitor fleets & improve efficiency.",
     slug: "logistics-transportation",
     image: "/industries/logistics-transportation.jpg",
     name: "Logistics & Transportation",
@@ -2170,6 +2184,8 @@ export const industriesRegistry: IndustryData[] = [
 
   // ── 8. Smart Cities ──────────────────────────────────────────────────────
   {
+    metaTitle: "Smart City Digital Transformation Solutions | Altrex",
+    metaDescription: "Discover smart city digital transformation solutions from Altrex for connected urban infrastructure, intelligent monitoring, automation, and city management.",
     slug: "smart-cities",
     image: "/industries/smart-cities.jpg",
     name: "Smart Cities",
@@ -2458,6 +2474,8 @@ export const industriesRegistry: IndustryData[] = [
 
   // ── 9. Infrastructure & Utilities ────────────────────────────────────────
   {
+    metaTitle: "Digital Infrastructure Management Solutions | Altrex",
+    metaDescription: "Transform critical infrastructure with Altrex digital infrastructure management solutions for asset management, energy efficiency and operational control.",
     slug: "infrastructure-utilities",
     image: "/industries/infrastructure-utilities.jpg",
     name: "Infrastructure & Utilities",

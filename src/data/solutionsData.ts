@@ -1824,8 +1824,8 @@ export const SOLUTIONS: Solution[] = [
     },
   },
 
-  { metaTitle: "Alarm & Event Management Software",
-    metaDescription: "Altrex Alarm & Event Management helps organizations detect operational anomalies, prioritize critical events, automate notifications, and accelerate response times.",
+  { metaTitle: "Alarm Management Software for Industrial Plants | Altrex",
+    metaDescription: "Streamline plant safety with Altrex alarm management software. Reduce nuisance alarms, improve operator response, and ensure compliance with ISA-18.2 standards.",
     slug: "alarm-management",
     name: "Alarm & Event Management",
     hero: {
@@ -2096,8 +2096,8 @@ export const SOLUTIONS: Solution[] = [
     },
   },
 
-  { metaTitle: "Analytics & Reporting Software",
-    metaDescription: "Altrex Analytics & Reporting enables organizations to convert operational data into meaningful insights through real-time dashboards, KPI monitoring, advanced analytics, and automated reporting.",
+  { metaTitle: "Analytics and Reporting Platform for Industrial Operations",
+    metaDescription: "Get real-time insights with Altrex analytics and reporting platform. Turn industrial data into actionable dashboards, KPIs, and reports for smarter decisions.",
     slug: "analytics-reporting",
     name: "Analytics & Reporting",
     hero: {
@@ -2372,8 +2372,8 @@ export const SOLUTIONS: Solution[] = [
     },
   },
 
-  { metaTitle: "Cybersecurity & Access Control Software",
-    metaDescription: "Altrex Cybersecurity & Access Control provides comprehensive protection for industrial operations, critical infrastructure, and enterprise systems.",
+  { metaTitle: "Industrial Cyber Security Solutions | Altrex",
+    metaDescription: "Protect critical infrastructure with Altrex industrial cyber security solutions. Safeguard OT/ICS networks and IIoT devices from evolving cyber threats.",
     slug: "cybersecurity",
     name: "Cybersecurity & Access Control",
     hero: {
@@ -2638,8 +2638,8 @@ export const SOLUTIONS: Solution[] = [
     },
   },
 
-  { metaTitle: "CCTV & Video Surveillance Management",
-    metaDescription: "Altrex CCTV & Video Surveillance Management enables organizations to monitor facilities, assets, operations, and critical infrastructure through a centralized video management platform.",
+  { metaTitle: "CCTV & Video Surveillance for Operational Security - Altrex",
+    metaDescription: "Altrex CCTV & video surveillance solutions strengthen operational security with real-time monitoring, threat detection, and rapid incident response.",
     slug: "cctv-surveillance",
     name: "CCTV & Video Surveillance Management",
     hero: {

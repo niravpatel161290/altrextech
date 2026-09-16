@@ -2,6 +2,8 @@ import type { ServiceData } from '../types/service';
 
 export const servicesRegistry: Record<string, ServiceData> = {
   'saas-platform': {
+    metaTitle: 'Industrial SaaS Platform for Plant Operations and Monitoring',
+    metaDescription: 'Altrex industrial SaaS platform unifies asset management, analytics, and IIoT connectivity in one cloud-based solution built for industrial operations.',
     slug: 'saas-platform',
     title: 'SaaS Platform Services',
     hero: {
@@ -69,6 +71,8 @@ export const servicesRegistry: Record<string, ServiceData> = {
     }
   },
   'turnkey-implementation': {
+    metaTitle: 'Turnkey Project Implementation Services | Altrex',
+    metaDescription: 'Get reliable trunkey project implementation services with Altrex. From planning to execution, we deliver end-to-end turnkey project solutions for industries.',
     slug: 'turnkey-implementation',
     title: 'Turnkey Project Implementation Services',
     hero: {
@@ -164,6 +168,8 @@ export const servicesRegistry: Record<string, ServiceData> = {
     }
   },
   'system-integration': {
+    metaTitle: 'Industrial System Integration Services | Altrex',
+    metaDescription: 'Explore industrial system integration solutions by Altrex for seamless connectivity, automation and control across industrial operations, systems and processes.',
     slug: 'system-integration',
     title: 'System Integration Services',
     hero: {
@@ -229,6 +235,8 @@ export const servicesRegistry: Record<string, ServiceData> = {
     }
   },
   'industrial-iot-edge': {
+    metaTitle: 'Industrial IoT & Edge Integration Services | Altrex',
+    metaDescription: 'Discover Industrial IoT Integration Services and Industrial Edge Integration solutions from Altrex for connected, scalable and data-driven industrial operations.',
     slug: 'industrial-iot-edge',
     title: 'Industrial IoT & Edge Integration Services',
     hero: {
@@ -279,6 +287,8 @@ export const servicesRegistry: Record<string, ServiceData> = {
     }
   },
   'cloud-infrastructure': {
+    metaTitle: 'Cloud Infrastructure Management Services | Altrex',
+    metaDescription: 'Get reliable cloud infrastructure management services from Altrex to optimize, monitor and manage secure, scalable cloud environments for industrial operations.',
     slug: 'cloud-infrastructure',
     title: 'Cloud & Infrastructure Services',
     hero: {
@@ -318,6 +328,8 @@ export const servicesRegistry: Record<string, ServiceData> = {
     }
   },
   'gis-asset-digitization': {
+    metaTitle: 'GIS & Asset Management Services | Altrex',
+    metaDescription: 'Transform infrastructure and field assets with GIS & Asset Digitization Services from Altrex. Improve asset visibility, monitoring, maintenance & decision making.',
     slug: 'gis-asset-digitization',
     title: 'GIS & Asset Digitization Services',
     hero: {
@@ -354,6 +366,8 @@ export const servicesRegistry: Record<string, ServiceData> = {
     }
   },
   'cctv-video-analytics': {
+    metaTitle: 'CCTV & Video Analytics Services | Altrex',
+    metaDescription: 'Enhance security and operational visibility with CCTV & Video Analytics Solutions from Altrex, powered by intelligent monitoring, AI-driven insights and real-time analytics.',
     slug: 'cctv-video-analytics',
     title: 'CCTV & Video Analytics Services',
     hero: {
@@ -391,6 +405,8 @@ export const servicesRegistry: Record<string, ServiceData> = {
     }
   },
   'managed-services-amc': {
+    metaTitle: 'Industrial Annual Maintenance Contract Services | Altrex',
+    metaDescription: 'Altrex provides industrial annual maintenance contract services to support system reliability, preventive maintenance, monitoring and technical operations.',
     slug: 'managed-services-amc',
     title: 'Managed Services & AMC',
     hero: {
@@ -434,6 +450,8 @@ export const servicesRegistry: Record<string, ServiceData> = {
     }
   },
   'training-consulting': {
+    metaTitle: 'Industrial Consulting & Training Services | Altrex',
+    metaDescription: 'Altrex provides industrial digital transformation consulting and training to help organizations adopt modern technologies and improve operational performance.',
     slug: 'training-consulting',
     title: 'Training & Consulting Services',
     hero: {
