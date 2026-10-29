@@ -68,7 +68,7 @@ export function Seo({ title, description, path, image, noindex }: SeoProps) {
       {/* Open Graph */}
       <meta property="og:site_name" content={SITE_NAME} />
       <meta property="og:title" content={title} />
-      <meta property="og:description" content={metaDescription} />
+      <meta property="og:description" content={Description} />
       <meta property="og:url" content={url} />
       <meta property="og:type" content="website" />
       <meta property="og:image" content={ogImage} />
@@ -76,7 +76,7 @@ export function Seo({ title, description, path, image, noindex }: SeoProps) {
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={metaDescription} />
+      <meta name="twitter:description" content={Description} />
       <meta name="twitter:image" content={ogImage} />
 
       {noindex && <meta name="robots" content="noindex, nofollow" />}
