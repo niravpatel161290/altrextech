@@ -1075,7 +1075,7 @@ const About = () => {
   return (
     <div className="overflow-hidden bg-background">
       <Seo
-        title="Industrial Operations Management Platform | Altrex Tech"
+        title="Industrial Operations Management Platform | Altrex Tech 1"
         description="Learn about Altrex, industrial operations management platform, designed to streamline processes, improve visibility, and optimize operational efficiency."
         path="/about"
       />
