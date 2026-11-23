@@ -20,6 +20,8 @@ export interface SeoProps {
   image?: string;
   /** Set true on pages that shouldn't be indexed (e.g. a dynamic-route 404). */
   noindex?: boolean;
+  /** Open Graph type. Use "article" for blog posts. Defaults to "website". */
+  type?: "website" | "article";
 }
 
 /**
@@ -54,7 +56,7 @@ function resolveImageUrl(image?: string): string {
  *     path="/solutions"
  *   />
  */
-export function Seo({ title, description, path, image, noindex }: SeoProps) {
+export function Seo({ title, description, path, image, noindex, type = "website" }: SeoProps) {
   const url = `${SITE_URL}${path}`;
   const metaDescription = truncateDescription(description);
   const ogImage = resolveImageUrl(image);
@@ -70,7 +72,7 @@ export function Seo({ title, description, path, image, noindex }: SeoProps) {
       <meta property="og:title" content={title} />
       <meta property="og:description" content={metaDescription} />
       <meta property="og:url" content={url} />
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content={type} />
       <meta property="og:image" content={ogImage} />
 
       {/* Twitter */}

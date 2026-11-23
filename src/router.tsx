@@ -11,6 +11,8 @@ import IndustriesOverview from "./pages/IndustriesOverview";
 import { ServicePage } from "./pages/ServicePage";
 import IndustryPage from "./pages/IndustryPage";
 import LiveDemoOverview from "./pages/LiveDemoOverview";
+import BlogOverview from "./pages/BlogOverview";
+import BlogPost from "./pages/BlogPost";
 
 const SolutionPageWithKey = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -25,6 +27,11 @@ const ServicePageWithKey = () => {
 const IndustryPageWithKey = () => {
   const { slug } = useParams<{ slug: string }>();
   return <IndustryPage key={slug} />;
+}
+
+const BlogPostWithKey = () => {
+  const { slug } = useParams<{ slug: string }>();
+  return <BlogPost key={slug} />;
 }
 
 export const router = createBrowserRouter([
@@ -48,6 +55,8 @@ export const router = createBrowserRouter([
         element: <IndustryPageWithKey />
       },
       { path: "/live-demo", element: <LiveDemoOverview /> },
+      { path: "/blog", element: <BlogOverview /> },
+      { path: "/blog/:slug", element: <BlogPostWithKey /> },
     ],
   },
 ]);

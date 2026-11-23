@@ -131,9 +131,16 @@ const Footer = () => {
         <div
           className="flex flex-col items-start justify-between gap-6 py-8 md:flex-row md:items-center border-t border-border"
         >
-          <p className="text-sm text-muted-foreground font-medium">
-            © 2026 Altrex. All rights reserved.
-          </p>
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+            <p className="text-sm text-muted-foreground font-medium">
+              © 2026 Altrex. All rights reserved.
+            </p>
+            <nav aria-label="Footer" className="flex items-center gap-5">
+              <Link to="/about" className={linkClass}>About</Link>
+              <Link to="/blog" className={linkClass}>Blog</Link>
+              <Link to="/contact" className={linkClass}>Contact</Link>
+            </nav>
+          </div>
 
           <div className="flex items-center gap-4">
             <Button size="icon-lg" variant="outline">
