@@ -3,7 +3,8 @@ import type { BlogBlock, BlogPost } from "@/types/blog";
 /**
  * Blog posts registry. To publish a new post, add an object to this array —
  * the /blog listing, the /blog/:slug article page, and related-post links
- * pick it up automatically. Remember to add the URL to public/sitemap.xml.
+ * pick it up automatically. public/sitemap.xml is regenerated on build
+ * (npm run sitemap).
  */
 export const blogPosts: BlogPost[] = [
   {
