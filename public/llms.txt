@@ -1,0 +1,123 @@
+# AltrexTech
+
+> Altrex Digital Platforms Pvt Ltd provides digital platforms for connected industrial operations, bringing Industrial IoT, SCADA, GIS, asset management, fleet tracking, video analytics, energy management, and analytics together.
+
+## Website
+- https://www.altrextech.com/
+
+## Digital Platform for Connected Operations
+Altrex presents a unified digital platform for industrial operations that transforms field data into real-time intelligence through Industrial IoT, SCADA, GIS, Asset Management, Fleet Tracking, and Analytics.
+
+### Platform Capabilities
+- Web SCADA — real-time monitoring and control.
+- Industrial IoT — connect devices and field assets.
+- GIS & Asset Management — location intelligence and asset visibility.
+- Fleet Management — vehicle tracking and operational optimization.
+- Video Analytics — AI-powered surveillance and monitoring.
+- Energy Management — monitor and optimize energy consumption.
+
+### Platform Features
+- Dashboards
+- GIS Mapping
+- Alarm Management
+- Historian
+- Mobile Access
+- Open APIs
+- User Management
+- Reports
+
+## Enterprise Platform Characteristics
+- Enterprise security: IEC-62443-aligned architecture, multi-factor authentication, role-based access control, and audit trails.
+- Scalability: supports deployments ranging from a single site to multiple sites and large numbers of assets.
+- Hybrid infrastructure: on-premise, cloud, and edge-ready deployment options.
+- Reliability: redundant infrastructure, intelligent failover, hot standby, and maintenance/upgrades described as zero-planned-downtime.
+- 24×7 monitoring.
+
+## Connected Operations Architecture
+### Devices
+PLCs, RTUs, sensors, rectifiers, HMIs, SCADA, DCS, and IoT devices.
+
+### Connectivity
+MQTT, OPC-UA, MODBUS, Ethernet, PROFINET, EtherNet/IP, REST API, SQL/NoSQL.
+
+### Platform
+Web SCADA, visualization, alerting, and asset management.
+
+### Hosting
+On-premise server, private cloud, and public cloud.
+
+### Enterprise Services
+SAP, ERP, and CRM integrations.
+
+## Services
+- SaaS Platform Services — subscription access to platform capabilities; multi-tenant architecture with role-based access, elastic scaling, and continuous updates.
+- Turnkey Project Implementation — requirements scoping, solution architecture, on-site deployment, commissioning, handover, and documentation.
+- Managed Services & AMC — preventive maintenance, incident response, and annual maintenance contracts with SLA guarantees.
+- System Integration Services — API and middleware connectivity, legacy and third-party integrations, and unified data flow.
+- Industrial IoT & Edge Integration — field-device and PLC connectivity, edge processing with cloud synchronization, and protocol translation.
+- CCTV & Video Analytics Services — CCTV network design and installation, AI-based detection, centralized video management, and archival.
+- Cloud & Infrastructure Services — cloud architecture, migration, hybrid/on-prem infrastructure, monitoring, and capacity planning.
+- GIS & Asset Digitization — GPS-based asset mapping, GIS layers, spatial data modeling, and digital asset registries.
+- Training & Consulting — onboarding, hands-on training, process/workflow consulting, and technical-team training programs.
+
+## Industries Served
+### City Gas Distribution
+Web SCADA, Industrial IoT Platform, GIS-based network management, CNG station monitoring, and cascade management system.
+
+### Oil & Gas
+Web SCADA and real-time monitoring, Industrial IoT and edge integration, pipeline monitoring and leak detection, GIS-based asset management, and tank farm management.
+
+### Water & Wastewater
+Web SCADA and real-time monitoring, smart water metering (AMR/AMI), Industrial IoT and remote telemetry, leak detection and NRW management, and GIS-based utility asset management.
+
+### Power & Utilities
+Web SCADA and real-time grid monitoring, smart metering (AMR/AMI), energy management system (EMS), smart-grid monitoring, and renewable-energy monitoring.
+
+### Renewable Energy
+Renewable-energy SCADA platform, solar plant monitoring, wind farm monitoring, BESS monitoring and optimization, and energy management system (EMS).
+
+### Manufacturing & Industrial Automation
+Industrial SCADA and real-time monitoring, OEE monitoring, production monitoring, predictive maintenance, and energy management system (EMS).
+
+### Logistics & Transportation
+GPS vehicle tracking system (VTS), fuel monitoring and analytics, route optimization and trip management, video telematics and driver safety, and fleet management system.
+
+### Smart Cities
+Integrated Command & Control Center (ICCC), smart utility management, smart metering (AMR/AMI), Intelligent Transportation System (ITS), and GIS-based smart-city platform.
+
+### Infrastructure & Utilities
+Infrastructure SCADA and real-time monitoring, utility management system, smart metering (AMR/AMI), energy management system (EMS), and GIS-based infrastructure asset management.
+
+## Website-Stated Metrics
+The website displays the following platform metrics:
+- 500K+ data points per minute
+- 99.9% platform availability
+- 50+ integrations
+- 24×7 monitoring
+- 2K+ connected devices
+- 10M+ events per day
+- 10+ facilities
+- 1.2M/s live throughput
+- 2K+ connected assets / active nodes
+- 10M+ daily data points processed
+- 10+ industrial deployments
+- 120+ operational sites / facilities
+- 99.99% platform availability (SLA)
+
+These figures are reproduced as displayed on the website; some metric labels or figures appear in more than one section.
+
+## Operational Challenges Addressed
+The website identifies challenges including manual meter reading and data entry, delayed fault detection, and lack of unified asset visibility.
+
+## Contact / Next Step
+The website invites visitors to explore solutions or schedule a demo to modernize operations, connect assets, visualize operations, and support data-informed decisions.
+
+## Frequently Asked Questions
+The homepage lists these FAQ topics:
+- How scalable is the infrastructure?
+- Do you support MQTT and WebSocket?
+- Is the platform enterprise ready?
+- Can I integrate with existing systems?
+
+## Brand Summary
+Altrex is presented as a unified industrial digital platform for managing connected assets, operations, alarms, analytics, and field infrastructure, with capabilities covering IIoT connectivity, SCADA, GIS, digital twins, AI analytics, reporting, and enterprise integration.
