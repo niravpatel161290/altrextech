@@ -1,5 +1,5 @@
 import { Outlet, useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -37,7 +37,9 @@ const MainLayout = () => {
       <Header />
 
       <main className="flex-1">
-        <Outlet />
+        <Suspense fallback={<div className="min-h-screen" />}>
+          <Outlet />
+        </Suspense>
       </main>
 
       <Footer />

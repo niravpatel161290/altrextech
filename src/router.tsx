@@ -1,18 +1,23 @@
+import { lazy } from "react";
 import { createBrowserRouter, useParams } from "react-router-dom";
 
-import Home from "./pages/Home";
-import About from "./pages/About";
 import MainLayout from "./layout/MainLayout";
-import Contact from "./pages/Contact";
-import SolutionPage from "./pages/SolutionPage";
-import SolutionsOverview from "./pages/SolutionsOverview";
-import ServicesOverview from "./pages/ServicesOverview";
-import IndustriesOverview from "./pages/IndustriesOverview";
-import { ServicePage } from "./pages/ServicePage";
-import IndustryPage from "./pages/IndustryPage";
-import LiveDemoOverview from "./pages/LiveDemoOverview";
-import BlogOverview from "./pages/BlogOverview";
-import BlogPost from "./pages/BlogPost";
+
+// Route-level code splitting: each page is loaded on demand.
+const Home = lazy(() => import("./pages/Home"));
+const About = lazy(() => import("./pages/About"));
+const Contact = lazy(() => import("./pages/Contact"));
+const SolutionPage = lazy(() => import("./pages/SolutionPage"));
+const SolutionsOverview = lazy(() => import("./pages/SolutionsOverview"));
+const ServicesOverview = lazy(() => import("./pages/ServicesOverview"));
+const IndustriesOverview = lazy(() => import("./pages/IndustriesOverview"));
+const ServicePage = lazy(() =>
+  import("./pages/ServicePage").then((m) => ({ default: m.ServicePage }))
+);
+const IndustryPage = lazy(() => import("./pages/IndustryPage"));
+const LiveDemoOverview = lazy(() => import("./pages/LiveDemoOverview"));
+const BlogOverview = lazy(() => import("./pages/BlogOverview"));
+const BlogPost = lazy(() => import("./pages/BlogPost"));
 
 const SolutionPageWithKey = () => {
   const { slug } = useParams<{ slug: string }>();
