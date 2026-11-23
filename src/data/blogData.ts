@@ -6,6 +6,7 @@ import type { BlogBlock, BlogPost } from "@/types/blog";
  * pick it up automatically. public/sitemap.xml is regenerated on build
  * (npm run sitemap).
  */
+
 export const blogPosts: BlogPost[] = [
   {
     slug: "industrial-operations-management-platform-guide",
